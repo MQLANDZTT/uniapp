@@ -20,15 +20,15 @@
 		<view class="login margin-b80" v-if="!cur">
 			<view class="input vs-row vs-align-center margin-b40">
 				<image class="input-icon margin-r20" src="/static/account.png" mode=""></image>
-				<input class="vs-flex-item color-base font-30" type="text" value="" :maxlength="11" placeholder="请输入您的手机号/邮箱" placeholder-class="input-placeholder"/>
+				<input class="vs-flex-item color-base font-30" type="text" v-model="loginInfo.account" value="" :maxlength="11" placeholder="请输入您的登录账号" placeholder-class="input-placeholder"/>
 			</view>
 			<view class="input vs-row vs-align-center margin-b40">
 				<image class="input-icon margin-r20" src="/static/password.png" mode=""></image>
-				<input class="vs-flex-item color-base font-30" type="text" password value="" placeholder="请输入您的登录密码" placeholder-class="input-placeholder"/>
+				<input class="vs-flex-item color-base font-30" type="text" password v-model="loginInfo.password" value="" placeholder="请输入您的登录密码" placeholder-class="input-placeholder"/>
 			</view>
 			<view class="input vs-row vs-align-center margin-b40" style="padding-left: 0%;">
-				<image class="input-icon margin-r20" :src=imageUrl mode="" style="width: 100px;height: 44px;" @click="getVerifycode"></image>
-				<input class="vs-flex-item color-base font-30" type="text" value="" placeholder="请输入验证码" placeholder-class="input-placeholder"/>
+				<image class="input-icon margin-r20" :src=imageUrl mode="" style="width: 100px;height: 44px;" @click="getVerifycode(loginInfo.uuid)"></image>
+				<input class="vs-flex-item color-base font-30" type="text" v-model="loginInfo.verifycode" value="" placeholder="请输入验证码" placeholder-class="input-placeholder"/>
 			</view>
 		</view>
 		
@@ -43,11 +43,11 @@
 			</view>
 		</view>
 		
-		<view class="button bg-color-base vs-row vs-align-center vs-space-center margin-b20">
+		<view class="button bg-color-base vs-row vs-align-center vs-space-center margin-b20" @click="login()">
 			<text class="color-white font-34">立即{{ cur ? '注册': '登录' }}</text>
 		</view>
 		
-		<view class="vs-row vs-align-center vs-space-center margin-b100">
+		<view class="vs-row vs-align-center vs-space-center margin-b100" style="margin-bottom: 20px;">
 			<text class="color-base font-28">忘记密码？</text>
 		</view>
 		
@@ -75,18 +75,36 @@ import axios from 'axios';
 			return {
 				cur: 0,
 				imageUrl:'',
-				uuid:''
+				
+				loginInfo:{
+					account:'',
+					password:'',
+					from:'moble',
+					uuid:'',
+					verifycode:''
+				}
 			}
 		},
 		created() {
-			this.getVerifycode();
+			this.getVerifycode(this.loginInfo.uuid);
 		},
 		methods:{
-			getVerifycode(){
-				axios.get("/mxnzp/getVerifycode").then(res=>{
-					this.uuid=res.data.uuid
+			getVerifycode(oldUuid){
+				axios.get("/mxnzp/getVerifycode?oldUuid="+oldUuid).then(res=>{
+					this.loginInfo.uuid=res.data.uuid
 					this.imageUrl=res.data.data.verifyCodeImgUrl
 					console.log(res)
+				})
+			},
+			login(){
+				axios.post("/login",this.loginInfo).then(res=>{
+					sessionStorage.setItem("token",res.data.data)
+					this.$router.push({
+						path:"/pages/news/index",
+						name:"/pages/news/index",
+						query:{},
+						params:{}
+					})
 				})
 			}
 		}

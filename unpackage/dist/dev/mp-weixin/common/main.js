@@ -14,7 +14,9 @@ var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/inte
 var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 10));
 __webpack_require__(/*! uni-pages */ 25);
 var _App = _interopRequireDefault(__webpack_require__(/*! ./App.vue */ 26));
-var _axios = _interopRequireDefault(__webpack_require__(/*! axios */ 59));
+var _es6Promise = _interopRequireDefault(__webpack_require__(/*! es6-promise */ 32));
+var _axios = _interopRequireDefault(__webpack_require__(/*! axios */ 35));
+var _vueRouter = _interopRequireDefault(__webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module 'vue-router'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())));
 var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 24));
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -22,9 +24,11 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 wx.__webpack_require_UNI_MP_PLUGIN__ = __webpack_require__;
 var host = 'https://unidemo.dcloud.net.cn/';
 _axios.default.defaults.baseURL = 'http://127.0.0.1:2012';
+_axios.default.defaults.headers.common['token'] = sessionStorage.getItem('token') ? sessionStorage.getItem('token') : null;
 _vue.default.config.productionTip = false;
 _vue.default.prototype.$host = host;
 _vue.default.prototype.axios = _axios.default;
+_vue.default.use(_vueRouter.default);
 _App.default.mpType = 'app';
 var app = new _vue.default(_objectSpread({}, _App.default));
 createApp(app).$mount();

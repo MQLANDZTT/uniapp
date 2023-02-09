@@ -21,7 +21,17 @@
   "libVersion": "2.30.0",
   "appid": "touristappid",
   "projectname": "MultiFunctionalToolsUniapp",
-  "condition": {},
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "",
+          "pathName": "pages/login/login",
+          "query": ""
+        }
+      ]
+    }
+  },
   "editorSetting": {
     "tabIndent": "insertSpaces",
     "tabSize": 2
