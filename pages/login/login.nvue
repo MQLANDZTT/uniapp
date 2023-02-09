@@ -64,6 +64,12 @@
 				<image class="other-icon" src="/static/apple.png" mode=""></image>
 			</view>
 		</view>
+		<view>
+					<!-- 提示信息弹窗 -->
+					<uni-popup ref="message" type="message">
+						<uni-popup-message :type="confirmInfo.msgType" :message="confirmInfo.messageText" :duration="2000"></uni-popup-message>
+					</uni-popup>
+				</view>
 	</view>
 </template>
 
@@ -82,6 +88,12 @@ import axios from 'axios';
 					from:'moble',
 					uuid:'',
 					verifycode:''
+				},
+				confirmInfo:{
+					type: 'center',
+					msgType: 'success',
+					messageText: '这是一条成功提示',
+					value: ''
 				}
 			}
 		},
@@ -89,6 +101,10 @@ import axios from 'axios';
 			this.getVerifycode(this.loginInfo.uuid);
 		},
 		methods:{
+			messageToggle(type) {
+							this.confirmInfo.msgType = type
+							this.$refs.message.open()
+						},
 			getVerifycode(oldUuid){
 				axios.get("/mxnzp/getVerifycode?oldUuid="+oldUuid).then(res=>{
 					this.loginInfo.uuid=res.data.uuid
@@ -98,13 +114,25 @@ import axios from 'axios';
 			},
 			login(){
 				axios.post("/login",this.loginInfo).then(res=>{
-					sessionStorage.setItem("token",res.data.data)
-					this.$router.push({
-						path:"/pages/news/index",
-						name:"/pages/news/index",
-						query:{},
-						params:{}
-					})
+					if(res.data.code==19){
+						this.confirmInfo.messageText=res.data.message
+						this.messageToggle('error')
+					}
+					if(res.data.code==14){
+						this.confirmInfo.messageText=res.data.message
+						this.messageToggle('error')
+					}
+					localStorage.setItem("token",res.data.data)
+					// this.$router.push({
+					// 	path:"/pages/news/index",
+					// 	query:{},
+					// 	params:{}
+					// })
+					if(localStorage.getItem("token")==res.data.data){
+						uni.redirectTo({
+							url: '/pages/news/index'
+						});
+					}
 				})
 			}
 		}

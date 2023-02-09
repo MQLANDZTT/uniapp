@@ -8,47 +8,29 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(global) {
+/* WEBPACK VAR INJECTION */(function(global) {Object.defineProperty(exports, "__esModule", { value: true });exports.createApp = createApp;exports.createComponent = createComponent;exports.createPage = createPage;exports.createPlugin = createPlugin;exports.createSubpackageApp = createSubpackageApp;exports.default = void 0;var _uniI18n = __webpack_require__(/*! @dcloudio/uni-i18n */ 3);
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 4));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _slicedToArray(arr, i) {return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();}function _nonIterableRest() {throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}function _iterableToArrayLimit(arr, i) {if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;var _arr = [];var _n = true;var _d = false;var _e = undefined;try {for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {_arr.push(_s.value);if (i && _arr.length === i) break;}} catch (err) {_d = true;_e = err;} finally {try {if (!_n && _i["return"] != null) _i["return"]();} finally {if (_d) throw _e;}}return _arr;}function _arrayWithHoles(arr) {if (Array.isArray(arr)) return arr;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}function _toConsumableArray(arr) {return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();}function _nonIterableSpread() {throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(o);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _iterableToArray(iter) {if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);}function _arrayWithoutHoles(arr) {if (Array.isArray(arr)) return _arrayLikeToArray(arr);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;}
 
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 3);
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.createApp = createApp;
-exports.createComponent = createComponent;
-exports.createPage = createPage;
-exports.createPlugin = createPlugin;
-exports.createSubpackageApp = createSubpackageApp;
-exports.default = void 0;
-var _slicedToArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ 4));
-var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 10));
-var _construct2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/construct */ 14));
-var _toConsumableArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ 17));
-var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 12));
-var _uniI18n = __webpack_require__(/*! @dcloudio/uni-i18n */ 21);
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 24));
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 var realAtob;
+
 var b64 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
 var b64re = /^(?:[A-Za-z\d+/]{4})*?(?:[A-Za-z\d+/]{2}(?:==)?|[A-Za-z\d+/]{3}=?)?$/;
+
 if (typeof atob !== 'function') {
   realAtob = function realAtob(str) {
     str = String(str).replace(/[\t\n\f\r ]+/g, '');
-    if (!b64re.test(str)) {
-      throw new Error("Failed to execute 'atob' on 'Window': The string to be decoded is not correctly encoded.");
-    }
+    if (!b64re.test(str)) {throw new Error("Failed to execute 'atob' on 'Window': The string to be decoded is not correctly encoded.");}
 
     // Adding the padding if missing, for semplicity
     str += '=='.slice(2 - (str.length & 3));
-    var bitmap;
-    var result = '';
-    var r1;
-    var r2;
-    var i = 0;
+    var bitmap;var result = '';var r1;var r2;var i = 0;
     for (; i < str.length;) {
-      bitmap = b64.indexOf(str.charAt(i++)) << 18 | b64.indexOf(str.charAt(i++)) << 12 | (r1 = b64.indexOf(str.charAt(i++))) << 6 | (r2 = b64.indexOf(str.charAt(i++)));
-      result += r1 === 64 ? String.fromCharCode(bitmap >> 16 & 255) : r2 === 64 ? String.fromCharCode(bitmap >> 16 & 255, bitmap >> 8 & 255) : String.fromCharCode(bitmap >> 16 & 255, bitmap >> 8 & 255, bitmap & 255);
+      bitmap = b64.indexOf(str.charAt(i++)) << 18 | b64.indexOf(str.charAt(i++)) << 12 |
+      (r1 = b64.indexOf(str.charAt(i++))) << 6 | (r2 = b64.indexOf(str.charAt(i++)));
+
+      result += r1 === 64 ? String.fromCharCode(bitmap >> 16 & 255) :
+      r2 === 64 ? String.fromCharCode(bitmap >> 16 & 255, bitmap >> 8 & 255) :
+      String.fromCharCode(bitmap >> 16 & 255, bitmap >> 8 & 255, bitmap & 255);
     }
     return result;
   };
@@ -56,11 +38,13 @@ if (typeof atob !== 'function') {
   // 注意atob只能在全局对象上调用，例如：`const Base64 = {atob};Base64.atob('xxxx')`是错误的用法
   realAtob = atob;
 }
+
 function b64DecodeUnicode(str) {
   return decodeURIComponent(realAtob(str).split('').map(function (c) {
     return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
   }).join(''));
 }
+
 function getCurrentUserInfo() {
   var token = wx.getStorageSync('uni_id_token') || '';
   var tokenArr = token.split('.');
@@ -69,8 +53,8 @@ function getCurrentUserInfo() {
       uid: null,
       role: [],
       permission: [],
-      tokenExpired: 0
-    };
+      tokenExpired: 0 };
+
   }
   var userInfo;
   try {
@@ -83,45 +67,52 @@ function getCurrentUserInfo() {
   delete userInfo.iat;
   return userInfo;
 }
+
 function uniIdMixin(Vue) {
-  Vue.prototype.uniIDHasRole = function (roleId) {
-    var _getCurrentUserInfo = getCurrentUserInfo(),
-      role = _getCurrentUserInfo.role;
+  Vue.prototype.uniIDHasRole = function (roleId) {var _getCurrentUserInfo =
+
+
+    getCurrentUserInfo(),role = _getCurrentUserInfo.role;
     return role.indexOf(roleId) > -1;
   };
-  Vue.prototype.uniIDHasPermission = function (permissionId) {
-    var _getCurrentUserInfo2 = getCurrentUserInfo(),
-      permission = _getCurrentUserInfo2.permission;
+  Vue.prototype.uniIDHasPermission = function (permissionId) {var _getCurrentUserInfo2 =
+
+
+    getCurrentUserInfo(),permission = _getCurrentUserInfo2.permission;
     return this.uniIDHasRole('admin') || permission.indexOf(permissionId) > -1;
   };
-  Vue.prototype.uniIDTokenValid = function () {
-    var _getCurrentUserInfo3 = getCurrentUserInfo(),
-      tokenExpired = _getCurrentUserInfo3.tokenExpired;
+  Vue.prototype.uniIDTokenValid = function () {var _getCurrentUserInfo3 =
+
+
+    getCurrentUserInfo(),tokenExpired = _getCurrentUserInfo3.tokenExpired;
     return tokenExpired > Date.now();
   };
 }
+
 var _toString = Object.prototype.toString;
 var hasOwnProperty = Object.prototype.hasOwnProperty;
+
 function isFn(fn) {
   return typeof fn === 'function';
 }
+
 function isStr(str) {
   return typeof str === 'string';
 }
-function isObject(obj) {
-  return obj !== null && (0, _typeof2.default)(obj) === 'object';
-}
+
 function isPlainObject(obj) {
   return _toString.call(obj) === '[object Object]';
 }
+
 function hasOwn(obj, key) {
   return hasOwnProperty.call(obj, key);
 }
+
 function noop() {}
 
 /**
- * Create a cached version of a pure function.
- */
+                    * Create a cached version of a pure function.
+                    */
 function cached(fn) {
   var cache = Object.create(null);
   return function cachedFn(str) {
@@ -131,14 +122,13 @@ function cached(fn) {
 }
 
 /**
- * Camelize a hyphen-delimited string.
- */
+   * Camelize a hyphen-delimited string.
+   */
 var camelizeRE = /-(\w)/g;
 var camelize = cached(function (str) {
-  return str.replace(camelizeRE, function (_, c) {
-    return c ? c.toUpperCase() : '';
-  });
+  return str.replace(camelizeRE, function (_, c) {return c ? c.toUpperCase() : '';});
 });
+
 function sortObject(obj) {
   var sortObj = {};
   if (isPlainObject(obj)) {
@@ -148,13 +138,30 @@ function sortObject(obj) {
   }
   return !Object.keys(sortObj) ? obj : sortObj;
 }
-var HOOKS = ['invoke', 'success', 'fail', 'complete', 'returnValue'];
+
+var HOOKS = [
+'invoke',
+'success',
+'fail',
+'complete',
+'returnValue'];
+
+
 var globalInterceptors = {};
 var scopedInterceptors = {};
+
 function mergeHook(parentVal, childVal) {
-  var res = childVal ? parentVal ? parentVal.concat(childVal) : Array.isArray(childVal) ? childVal : [childVal] : parentVal;
-  return res ? dedupeHooks(res) : res;
+  var res = childVal ?
+  parentVal ?
+  parentVal.concat(childVal) :
+  Array.isArray(childVal) ?
+  childVal : [childVal] :
+  parentVal;
+  return res ?
+  dedupeHooks(res) :
+  res;
 }
+
 function dedupeHooks(hooks) {
   var res = [];
   for (var i = 0; i < hooks.length; i++) {
@@ -164,12 +171,14 @@ function dedupeHooks(hooks) {
   }
   return res;
 }
+
 function removeHook(hooks, hook) {
   var index = hooks.indexOf(hook);
   if (index !== -1) {
     hooks.splice(index, 1);
   }
 }
+
 function mergeInterceptorHook(interceptor, option) {
   Object.keys(option).forEach(function (hook) {
     if (HOOKS.indexOf(hook) !== -1 && isFn(option[hook])) {
@@ -177,6 +186,7 @@ function mergeInterceptorHook(interceptor, option) {
     }
   });
 }
+
 function removeInterceptorHook(interceptor, option) {
   if (!interceptor || !option) {
     return;
@@ -187,6 +197,7 @@ function removeInterceptorHook(interceptor, option) {
     }
   });
 }
+
 function addInterceptor(method, option) {
   if (typeof method === 'string' && isPlainObject(option)) {
     mergeInterceptorHook(scopedInterceptors[method] || (scopedInterceptors[method] = {}), option);
@@ -194,6 +205,7 @@ function addInterceptor(method, option) {
     mergeInterceptorHook(globalInterceptors, method);
   }
 }
+
 function removeInterceptor(method, option) {
   if (typeof method === 'string') {
     if (isPlainObject(option)) {
@@ -205,14 +217,17 @@ function removeInterceptor(method, option) {
     removeInterceptorHook(globalInterceptors, method);
   }
 }
+
 function wrapperHook(hook) {
   return function (data) {
     return hook(data) || data;
   };
 }
+
 function isPromise(obj) {
-  return !!obj && ((0, _typeof2.default)(obj) === 'object' || typeof obj === 'function') && typeof obj.then === 'function';
+  return !!obj && (typeof obj === 'object' || typeof obj === 'function') && typeof obj.then === 'function';
 }
+
 function queue(hooks, data) {
   var promise = false;
   for (var i = 0; i < hooks.length; i++) {
@@ -226,19 +241,19 @@ function queue(hooks, data) {
       }
       if (res === false) {
         return {
-          then: function then() {}
-        };
+          then: function then() {} };
+
       }
     }
   }
   return promise || {
     then: function then(callback) {
       return callback(data);
-    }
-  };
+    } };
+
 }
-function wrapperOptions(interceptor) {
-  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+function wrapperOptions(interceptor) {var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
   ['success', 'fail', 'complete'].forEach(function (name) {
     if (Array.isArray(interceptor[name])) {
       var oldCallback = options[name];
@@ -252,20 +267,22 @@ function wrapperOptions(interceptor) {
   });
   return options;
 }
+
 function wrapperReturnValue(method, returnValue) {
   var returnValueHooks = [];
   if (Array.isArray(globalInterceptors.returnValue)) {
-    returnValueHooks.push.apply(returnValueHooks, (0, _toConsumableArray2.default)(globalInterceptors.returnValue));
+    returnValueHooks.push.apply(returnValueHooks, _toConsumableArray(globalInterceptors.returnValue));
   }
   var interceptor = scopedInterceptors[method];
   if (interceptor && Array.isArray(interceptor.returnValue)) {
-    returnValueHooks.push.apply(returnValueHooks, (0, _toConsumableArray2.default)(interceptor.returnValue));
+    returnValueHooks.push.apply(returnValueHooks, _toConsumableArray(interceptor.returnValue));
   }
   returnValueHooks.forEach(function (hook) {
     returnValue = hook(returnValue) || returnValue;
   });
   return returnValue;
 }
+
 function getApiInterceptorHooks(method) {
   var interceptor = Object.create(null);
   Object.keys(globalInterceptors).forEach(function (hook) {
@@ -283,10 +300,8 @@ function getApiInterceptorHooks(method) {
   }
   return interceptor;
 }
-function invokeApi(method, api, options) {
-  for (var _len = arguments.length, params = new Array(_len > 3 ? _len - 3 : 0), _key = 3; _key < _len; _key++) {
-    params[_key - 3] = arguments[_key];
-  }
+
+function invokeApi(method, api, options) {for (var _len = arguments.length, params = new Array(_len > 3 ? _len - 3 : 0), _key = 3; _key < _len; _key++) {params[_key - 3] = arguments[_key];}
   var interceptor = getApiInterceptorHooks(method);
   if (interceptor && Object.keys(interceptor).length) {
     if (Array.isArray(interceptor.invoke)) {
@@ -300,6 +315,7 @@ function invokeApi(method, api, options) {
   }
   return api.apply(void 0, [options].concat(params));
 }
+
 var promiseInterceptor = {
   returnValue: function returnValue(res) {
     if (!isPromise(res)) {
@@ -314,35 +330,46 @@ var promiseInterceptor = {
         }
       });
     });
-  }
-};
-var SYNC_API_RE = /^\$|Window$|WindowStyle$|sendHostEvent|sendNativeEvent|restoreGlobal|requireGlobal|getCurrentSubNVue|getMenuButtonBoundingClientRect|^report|interceptors|Interceptor$|getSubNVueById|requireNativePlugin|upx2px|hideKeyboard|canIUse|^create|Sync$|Manager$|base64ToArrayBuffer|arrayBufferToBase64|getLocale|setLocale|invokePushCallback|getWindowInfo|getDeviceInfo|getAppBaseInfo|getSystemSetting|getAppAuthorizeSetting/;
+  } };
+
+
+var SYNC_API_RE =
+/^\$|Window$|WindowStyle$|sendHostEvent|sendNativeEvent|restoreGlobal|requireGlobal|getCurrentSubNVue|getMenuButtonBoundingClientRect|^report|interceptors|Interceptor$|getSubNVueById|requireNativePlugin|upx2px|hideKeyboard|canIUse|^create|Sync$|Manager$|base64ToArrayBuffer|arrayBufferToBase64|getLocale|setLocale|invokePushCallback|getWindowInfo|getDeviceInfo|getAppBaseInfo/;
+
 var CONTEXT_API_RE = /^create|Manager$/;
 
 // Context例外情况
 var CONTEXT_API_RE_EXC = ['createBLEConnection'];
 
 // 同步例外情况
-var ASYNC_API = ['createBLEConnection', 'createPushMessage'];
+var ASYNC_API = ['createBLEConnection'];
+
 var CALLBACK_API_RE = /^on|^off/;
+
 function isContextApi(name) {
   return CONTEXT_API_RE.test(name) && CONTEXT_API_RE_EXC.indexOf(name) === -1;
 }
 function isSyncApi(name) {
   return SYNC_API_RE.test(name) && ASYNC_API.indexOf(name) === -1;
 }
+
 function isCallbackApi(name) {
   return CALLBACK_API_RE.test(name) && name !== 'onPush';
 }
+
 function handlePromise(promise) {
   return promise.then(function (data) {
     return [null, data];
-  }).catch(function (err) {
-    return [err];
-  });
+  }).
+  catch(function (err) {return [err];});
 }
+
 function shouldPromise(name) {
-  if (isContextApi(name) || isSyncApi(name) || isCallbackApi(name)) {
+  if (
+  isContextApi(name) ||
+  isSyncApi(name) ||
+  isCallbackApi(name))
+  {
     return false;
   }
   return true;
@@ -352,56 +379,55 @@ function shouldPromise(name) {
 if (!Promise.prototype.finally) {
   Promise.prototype.finally = function (callback) {
     var promise = this.constructor;
-    return this.then(function (value) {
-      return promise.resolve(callback()).then(function () {
-        return value;
-      });
-    }, function (reason) {
-      return promise.resolve(callback()).then(function () {
+    return this.then(
+    function (value) {return promise.resolve(callback()).then(function () {return value;});},
+    function (reason) {return promise.resolve(callback()).then(function () {
         throw reason;
-      });
-    });
+      });});
+
   };
 }
+
 function promisify(name, api) {
   if (!shouldPromise(name)) {
     return api;
   }
-  return function promiseApi() {
-    var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-    for (var _len2 = arguments.length, params = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-      params[_key2 - 1] = arguments[_key2];
-    }
+  return function promiseApi() {var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};for (var _len2 = arguments.length, params = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {params[_key2 - 1] = arguments[_key2];}
     if (isFn(options.success) || isFn(options.fail) || isFn(options.complete)) {
       return wrapperReturnValue(name, invokeApi.apply(void 0, [name, api, options].concat(params)));
     }
     return wrapperReturnValue(name, handlePromise(new Promise(function (resolve, reject) {
       invokeApi.apply(void 0, [name, api, Object.assign({}, options, {
         success: resolve,
-        fail: reject
-      })].concat(params));
+        fail: reject })].concat(
+      params));
     })));
   };
 }
+
 var EPS = 1e-4;
 var BASE_DEVICE_WIDTH = 750;
 var isIOS = false;
 var deviceWidth = 0;
 var deviceDPR = 0;
-function checkDeviceWidth() {
-  var _wx$getSystemInfoSync = wx.getSystemInfoSync(),
-    platform = _wx$getSystemInfoSync.platform,
-    pixelRatio = _wx$getSystemInfoSync.pixelRatio,
-    windowWidth = _wx$getSystemInfoSync.windowWidth; // uni=>wx runtime 编译目标是 uni 对象，内部不允许直接使用 uni
+
+function checkDeviceWidth() {var _wx$getSystemInfoSync =
+
+
+
+
+  wx.getSystemInfoSync(),platform = _wx$getSystemInfoSync.platform,pixelRatio = _wx$getSystemInfoSync.pixelRatio,windowWidth = _wx$getSystemInfoSync.windowWidth; // uni=>wx runtime 编译目标是 uni 对象，内部不允许直接使用 uni
 
   deviceWidth = windowWidth;
   deviceDPR = pixelRatio;
   isIOS = platform === 'ios';
 }
+
 function upx2px(number, newDeviceWidth) {
   if (deviceWidth === 0) {
     checkDeviceWidth();
   }
+
   number = Number(number);
   if (number === 0) {
     return 0;
@@ -420,16 +446,21 @@ function upx2px(number, newDeviceWidth) {
   }
   return number < 0 ? -result : result;
 }
+
 var LOCALE_ZH_HANS = 'zh-Hans';
 var LOCALE_ZH_HANT = 'zh-Hant';
 var LOCALE_EN = 'en';
 var LOCALE_FR = 'fr';
 var LOCALE_ES = 'es';
+
 var messages = {};
+
 var locale;
+
 {
   locale = normalizeLocale(wx.getSystemInfoSync().language) || LOCALE_EN;
 }
+
 function initI18nMessages() {
   if (!isEnableLocale()) {
     return;
@@ -447,12 +478,16 @@ function initI18nMessages() {
     });
   }
 }
+
 initI18nMessages();
-var i18n = (0, _uniI18n.initVueI18n)(locale, {});
+
+var i18n = (0, _uniI18n.initVueI18n)(
+locale,
+{});
+
 var t = i18n.t;
 var i18nMixin = i18n.mixin = {
-  beforeCreate: function beforeCreate() {
-    var _this = this;
+  beforeCreate: function beforeCreate() {var _this = this;
     var unwatch = i18n.i18n.watchLocale(function () {
       _this.$forceUpdate();
     });
@@ -463,15 +498,16 @@ var i18nMixin = i18n.mixin = {
   methods: {
     $$t: function $$t(key, values) {
       return t(key, values);
-    }
-  }
-};
+    } } };
+
+
 var setLocale = i18n.setLocale;
 var getLocale = i18n.getLocale;
+
 function initAppLocale(Vue, appVm, locale) {
   var state = Vue.observable({
-    locale: locale || i18n.getLocale()
-  });
+    locale: locale || i18n.getLocale() });
+
   var localeWatchers = [];
   appVm.$watchLocale = function (fn) {
     localeWatchers.push(fn);
@@ -482,25 +518,23 @@ function initAppLocale(Vue, appVm, locale) {
     },
     set: function set(v) {
       state.locale = v;
-      localeWatchers.forEach(function (watch) {
-        return watch(v);
-      });
-    }
-  });
+      localeWatchers.forEach(function (watch) {return watch(v);});
+    } });
+
 }
+
 function isEnableLocale() {
   return typeof __uniConfig !== 'undefined' && __uniConfig.locales && !!Object.keys(__uniConfig.locales).length;
 }
+
 function include(str, parts) {
-  return !!parts.find(function (part) {
-    return str.indexOf(part) !== -1;
-  });
+  return !!parts.find(function (part) {return str.indexOf(part) !== -1;});
 }
+
 function startsWith(str, parts) {
-  return parts.find(function (part) {
-    return str.indexOf(part) === 0;
-  });
+  return parts.find(function (part) {return str.indexOf(part) === 0;});
 }
+
 function normalizeLocale(locale, messages) {
   if (!locale) {
     return;
@@ -543,13 +577,14 @@ function normalizeLocale(locale, messages) {
 function getLocale$1() {
   // 优先使用 $locale
   var app = getApp({
-    allowDefault: true
-  });
+    allowDefault: true });
+
   if (app && app.$vm) {
     return app.$vm.$locale;
   }
   return normalizeLocale(wx.getSystemInfoSync().language) || LOCALE_EN;
 }
+
 function setLocale$1(locale) {
   var app = getApp();
   if (!app) {
@@ -558,27 +593,29 @@ function setLocale$1(locale) {
   var oldLocale = app.$vm.$locale;
   if (oldLocale !== locale) {
     app.$vm.$locale = locale;
-    onLocaleChangeCallbacks.forEach(function (fn) {
-      return fn({
-        locale: locale
-      });
-    });
+    onLocaleChangeCallbacks.forEach(function (fn) {return fn({
+        locale: locale });});
+
     return true;
   }
   return false;
 }
+
 var onLocaleChangeCallbacks = [];
 function onLocaleChange(fn) {
   if (onLocaleChangeCallbacks.indexOf(fn) === -1) {
     onLocaleChangeCallbacks.push(fn);
   }
 }
+
 if (typeof global !== 'undefined') {
   global.getLocale = getLocale$1;
 }
+
 var interceptors = {
-  promiseInterceptor: promiseInterceptor
-};
+  promiseInterceptor: promiseInterceptor };
+
+
 var baseApi = /*#__PURE__*/Object.freeze({
   __proto__: null,
   upx2px: upx2px,
@@ -587,8 +624,9 @@ var baseApi = /*#__PURE__*/Object.freeze({
   onLocaleChange: onLocaleChange,
   addInterceptor: addInterceptor,
   removeInterceptor: removeInterceptor,
-  interceptors: interceptors
-});
+  interceptors: interceptors });
+
+
 function findExistsPageIndex(url) {
   var pages = getCurrentPages();
   var len = pages.length;
@@ -600,6 +638,7 @@ function findExistsPageIndex(url) {
   }
   return -1;
 }
+
 var redirectTo = {
   name: function name(fromArgs) {
     if (fromArgs.exists === 'back' && fromArgs.delta) {
@@ -617,8 +656,9 @@ var redirectTo = {
         }
       }
     }
-  }
-};
+  } };
+
+
 var previewImage = {
   args: function args(fromArgs) {
     var currentIndex = parseInt(fromArgs.current);
@@ -640,18 +680,19 @@ var previewImage = {
     }
     if (currentIndex > 0) {
       fromArgs.current = urls[currentIndex];
-      fromArgs.urls = urls.filter(function (item, index) {
-        return index < currentIndex ? item !== urls[currentIndex] : true;
-      });
+      fromArgs.urls = urls.filter(
+      function (item, index) {return index < currentIndex ? item !== urls[currentIndex] : true;});
+
     } else {
       fromArgs.current = urls[0];
     }
     return {
       indicator: false,
-      loop: false
-    };
-  }
-};
+      loop: false };
+
+  } };
+
+
 var UUID_KEY = '__DC_STAT_UUID';
 var deviceId;
 function useDeviceId(result) {
@@ -660,11 +701,12 @@ function useDeviceId(result) {
     deviceId = Date.now() + '' + Math.floor(Math.random() * 1e7);
     wx.setStorage({
       key: UUID_KEY,
-      data: deviceId
-    });
+      data: deviceId });
+
   }
   result.deviceId = deviceId;
 }
+
 function addSafeAreaInsets(result) {
   if (result.safeArea) {
     var safeArea = result.safeArea;
@@ -672,26 +714,18 @@ function addSafeAreaInsets(result) {
       top: safeArea.top,
       left: safeArea.left,
       right: result.windowWidth - safeArea.right,
-      bottom: result.screenHeight - safeArea.bottom
-    };
+      bottom: result.screenHeight - safeArea.bottom };
+
   }
 }
-function populateParameters(result) {
-  var _result$brand = result.brand,
-    brand = _result$brand === void 0 ? '' : _result$brand,
-    _result$model = result.model,
-    model = _result$model === void 0 ? '' : _result$model,
-    _result$system = result.system,
-    system = _result$system === void 0 ? '' : _result$system,
-    _result$language = result.language,
-    language = _result$language === void 0 ? '' : _result$language,
-    theme = result.theme,
-    version = result.version,
-    platform = result.platform,
-    fontSizeSetting = result.fontSizeSetting,
-    SDKVersion = result.SDKVersion,
-    pixelRatio = result.pixelRatio,
-    deviceOrientation = result.deviceOrientation;
+
+function populateParameters(result) {var _result$brand =
+
+
+
+
+
+  result.brand,brand = _result$brand === void 0 ? '' : _result$brand,_result$model = result.model,model = _result$model === void 0 ? '' : _result$model,_result$system = result.system,system = _result$system === void 0 ? '' : _result$system,_result$language = result.language,language = _result$language === void 0 ? '' : _result$language,theme = result.theme,version = result.version,platform = result.platform,fontSizeSetting = result.fontSizeSetting,SDKVersion = result.SDKVersion,pixelRatio = result.pixelRatio,deviceOrientation = result.deviceOrientation;
   // const isQuickApp = "mp-weixin".indexOf('quickapp-webview') !== -1
 
   // osName osVersion
@@ -732,8 +766,8 @@ function populateParameters(result) {
     appVersion: "3.1.23",
     appVersionCode: "1",
     appLanguage: getAppLanguage(hostLanguage),
-    uniCompileVersion: "3.6.14",
-    uniRuntimeVersion: "3.6.14",
+    uniCompileVersion: "3.4.15",
+    uniRuntimeVersion: "3.4.15",
     uniPlatform: undefined || "mp-weixin",
     deviceBrand: deviceBrand,
     deviceModel: model,
@@ -756,18 +790,20 @@ function populateParameters(result) {
     ua: undefined,
     hostPackageName: undefined,
     browserName: undefined,
-    browserVersion: undefined
-  };
+    browserVersion: undefined };
+
+
   Object.assign(result, parameters);
 }
+
 function getGetDeviceType(result, model) {
   var deviceType = result.deviceType || 'phone';
   {
     var deviceTypeMaps = {
       ipad: 'pad',
       windows: 'pc',
-      mac: 'pc'
-    };
+      mac: 'pc' };
+
     var deviceTypeMapsKeys = Object.keys(deviceTypeMaps);
     var _model = model.toLocaleLowerCase();
     for (var index = 0; index < deviceTypeMapsKeys.length; index++) {
@@ -780,6 +816,7 @@ function getGetDeviceType(result, model) {
   }
   return deviceType;
 }
+
 function getDeviceBrand(brand) {
   var deviceBrand = brand;
   if (deviceBrand) {
@@ -787,9 +824,13 @@ function getDeviceBrand(brand) {
   }
   return deviceBrand;
 }
+
 function getAppLanguage(defaultLanguage) {
-  return getLocale$1 ? getLocale$1() : defaultLanguage;
+  return getLocale$1 ?
+  getLocale$1() :
+  defaultLanguage;
 }
+
 function getHostName(result) {
   var _platform = 'WeChat';
   var _hostName = result.hostName || _platform; // mp-jd
@@ -800,31 +841,34 @@ function getHostName(result) {
       _hostName = result.host.env;
     }
   }
+
   return _hostName;
 }
+
 var getSystemInfo = {
   returnValue: function returnValue(result) {
     useDeviceId(result);
     addSafeAreaInsets(result);
     populateParameters(result);
-  }
-};
+  } };
+
+
 var showActionSheet = {
   args: function args(fromArgs) {
-    if ((0, _typeof2.default)(fromArgs) === 'object') {
+    if (typeof fromArgs === 'object') {
       fromArgs.alertText = fromArgs.title;
     }
-  }
-};
+  } };
+
+
 var getAppBaseInfo = {
-  returnValue: function returnValue(result) {
-    var _result = result,
-      version = _result.version,
-      language = _result.language,
-      SDKVersion = _result.SDKVersion,
-      theme = _result.theme;
+  returnValue: function returnValue(result) {var _result =
+    result,version = _result.version,language = _result.language,SDKVersion = _result.SDKVersion,theme = _result.theme;
+
     var _hostName = getHostName(result);
+
     var hostLanguage = language.replace('_', '-');
+
     result = sortObject(Object.assign(result, {
       appId: "",
       appName: "MultiFunctionalToolsUniapp",
@@ -835,45 +879,36 @@ var getAppBaseInfo = {
       hostLanguage: hostLanguage,
       hostName: _hostName,
       hostSDKVersion: SDKVersion,
-      hostTheme: theme
-    }));
-  }
-};
+      hostTheme: theme }));
+
+  } };
+
+
 var getDeviceInfo = {
-  returnValue: function returnValue(result) {
-    var _result2 = result,
-      brand = _result2.brand,
-      model = _result2.model;
+  returnValue: function returnValue(result) {var _result2 =
+    result,brand = _result2.brand,model = _result2.model;
     var deviceType = getGetDeviceType(result, model);
     var deviceBrand = getDeviceBrand(brand);
     useDeviceId(result);
+
     result = sortObject(Object.assign(result, {
       deviceType: deviceType,
       deviceBrand: deviceBrand,
-      deviceModel: model
-    }));
-  }
-};
+      deviceModel: model }));
+
+  } };
+
+
 var getWindowInfo = {
   returnValue: function returnValue(result) {
     addSafeAreaInsets(result);
+
     result = sortObject(Object.assign(result, {
       windowTop: 0,
-      windowBottom: 0
-    }));
-  }
-};
-var getAppAuthorizeSetting = {
-  returnValue: function returnValue(result) {
-    var locationReducedAccuracy = result.locationReducedAccuracy;
-    result.locationAccuracy = 'unsupported';
-    if (locationReducedAccuracy === true) {
-      result.locationAccuracy = 'reduced';
-    } else if (locationReducedAccuracy === false) {
-      result.locationAccuracy = 'full';
-    }
-  }
-};
+      windowBottom: 0 }));
+
+  } };
+
 
 // import navigateTo from 'uni-helpers/navigate-to'
 
@@ -886,23 +921,26 @@ var protocols = {
   showActionSheet: showActionSheet,
   getAppBaseInfo: getAppBaseInfo,
   getDeviceInfo: getDeviceInfo,
-  getWindowInfo: getWindowInfo,
-  getAppAuthorizeSetting: getAppAuthorizeSetting
-};
-var todos = ['vibrate', 'preloadPage', 'unPreloadPage', 'loadSubPackage'];
+  getWindowInfo: getWindowInfo };
+
+var todos = [
+'vibrate',
+'preloadPage',
+'unPreloadPage',
+'loadSubPackage'];
+
 var canIUses = [];
+
 var CALLBACKS = ['success', 'fail', 'cancel', 'complete'];
+
 function processCallback(methodName, method, returnValue) {
   return function (res) {
     return method(processReturnValue(methodName, res, returnValue));
   };
 }
-function processArgs(methodName, fromArgs) {
-  var argsOption = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-  var returnValue = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
-  var keepFromArgs = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : false;
-  if (isPlainObject(fromArgs)) {
-    // 一般 api 的参数解析
+
+function processArgs(methodName, fromArgs) {var argsOption = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};var returnValue = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};var keepFromArgs = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : false;
+  if (isPlainObject(fromArgs)) {// 一般 api 的参数解析
     var toArgs = keepFromArgs === true ? fromArgs : {}; // returnValue 为 false 时，说明是格式化返回值，直接在返回值对象上修改赋值
     if (isFn(argsOption)) {
       argsOption = argsOption(fromArgs, toArgs) || {};
@@ -913,14 +951,11 @@ function processArgs(methodName, fromArgs) {
         if (isFn(keyOption)) {
           keyOption = keyOption(fromArgs[key], fromArgs, toArgs);
         }
-        if (!keyOption) {
-          // 不支持的参数
+        if (!keyOption) {// 不支持的参数
           console.warn("The '".concat(methodName, "' method of platform '\u5FAE\u4FE1\u5C0F\u7A0B\u5E8F' does not support option '").concat(key, "'"));
-        } else if (isStr(keyOption)) {
-          // 重写参数 key
+        } else if (isStr(keyOption)) {// 重写参数 key
           toArgs[keyOption] = fromArgs[key];
-        } else if (isPlainObject(keyOption)) {
-          // {name:newName,value:value}可重新指定参数 key:value
+        } else if (isPlainObject(keyOption)) {// {name:newName,value:value}可重新指定参数 key:value
           toArgs[keyOption.name ? keyOption.name : key] = keyOption.value;
         }
       } else if (CALLBACKS.indexOf(key) !== -1) {
@@ -939,30 +974,30 @@ function processArgs(methodName, fromArgs) {
   }
   return fromArgs;
 }
-function processReturnValue(methodName, res, returnValue) {
-  var keepReturnValue = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
-  if (isFn(protocols.returnValue)) {
-    // 处理通用 returnValue
+
+function processReturnValue(methodName, res, returnValue) {var keepReturnValue = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+  if (isFn(protocols.returnValue)) {// 处理通用 returnValue
     res = protocols.returnValue(methodName, res);
   }
   return processArgs(methodName, res, returnValue, {}, keepReturnValue);
 }
+
 function wrapper(methodName, method) {
   if (hasOwn(protocols, methodName)) {
     var protocol = protocols[methodName];
-    if (!protocol) {
-      // 暂不支持的 api
+    if (!protocol) {// 暂不支持的 api
       return function () {
         console.error("Platform '\u5FAE\u4FE1\u5C0F\u7A0B\u5E8F' does not support '".concat(methodName, "'."));
       };
     }
-    return function (arg1, arg2) {
-      // 目前 api 最多两个参数
+    return function (arg1, arg2) {// 目前 api 最多两个参数
       var options = protocol;
       if (isFn(protocol)) {
         options = protocol(arg1);
       }
+
       arg1 = processArgs(methodName, arg1, options.args, options.returnValue);
+
       var args = [arg1];
       if (typeof arg2 !== 'undefined') {
         args.push(arg2);
@@ -973,8 +1008,7 @@ function wrapper(methodName, method) {
         methodName = options.name;
       }
       var returnValue = wx[methodName].apply(wx, args);
-      if (isSyncApi(methodName)) {
-        // 同步 api
+      if (isSyncApi(methodName)) {// 同步 api
         return processReturnValue(methodName, returnValue, options.returnValue, isContextApi(methodName));
       }
       return returnValue;
@@ -982,53 +1016,70 @@ function wrapper(methodName, method) {
   }
   return method;
 }
+
 var todoApis = Object.create(null);
-var TODOS = ['onTabBarMidButtonTap', 'subscribePush', 'unsubscribePush', 'onPush', 'offPush', 'share'];
+
+var TODOS = [
+'onTabBarMidButtonTap',
+'subscribePush',
+'unsubscribePush',
+'onPush',
+'offPush',
+'share'];
+
+
 function createTodoApi(name) {
-  return function todoApi(_ref) {
-    var fail = _ref.fail,
-      complete = _ref.complete;
+  return function todoApi(_ref)
+
+
+  {var fail = _ref.fail,complete = _ref.complete;
     var res = {
-      errMsg: "".concat(name, ":fail method '").concat(name, "' not supported")
-    };
+      errMsg: "".concat(name, ":fail method '").concat(name, "' not supported") };
+
     isFn(fail) && fail(res);
     isFn(complete) && complete(res);
   };
 }
+
 TODOS.forEach(function (name) {
   todoApis[name] = createTodoApi(name);
 });
+
 var providers = {
   oauth: ['weixin'],
   share: ['weixin'],
   payment: ['wxpay'],
-  push: ['weixin']
-};
-function getProvider(_ref2) {
-  var service = _ref2.service,
-    success = _ref2.success,
-    fail = _ref2.fail,
-    complete = _ref2.complete;
+  push: ['weixin'] };
+
+
+function getProvider(_ref2)
+
+
+
+
+{var service = _ref2.service,success = _ref2.success,fail = _ref2.fail,complete = _ref2.complete;
   var res = false;
   if (providers[service]) {
     res = {
       errMsg: 'getProvider:ok',
       service: service,
-      provider: providers[service]
-    };
+      provider: providers[service] };
+
     isFn(success) && success(res);
   } else {
     res = {
-      errMsg: 'getProvider:fail service not found'
-    };
+      errMsg: 'getProvider:fail service not found' };
+
     isFn(fail) && fail(res);
   }
   isFn(complete) && complete(res);
 }
+
 var extraApi = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  getProvider: getProvider
-});
+  getProvider: getProvider });
+
+
 var getEmitter = function () {
   var Emitter;
   return function getUniEmitter() {
@@ -1038,9 +1089,11 @@ var getEmitter = function () {
     return Emitter;
   };
 }();
+
 function apply(ctx, method, args) {
   return ctx[method].apply(ctx, args);
 }
+
 function $on() {
   return apply(getEmitter(), '$on', Array.prototype.slice.call(arguments));
 }
@@ -1053,20 +1106,21 @@ function $once() {
 function $emit() {
   return apply(getEmitter(), '$emit', Array.prototype.slice.call(arguments));
 }
+
 var eventApi = /*#__PURE__*/Object.freeze({
   __proto__: null,
   $on: $on,
   $off: $off,
   $once: $once,
-  $emit: $emit
-});
+  $emit: $emit });
+
 
 /**
- * 框架内 try-catch
- */
+                    * 框架内 try-catch
+                    */
 /**
- * 开发者 try-catch
- */
+                        * 开发者 try-catch
+                        */
 function tryCatch(fn) {
   return function () {
     try {
@@ -1077,6 +1131,7 @@ function tryCatch(fn) {
     }
   };
 }
+
 function getApiCallbacks(params) {
   var apiCallbacks = {};
   for (var name in params) {
@@ -1088,89 +1143,83 @@ function getApiCallbacks(params) {
   }
   return apiCallbacks;
 }
+
 var cid;
 var cidErrMsg;
-var enabled;
+
 function normalizePushMessage(message) {
   try {
     return JSON.parse(message);
   } catch (e) {}
   return message;
 }
-function invokePushCallback(args) {
-  if (args.type === 'enabled') {
-    enabled = true;
-  } else if (args.type === 'clientId') {
+
+function invokePushCallback(
+args)
+{
+  if (args.type === 'clientId') {
     cid = args.cid;
     cidErrMsg = args.errMsg;
     invokeGetPushCidCallbacks(cid, args.errMsg);
   } else if (args.type === 'pushMsg') {
-    var message = {
-      type: 'receive',
-      data: normalizePushMessage(args.message)
-    };
-    for (var i = 0; i < onPushMessageCallbacks.length; i++) {
-      var callback = onPushMessageCallbacks[i];
-      callback(message);
-      // 该消息已被阻止
-      if (message.stopped) {
-        break;
-      }
-    }
+    onPushMessageCallbacks.forEach(function (callback) {
+      callback({
+        type: 'receive',
+        data: normalizePushMessage(args.message) });
+
+    });
   } else if (args.type === 'click') {
     onPushMessageCallbacks.forEach(function (callback) {
       callback({
         type: 'click',
-        data: normalizePushMessage(args.message)
-      });
+        data: normalizePushMessage(args.message) });
+
     });
   }
 }
+
 var getPushCidCallbacks = [];
+
 function invokeGetPushCidCallbacks(cid, errMsg) {
   getPushCidCallbacks.forEach(function (callback) {
     callback(cid, errMsg);
   });
   getPushCidCallbacks.length = 0;
 }
-function getPushClientId(args) {
+
+function getPushClientid(args) {
   if (!isPlainObject(args)) {
     args = {};
-  }
-  var _getApiCallbacks = getApiCallbacks(args),
-    success = _getApiCallbacks.success,
-    fail = _getApiCallbacks.fail,
-    complete = _getApiCallbacks.complete;
+  }var _getApiCallbacks =
+
+
+
+
+  getApiCallbacks(args),success = _getApiCallbacks.success,fail = _getApiCallbacks.fail,complete = _getApiCallbacks.complete;
   var hasSuccess = isFn(success);
   var hasFail = isFn(fail);
   var hasComplete = isFn(complete);
-  Promise.resolve().then(function () {
-    if (typeof enabled === 'undefined') {
-      enabled = false;
-      cid = '';
-      cidErrMsg = 'uniPush is not enabled';
+  getPushCidCallbacks.push(function (cid, errMsg) {
+    var res;
+    if (cid) {
+      res = {
+        errMsg: 'getPushClientid:ok',
+        cid: cid };
+
+      hasSuccess && success(res);
+    } else {
+      res = {
+        errMsg: 'getPushClientid:fail' + (errMsg ? ' ' + errMsg : '') };
+
+      hasFail && fail(res);
     }
-    getPushCidCallbacks.push(function (cid, errMsg) {
-      var res;
-      if (cid) {
-        res = {
-          errMsg: 'getPushClientId:ok',
-          cid: cid
-        };
-        hasSuccess && success(res);
-      } else {
-        res = {
-          errMsg: 'getPushClientId:fail' + (errMsg ? ' ' + errMsg : '')
-        };
-        hasFail && fail(res);
-      }
-      hasComplete && complete(res);
-    });
-    if (typeof cid !== 'undefined') {
-      invokeGetPushCidCallbacks(cid, cidErrMsg);
-    }
+    hasComplete && complete(res);
   });
+  if (typeof cid !== 'undefined') {
+    Promise.resolve().then(function () {return invokeGetPushCidCallbacks(cid, cidErrMsg);});
+  }
 }
+
 var onPushMessageCallbacks = [];
 // 不使用 defineOnApi 实现，是因为 defineOnApi 依赖 UniServiceJSBridge ，该对象目前在小程序上未提供，故简单实现
 var onPushMessage = function onPushMessage(fn) {
@@ -1178,6 +1227,7 @@ var onPushMessage = function onPushMessage(fn) {
     onPushMessageCallbacks.push(fn);
   }
 };
+
 var offPushMessage = function offPushMessage(fn) {
   if (!fn) {
     onPushMessageCallbacks.length = 0;
@@ -1188,14 +1238,790 @@ var offPushMessage = function offPushMessage(fn) {
     }
   }
 };
+
 var api = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  getPushClientId: getPushClientId,
+  getPushClientid: getPushClientid,
   onPushMessage: onPushMessage,
   offPushMessage: offPushMessage,
-  invokePushCallback: invokePushCallback
+  invokePushCallback: invokePushCallback });
+
+
+var MPPage = Page;
+var MPComponent = Component;
+
+var customizeRE = /:/g;
+
+var customize = cached(function (str) {
+  return camelize(str.replace(customizeRE, '-'));
 });
+
+function initTriggerEvent(mpInstance) {
+  var oldTriggerEvent = mpInstance.triggerEvent;
+  var newTriggerEvent = function newTriggerEvent(event) {for (var _len3 = arguments.length, args = new Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {args[_key3 - 1] = arguments[_key3];}
+    return oldTriggerEvent.apply(mpInstance, [customize(event)].concat(args));
+  };
+  try {
+    // 京东小程序 triggerEvent 为只读
+    mpInstance.triggerEvent = newTriggerEvent;
+  } catch (error) {
+    mpInstance._triggerEvent = newTriggerEvent;
+  }
+}
+
+function initHook(name, options, isComponent) {
+  var oldHook = options[name];
+  if (!oldHook) {
+    options[name] = function () {
+      initTriggerEvent(this);
+    };
+  } else {
+    options[name] = function () {
+      initTriggerEvent(this);for (var _len4 = arguments.length, args = new Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {args[_key4] = arguments[_key4];}
+      return oldHook.apply(this, args);
+    };
+  }
+}
+if (!MPPage.__$wrappered) {
+  MPPage.__$wrappered = true;
+  Page = function Page() {var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    initHook('onLoad', options);
+    return MPPage(options);
+  };
+  Page.after = MPPage.after;
+
+  Component = function Component() {var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    initHook('created', options);
+    return MPComponent(options);
+  };
+}
+
+var PAGE_EVENT_HOOKS = [
+'onPullDownRefresh',
+'onReachBottom',
+'onAddToFavorites',
+'onShareTimeline',
+'onShareAppMessage',
+'onPageScroll',
+'onResize',
+'onTabItemTap'];
+
+
+function initMocks(vm, mocks) {
+  var mpInstance = vm.$mp[vm.mpType];
+  mocks.forEach(function (mock) {
+    if (hasOwn(mpInstance, mock)) {
+      vm[mock] = mpInstance[mock];
+    }
+  });
+}
+
+function hasHook(hook, vueOptions) {
+  if (!vueOptions) {
+    return true;
+  }
+
+  if (_vue.default.options && Array.isArray(_vue.default.options[hook])) {
+    return true;
+  }
+
+  vueOptions = vueOptions.default || vueOptions;
+
+  if (isFn(vueOptions)) {
+    if (isFn(vueOptions.extendOptions[hook])) {
+      return true;
+    }
+    if (vueOptions.super &&
+    vueOptions.super.options &&
+    Array.isArray(vueOptions.super.options[hook])) {
+      return true;
+    }
+    return false;
+  }
+
+  if (isFn(vueOptions[hook])) {
+    return true;
+  }
+  var mixins = vueOptions.mixins;
+  if (Array.isArray(mixins)) {
+    return !!mixins.find(function (mixin) {return hasHook(hook, mixin);});
+  }
+}
+
+function initHooks(mpOptions, hooks, vueOptions) {
+  hooks.forEach(function (hook) {
+    if (hasHook(hook, vueOptions)) {
+      mpOptions[hook] = function (args) {
+        return this.$vm && this.$vm.__call_hook(hook, args);
+      };
+    }
+  });
+}
+
+function initVueComponent(Vue, vueOptions) {
+  vueOptions = vueOptions.default || vueOptions;
+  var VueComponent;
+  if (isFn(vueOptions)) {
+    VueComponent = vueOptions;
+  } else {
+    VueComponent = Vue.extend(vueOptions);
+  }
+  vueOptions = VueComponent.options;
+  return [VueComponent, vueOptions];
+}
+
+function initSlots(vm, vueSlots) {
+  if (Array.isArray(vueSlots) && vueSlots.length) {
+    var $slots = Object.create(null);
+    vueSlots.forEach(function (slotName) {
+      $slots[slotName] = true;
+    });
+    vm.$scopedSlots = vm.$slots = $slots;
+  }
+}
+
+function initVueIds(vueIds, mpInstance) {
+  vueIds = (vueIds || '').split(',');
+  var len = vueIds.length;
+
+  if (len === 1) {
+    mpInstance._$vueId = vueIds[0];
+  } else if (len === 2) {
+    mpInstance._$vueId = vueIds[0];
+    mpInstance._$vuePid = vueIds[1];
+  }
+}
+
+function initData(vueOptions, context) {
+  var data = vueOptions.data || {};
+  var methods = vueOptions.methods || {};
+
+  if (typeof data === 'function') {
+    try {
+      data = data.call(context); // 支持 Vue.prototype 上挂的数据
+    } catch (e) {
+      if (Object({"VUE_APP_NAME":"MultiFunctionalToolsUniapp","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
+      }
+    }
+  } else {
+    try {
+      // 对 data 格式化
+      data = JSON.parse(JSON.stringify(data));
+    } catch (e) {}
+  }
+
+  if (!isPlainObject(data)) {
+    data = {};
+  }
+
+  Object.keys(methods).forEach(function (methodName) {
+    if (context.__lifecycle_hooks__.indexOf(methodName) === -1 && !hasOwn(data, methodName)) {
+      data[methodName] = methods[methodName];
+    }
+  });
+
+  return data;
+}
+
+var PROP_TYPES = [String, Number, Boolean, Object, Array, null];
+
+function createObserver(name) {
+  return function observer(newVal, oldVal) {
+    if (this.$vm) {
+      this.$vm[name] = newVal; // 为了触发其他非 render watcher
+    }
+  };
+}
+
+function initBehaviors(vueOptions, initBehavior) {
+  var vueBehaviors = vueOptions.behaviors;
+  var vueExtends = vueOptions.extends;
+  var vueMixins = vueOptions.mixins;
+
+  var vueProps = vueOptions.props;
+
+  if (!vueProps) {
+    vueOptions.props = vueProps = [];
+  }
+
+  var behaviors = [];
+  if (Array.isArray(vueBehaviors)) {
+    vueBehaviors.forEach(function (behavior) {
+      behaviors.push(behavior.replace('uni://', "wx".concat("://")));
+      if (behavior === 'uni://form-field') {
+        if (Array.isArray(vueProps)) {
+          vueProps.push('name');
+          vueProps.push('value');
+        } else {
+          vueProps.name = {
+            type: String,
+            default: '' };
+
+          vueProps.value = {
+            type: [String, Number, Boolean, Array, Object, Date],
+            default: '' };
+
+        }
+      }
+    });
+  }
+  if (isPlainObject(vueExtends) && vueExtends.props) {
+    behaviors.push(
+    initBehavior({
+      properties: initProperties(vueExtends.props, true) }));
+
+
+  }
+  if (Array.isArray(vueMixins)) {
+    vueMixins.forEach(function (vueMixin) {
+      if (isPlainObject(vueMixin) && vueMixin.props) {
+        behaviors.push(
+        initBehavior({
+          properties: initProperties(vueMixin.props, true) }));
+
+
+      }
+    });
+  }
+  return behaviors;
+}
+
+function parsePropType(key, type, defaultValue, file) {
+  // [String]=>String
+  if (Array.isArray(type) && type.length === 1) {
+    return type[0];
+  }
+  return type;
+}
+
+function initProperties(props) {var isBehavior = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;var file = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
+  var properties = {};
+  if (!isBehavior) {
+    properties.vueId = {
+      type: String,
+      value: '' };
+
+    // 用于字节跳动小程序模拟抽象节点
+    properties.generic = {
+      type: Object,
+      value: null };
+
+    // scopedSlotsCompiler auto
+    properties.scopedSlotsCompiler = {
+      type: String,
+      value: '' };
+
+    properties.vueSlots = { // 小程序不能直接定义 $slots 的 props，所以通过 vueSlots 转换到 $slots
+      type: null,
+      value: [],
+      observer: function observer(newVal, oldVal) {
+        var $slots = Object.create(null);
+        newVal.forEach(function (slotName) {
+          $slots[slotName] = true;
+        });
+        this.setData({
+          $slots: $slots });
+
+      } };
+
+  }
+  if (Array.isArray(props)) {// ['title']
+    props.forEach(function (key) {
+      properties[key] = {
+        type: null,
+        observer: createObserver(key) };
+
+    });
+  } else if (isPlainObject(props)) {// {title:{type:String,default:''},content:String}
+    Object.keys(props).forEach(function (key) {
+      var opts = props[key];
+      if (isPlainObject(opts)) {// title:{type:String,default:''}
+        var value = opts.default;
+        if (isFn(value)) {
+          value = value();
+        }
+
+        opts.type = parsePropType(key, opts.type);
+
+        properties[key] = {
+          type: PROP_TYPES.indexOf(opts.type) !== -1 ? opts.type : null,
+          value: value,
+          observer: createObserver(key) };
+
+      } else {// content:String
+        var type = parsePropType(key, opts);
+        properties[key] = {
+          type: PROP_TYPES.indexOf(type) !== -1 ? type : null,
+          observer: createObserver(key) };
+
+      }
+    });
+  }
+  return properties;
+}
+
+function wrapper$1(event) {
+  // TODO 又得兼容 mpvue 的 mp 对象
+  try {
+    event.mp = JSON.parse(JSON.stringify(event));
+  } catch (e) {}
+
+  event.stopPropagation = noop;
+  event.preventDefault = noop;
+
+  event.target = event.target || {};
+
+  if (!hasOwn(event, 'detail')) {
+    event.detail = {};
+  }
+
+  if (hasOwn(event, 'markerId')) {
+    event.detail = typeof event.detail === 'object' ? event.detail : {};
+    event.detail.markerId = event.markerId;
+  }
+
+  if (isPlainObject(event.detail)) {
+    event.target = Object.assign({}, event.target, event.detail);
+  }
+
+  return event;
+}
+
+function getExtraValue(vm, dataPathsArray) {
+  var context = vm;
+  dataPathsArray.forEach(function (dataPathArray) {
+    var dataPath = dataPathArray[0];
+    var value = dataPathArray[2];
+    if (dataPath || typeof value !== 'undefined') {// ['','',index,'disable']
+      var propPath = dataPathArray[1];
+      var valuePath = dataPathArray[3];
+
+      var vFor;
+      if (Number.isInteger(dataPath)) {
+        vFor = dataPath;
+      } else if (!dataPath) {
+        vFor = context;
+      } else if (typeof dataPath === 'string' && dataPath) {
+        if (dataPath.indexOf('#s#') === 0) {
+          vFor = dataPath.substr(3);
+        } else {
+          vFor = vm.__get_value(dataPath, context);
+        }
+      }
+
+      if (Number.isInteger(vFor)) {
+        context = value;
+      } else if (!propPath) {
+        context = vFor[value];
+      } else {
+        if (Array.isArray(vFor)) {
+          context = vFor.find(function (vForItem) {
+            return vm.__get_value(propPath, vForItem) === value;
+          });
+        } else if (isPlainObject(vFor)) {
+          context = Object.keys(vFor).find(function (vForKey) {
+            return vm.__get_value(propPath, vFor[vForKey]) === value;
+          });
+        } else {
+          console.error('v-for 暂不支持循环数据：', vFor);
+        }
+      }
+
+      if (valuePath) {
+        context = vm.__get_value(valuePath, context);
+      }
+    }
+  });
+  return context;
+}
+
+function processEventExtra(vm, extra, event) {
+  var extraObj = {};
+
+  if (Array.isArray(extra) && extra.length) {
+    /**
+                                              *[
+                                              *    ['data.items', 'data.id', item.data.id],
+                                              *    ['metas', 'id', meta.id]
+                                              *],
+                                              *[
+                                              *    ['data.items', 'data.id', item.data.id],
+                                              *    ['metas', 'id', meta.id]
+                                              *],
+                                              *'test'
+                                              */
+    extra.forEach(function (dataPath, index) {
+      if (typeof dataPath === 'string') {
+        if (!dataPath) {// model,prop.sync
+          extraObj['$' + index] = vm;
+        } else {
+          if (dataPath === '$event') {// $event
+            extraObj['$' + index] = event;
+          } else if (dataPath === 'arguments') {
+            if (event.detail && event.detail.__args__) {
+              extraObj['$' + index] = event.detail.__args__;
+            } else {
+              extraObj['$' + index] = [event];
+            }
+          } else if (dataPath.indexOf('$event.') === 0) {// $event.target.value
+            extraObj['$' + index] = vm.__get_value(dataPath.replace('$event.', ''), event);
+          } else {
+            extraObj['$' + index] = vm.__get_value(dataPath);
+          }
+        }
+      } else {
+        extraObj['$' + index] = getExtraValue(vm, dataPath);
+      }
+    });
+  }
+
+  return extraObj;
+}
+
+function getObjByArray(arr) {
+  var obj = {};
+  for (var i = 1; i < arr.length; i++) {
+    var element = arr[i];
+    obj[element[0]] = element[1];
+  }
+  return obj;
+}
+
+function processEventArgs(vm, event) {var args = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];var extra = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : [];var isCustom = arguments.length > 4 ? arguments[4] : undefined;var methodName = arguments.length > 5 ? arguments[5] : undefined;
+  var isCustomMPEvent = false; // wxcomponent 组件，传递原始 event 对象
+  if (isCustom) {// 自定义事件
+    isCustomMPEvent = event.currentTarget &&
+    event.currentTarget.dataset &&
+    event.currentTarget.dataset.comType === 'wx';
+    if (!args.length) {// 无参数，直接传入 event 或 detail 数组
+      if (isCustomMPEvent) {
+        return [event];
+      }
+      return event.detail.__args__ || event.detail;
+    }
+  }
+
+  var extraObj = processEventExtra(vm, extra, event);
+
+  var ret = [];
+  args.forEach(function (arg) {
+    if (arg === '$event') {
+      if (methodName === '__set_model' && !isCustom) {// input v-model value
+        ret.push(event.target.value);
+      } else {
+        if (isCustom && !isCustomMPEvent) {
+          ret.push(event.detail.__args__[0]);
+        } else {// wxcomponent 组件或内置组件
+          ret.push(event);
+        }
+      }
+    } else {
+      if (Array.isArray(arg) && arg[0] === 'o') {
+        ret.push(getObjByArray(arg));
+      } else if (typeof arg === 'string' && hasOwn(extraObj, arg)) {
+        ret.push(extraObj[arg]);
+      } else {
+        ret.push(arg);
+      }
+    }
+  });
+
+  return ret;
+}
+
+var ONCE = '~';
+var CUSTOM = '^';
+
+function isMatchEventType(eventType, optType) {
+  return eventType === optType ||
+
+  optType === 'regionchange' && (
+
+  eventType === 'begin' ||
+  eventType === 'end');
+
+
+}
+
+function getContextVm(vm) {
+  var $parent = vm.$parent;
+  // 父组件是 scoped slots 或者其他自定义组件时继续查找
+  while ($parent && $parent.$parent && ($parent.$options.generic || $parent.$parent.$options.generic || $parent.$scope._$vuePid)) {
+    $parent = $parent.$parent;
+  }
+  return $parent && $parent.$parent;
+}
+
+function handleEvent(event) {var _this2 = this;
+  event = wrapper$1(event);
+
+  // [['tap',[['handle',[1,2,a]],['handle1',[1,2,a]]]]]
+  var dataset = (event.currentTarget || event.target).dataset;
+  if (!dataset) {
+    return console.warn('事件信息不存在');
+  }
+  var eventOpts = dataset.eventOpts || dataset['event-opts']; // 支付宝 web-view 组件 dataset 非驼峰
+  if (!eventOpts) {
+    return console.warn('事件信息不存在');
+  }
+
+  // [['handle',[1,2,a]],['handle1',[1,2,a]]]
+  var eventType = event.type;
+
+  var ret = [];
+
+  eventOpts.forEach(function (eventOpt) {
+    var type = eventOpt[0];
+    var eventsArray = eventOpt[1];
+
+    var isCustom = type.charAt(0) === CUSTOM;
+    type = isCustom ? type.slice(1) : type;
+    var isOnce = type.charAt(0) === ONCE;
+    type = isOnce ? type.slice(1) : type;
+
+    if (eventsArray && isMatchEventType(eventType, type)) {
+      eventsArray.forEach(function (eventArray) {
+        var methodName = eventArray[0];
+        if (methodName) {
+          var handlerCtx = _this2.$vm;
+          if (handlerCtx.$options.generic) {// mp-weixin,mp-toutiao 抽象节点模拟 scoped slots
+            handlerCtx = getContextVm(handlerCtx) || handlerCtx;
+          }
+          if (methodName === '$emit') {
+            handlerCtx.$emit.apply(handlerCtx,
+            processEventArgs(
+            _this2.$vm,
+            event,
+            eventArray[1],
+            eventArray[2],
+            isCustom,
+            methodName));
+
+            return;
+          }
+          var handler = handlerCtx[methodName];
+          if (!isFn(handler)) {
+            throw new Error(" _vm.".concat(methodName, " is not a function"));
+          }
+          if (isOnce) {
+            if (handler.once) {
+              return;
+            }
+            handler.once = true;
+          }
+          var params = processEventArgs(
+          _this2.$vm,
+          event,
+          eventArray[1],
+          eventArray[2],
+          isCustom,
+          methodName);
+
+          params = Array.isArray(params) ? params : [];
+          // 参数尾部增加原始事件对象用于复杂表达式内获取额外数据
+          if (/=\s*\S+\.eventParams\s*\|\|\s*\S+\[['"]event-params['"]\]/.test(handler.toString())) {
+            // eslint-disable-next-line no-sparse-arrays
+            params = params.concat([,,,,,,,,,, event]);
+          }
+          ret.push(handler.apply(handlerCtx, params));
+        }
+      });
+    }
+  });
+
+  if (
+  eventType === 'input' &&
+  ret.length === 1 &&
+  typeof ret[0] !== 'undefined')
+  {
+    return ret[0];
+  }
+}
+
+var eventChannels = {};
+
+var eventChannelStack = [];
+
+function getEventChannel(id) {
+  if (id) {
+    var eventChannel = eventChannels[id];
+    delete eventChannels[id];
+    return eventChannel;
+  }
+  return eventChannelStack.shift();
+}
+
+var hooks = [
+'onShow',
+'onHide',
+'onError',
+'onPageNotFound',
+'onThemeChange',
+'onUnhandledRejection'];
+
+
+function initEventChannel() {
+  _vue.default.prototype.getOpenerEventChannel = function () {
+    // 微信小程序使用自身getOpenerEventChannel
+    {
+      return this.$scope.getOpenerEventChannel();
+    }
+  };
+  var callHook = _vue.default.prototype.__call_hook;
+  _vue.default.prototype.__call_hook = function (hook, args) {
+    if (hook === 'onLoad' && args && args.__id__) {
+      this.__eventChannel__ = getEventChannel(args.__id__);
+      delete args.__id__;
+    }
+    return callHook.call(this, hook, args);
+  };
+}
+
+function initScopedSlotsParams() {
+  var center = {};
+  var parents = {};
+
+  _vue.default.prototype.$hasScopedSlotsParams = function (vueId) {
+    var has = center[vueId];
+    if (!has) {
+      parents[vueId] = this;
+      this.$on('hook:destroyed', function () {
+        delete parents[vueId];
+      });
+    }
+    return has;
+  };
+
+  _vue.default.prototype.$getScopedSlotsParams = function (vueId, name, key) {
+    var data = center[vueId];
+    if (data) {
+      var object = data[name] || {};
+      return key ? object[key] : object;
+    } else {
+      parents[vueId] = this;
+      this.$on('hook:destroyed', function () {
+        delete parents[vueId];
+      });
+    }
+  };
+
+  _vue.default.prototype.$setScopedSlotsParams = function (name, value) {
+    var vueIds = this.$options.propsData.vueId;
+    if (vueIds) {
+      var vueId = vueIds.split(',')[0];
+      var object = center[vueId] = center[vueId] || {};
+      object[name] = value;
+      if (parents[vueId]) {
+        parents[vueId].$forceUpdate();
+      }
+    }
+  };
+
+  _vue.default.mixin({
+    destroyed: function destroyed() {
+      var propsData = this.$options.propsData;
+      var vueId = propsData && propsData.vueId;
+      if (vueId) {
+        delete center[vueId];
+        delete parents[vueId];
+      }
+    } });
+
+}
+
+function parseBaseApp(vm, _ref3)
+
+
+{var mocks = _ref3.mocks,initRefs = _ref3.initRefs;
+  initEventChannel();
+  {
+    initScopedSlotsParams();
+  }
+  if (vm.$options.store) {
+    _vue.default.prototype.$store = vm.$options.store;
+  }
+  uniIdMixin(_vue.default);
+
+  _vue.default.prototype.mpHost = "mp-weixin";
+
+  _vue.default.mixin({
+    beforeCreate: function beforeCreate() {
+      if (!this.$options.mpType) {
+        return;
+      }
+
+      this.mpType = this.$options.mpType;
+
+      this.$mp = _defineProperty({
+        data: {} },
+      this.mpType, this.$options.mpInstance);
+
+
+      this.$scope = this.$options.mpInstance;
+
+      delete this.$options.mpType;
+      delete this.$options.mpInstance;
+      if (this.mpType === 'page' && typeof getApp === 'function') {// hack vue-i18n
+        var app = getApp();
+        if (app.$vm && app.$vm.$i18n) {
+          this._i18n = app.$vm.$i18n;
+        }
+      }
+      if (this.mpType !== 'app') {
+        initRefs(this);
+        initMocks(this, mocks);
+      }
+    } });
+
+
+  var appOptions = {
+    onLaunch: function onLaunch(args) {
+      if (this.$vm) {// 已经初始化过了，主要是为了百度，百度 onShow 在 onLaunch 之前
+        return;
+      }
+      {
+        if (wx.canIUse && !wx.canIUse('nextTick')) {// 事实 上2.2.3 即可，简单使用 2.3.0 的 nextTick 判断
+          console.error('当前微信基础库版本过低，请将 微信开发者工具-详情-项目设置-调试基础库版本 更换为`2.3.0`以上');
+        }
+      }
+
+      this.$vm = vm;
+
+      this.$vm.$mp = {
+        app: this };
+
+
+      this.$vm.$scope = this;
+      // vm 上也挂载 globalData
+      this.$vm.globalData = this.globalData;
+
+      this.$vm._isMounted = true;
+      this.$vm.__call_hook('mounted', args);
+
+      this.$vm.__call_hook('onLaunch', args);
+    } };
+
+
+  // 兼容旧版本 globalData
+  appOptions.globalData = vm.$options.globalData || {};
+  // 将 methods 中的方法挂在 getApp() 中
+  var methods = vm.$options.methods;
+  if (methods) {
+    Object.keys(methods).forEach(function (name) {
+      appOptions[name] = methods[name];
+    });
+  }
+
+  initAppLocale(_vue.default, vm, normalizeLocale(wx.getSystemInfoSync().language) || LOCALE_EN);
+
+  initHooks(appOptions, hooks);
+
+  return appOptions;
+}
+
 var mocks = ['__route__', '__wxExparserNodeId__', '__wxWebviewId__'];
+
 function findVmByVueId(vm, vuePid) {
   var $children = vm.$children;
   // 优先查找直属(反向查找:https://github.com/dcloudio/uni-app/issues/1200)
@@ -1214,20 +2040,24 @@ function findVmByVueId(vm, vuePid) {
     }
   }
 }
+
 function initBehavior(options) {
   return Behavior(options);
 }
+
 function isPage() {
   return !!this.route;
 }
+
 function initRelation(detail) {
   this.triggerEvent('__l', detail);
 }
+
 function selectAllComponents(mpInstance, selector, $refs) {
-  var components = mpInstance.selectAllComponents(selector) || [];
+  var components = mpInstance.selectAllComponents(selector);
   components.forEach(function (component) {
     var ref = component.dataset.ref;
-    $refs[ref] = component.$vm || toSkip(component);
+    $refs[ref] = component.$vm || component;
     {
       if (component.dataset.vueGeneric === 'scoped') {
         component.selectAllComponents('.scoped-ref').forEach(function (scopedComponent) {
@@ -1237,824 +2067,81 @@ function selectAllComponents(mpInstance, selector, $refs) {
     }
   });
 }
-function syncRefs(refs, newRefs) {
-  var oldKeys = (0, _construct2.default)(Set, (0, _toConsumableArray2.default)(Object.keys(refs)));
-  var newKeys = Object.keys(newRefs);
-  newKeys.forEach(function (key) {
-    var oldValue = refs[key];
-    var newValue = newRefs[key];
-    if (Array.isArray(oldValue) && Array.isArray(newValue) && oldValue.length === newValue.length && newValue.every(function (value) {
-      return oldValue.includes(value);
-    })) {
-      return;
-    }
-    refs[key] = newValue;
-    oldKeys.delete(key);
-  });
-  oldKeys.forEach(function (key) {
-    delete refs[key];
-  });
-  return refs;
-}
+
 function initRefs(vm) {
   var mpInstance = vm.$scope;
-  var refs = {};
   Object.defineProperty(vm, '$refs', {
     get: function get() {
       var $refs = {};
       selectAllComponents(mpInstance, '.vue-ref', $refs);
       // TODO 暂不考虑 for 中的 scoped
-      var forComponents = mpInstance.selectAllComponents('.vue-ref-in-for') || [];
+      var forComponents = mpInstance.selectAllComponents('.vue-ref-in-for');
       forComponents.forEach(function (component) {
         var ref = component.dataset.ref;
         if (!$refs[ref]) {
           $refs[ref] = [];
         }
-        $refs[ref].push(component.$vm || toSkip(component));
+        $refs[ref].push(component.$vm || component);
       });
-      return syncRefs(refs, $refs);
-    }
-  });
+      return $refs;
+    } });
+
 }
-function handleLink(event) {
-  var _ref3 = event.detail || event.value,
-    vuePid = _ref3.vuePid,
-    vueOptions = _ref3.vueOptions; // detail 是微信,value 是百度(dipatch)
+
+function handleLink(event) {var _ref4 =
+
+
+
+  event.detail || event.value,vuePid = _ref4.vuePid,vueOptions = _ref4.vueOptions; // detail 是微信,value 是百度(dipatch)
 
   var parentVm;
+
   if (vuePid) {
     parentVm = findVmByVueId(this.$vm, vuePid);
   }
+
   if (!parentVm) {
     parentVm = this.$vm;
   }
+
   vueOptions.parent = parentVm;
 }
-function markMPComponent(component) {
-  // 在 Vue 中标记为小程序组件
-  var IS_MP = '__v_isMPComponent';
-  Object.defineProperty(component, IS_MP, {
-    configurable: true,
-    enumerable: false,
-    value: true
-  });
-  return component;
-}
-function toSkip(obj) {
-  var OB = '__ob__';
-  var SKIP = '__v_skip';
-  if (isObject(obj) && Object.isExtensible(obj)) {
-    // 避免被 @vue/composition-api 观测
-    Object.defineProperty(obj, OB, {
-      configurable: true,
-      enumerable: false,
-      value: (0, _defineProperty2.default)({}, SKIP, true)
-    });
-  }
-  return obj;
-}
-var MPPage = Page;
-var MPComponent = Component;
-var customizeRE = /:/g;
-var customize = cached(function (str) {
-  return camelize(str.replace(customizeRE, '-'));
-});
-function initTriggerEvent(mpInstance) {
-  var oldTriggerEvent = mpInstance.triggerEvent;
-  var newTriggerEvent = function newTriggerEvent(event) {
-    for (var _len3 = arguments.length, args = new Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {
-      args[_key3 - 1] = arguments[_key3];
-    }
-    // 事件名统一转驼峰格式，仅处理：当前组件为 vue 组件、当前组件为 vue 组件子组件
-    if (this.$vm || this.dataset && this.dataset.comType) {
-      event = customize(event);
-    } else {
-      // 针对微信/QQ小程序单独补充驼峰格式事件，以兼容历史项目
-      var newEvent = customize(event);
-      if (newEvent !== event) {
-        oldTriggerEvent.apply(this, [newEvent].concat(args));
-      }
-    }
-    return oldTriggerEvent.apply(this, [event].concat(args));
-  };
-  try {
-    // 京东小程序 triggerEvent 为只读
-    mpInstance.triggerEvent = newTriggerEvent;
-  } catch (error) {
-    mpInstance._triggerEvent = newTriggerEvent;
-  }
-}
-function initHook(name, options, isComponent) {
-  var oldHook = options[name];
-  options[name] = function () {
-    markMPComponent(this);
-    initTriggerEvent(this);
-    if (oldHook) {
-      for (var _len4 = arguments.length, args = new Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
-        args[_key4] = arguments[_key4];
-      }
-      return oldHook.apply(this, args);
-    }
-  };
-}
-if (!MPPage.__$wrappered) {
-  MPPage.__$wrappered = true;
-  Page = function Page() {
-    var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-    initHook('onLoad', options);
-    return MPPage(options);
-  };
-  Page.after = MPPage.after;
-  Component = function Component() {
-    var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-    initHook('created', options);
-    return MPComponent(options);
-  };
-}
-var PAGE_EVENT_HOOKS = ['onPullDownRefresh', 'onReachBottom', 'onAddToFavorites', 'onShareTimeline', 'onShareAppMessage', 'onPageScroll', 'onResize', 'onTabItemTap'];
-function initMocks(vm, mocks) {
-  var mpInstance = vm.$mp[vm.mpType];
-  mocks.forEach(function (mock) {
-    if (hasOwn(mpInstance, mock)) {
-      vm[mock] = mpInstance[mock];
-    }
-  });
-}
-function hasHook(hook, vueOptions) {
-  if (!vueOptions) {
-    return true;
-  }
-  if (_vue.default.options && Array.isArray(_vue.default.options[hook])) {
-    return true;
-  }
-  vueOptions = vueOptions.default || vueOptions;
-  if (isFn(vueOptions)) {
-    if (isFn(vueOptions.extendOptions[hook])) {
-      return true;
-    }
-    if (vueOptions.super && vueOptions.super.options && Array.isArray(vueOptions.super.options[hook])) {
-      return true;
-    }
-    return false;
-  }
-  if (isFn(vueOptions[hook]) || Array.isArray(vueOptions[hook])) {
-    return true;
-  }
-  var mixins = vueOptions.mixins;
-  if (Array.isArray(mixins)) {
-    return !!mixins.find(function (mixin) {
-      return hasHook(hook, mixin);
-    });
-  }
-}
-function initHooks(mpOptions, hooks, vueOptions) {
-  hooks.forEach(function (hook) {
-    if (hasHook(hook, vueOptions)) {
-      mpOptions[hook] = function (args) {
-        return this.$vm && this.$vm.__call_hook(hook, args);
-      };
-    }
-  });
-}
-function initUnknownHooks(mpOptions, vueOptions) {
-  var excludes = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
-  findHooks(vueOptions).forEach(function (hook) {
-    return initHook$1(mpOptions, hook, excludes);
-  });
-}
-function findHooks(vueOptions) {
-  var hooks = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
-  if (vueOptions) {
-    Object.keys(vueOptions).forEach(function (name) {
-      if (name.indexOf('on') === 0 && isFn(vueOptions[name])) {
-        hooks.push(name);
-      }
-    });
-  }
-  return hooks;
-}
-function initHook$1(mpOptions, hook, excludes) {
-  if (excludes.indexOf(hook) === -1 && !hasOwn(mpOptions, hook)) {
-    mpOptions[hook] = function (args) {
-      return this.$vm && this.$vm.__call_hook(hook, args);
-    };
-  }
-}
-function initVueComponent(Vue, vueOptions) {
-  vueOptions = vueOptions.default || vueOptions;
-  var VueComponent;
-  if (isFn(vueOptions)) {
-    VueComponent = vueOptions;
-  } else {
-    VueComponent = Vue.extend(vueOptions);
-  }
-  vueOptions = VueComponent.options;
-  return [VueComponent, vueOptions];
-}
-function initSlots(vm, vueSlots) {
-  if (Array.isArray(vueSlots) && vueSlots.length) {
-    var $slots = Object.create(null);
-    vueSlots.forEach(function (slotName) {
-      $slots[slotName] = true;
-    });
-    vm.$scopedSlots = vm.$slots = $slots;
-  }
-}
-function initVueIds(vueIds, mpInstance) {
-  vueIds = (vueIds || '').split(',');
-  var len = vueIds.length;
-  if (len === 1) {
-    mpInstance._$vueId = vueIds[0];
-  } else if (len === 2) {
-    mpInstance._$vueId = vueIds[0];
-    mpInstance._$vuePid = vueIds[1];
-  }
-}
-function initData(vueOptions, context) {
-  var data = vueOptions.data || {};
-  var methods = vueOptions.methods || {};
-  if (typeof data === 'function') {
-    try {
-      data = data.call(context); // 支持 Vue.prototype 上挂的数据
-    } catch (e) {
-      if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"MultiFunctionalToolsUniapp","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
-        console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
-      }
-    }
-  } else {
-    try {
-      // 对 data 格式化
-      data = JSON.parse(JSON.stringify(data));
-    } catch (e) {}
-  }
-  if (!isPlainObject(data)) {
-    data = {};
-  }
-  Object.keys(methods).forEach(function (methodName) {
-    if (context.__lifecycle_hooks__.indexOf(methodName) === -1 && !hasOwn(data, methodName)) {
-      data[methodName] = methods[methodName];
-    }
-  });
-  return data;
-}
-var PROP_TYPES = [String, Number, Boolean, Object, Array, null];
-function createObserver(name) {
-  return function observer(newVal, oldVal) {
-    if (this.$vm) {
-      this.$vm[name] = newVal; // 为了触发其他非 render watcher
-    }
-  };
-}
 
-function initBehaviors(vueOptions, initBehavior) {
-  var vueBehaviors = vueOptions.behaviors;
-  var vueExtends = vueOptions.extends;
-  var vueMixins = vueOptions.mixins;
-  var vueProps = vueOptions.props;
-  if (!vueProps) {
-    vueOptions.props = vueProps = [];
-  }
-  var behaviors = [];
-  if (Array.isArray(vueBehaviors)) {
-    vueBehaviors.forEach(function (behavior) {
-      behaviors.push(behavior.replace('uni://', "wx".concat("://")));
-      if (behavior === 'uni://form-field') {
-        if (Array.isArray(vueProps)) {
-          vueProps.push('name');
-          vueProps.push('value');
-        } else {
-          vueProps.name = {
-            type: String,
-            default: ''
-          };
-          vueProps.value = {
-            type: [String, Number, Boolean, Array, Object, Date],
-            default: ''
-          };
-        }
-      }
-    });
-  }
-  if (isPlainObject(vueExtends) && vueExtends.props) {
-    behaviors.push(initBehavior({
-      properties: initProperties(vueExtends.props, true)
-    }));
-  }
-  if (Array.isArray(vueMixins)) {
-    vueMixins.forEach(function (vueMixin) {
-      if (isPlainObject(vueMixin) && vueMixin.props) {
-        behaviors.push(initBehavior({
-          properties: initProperties(vueMixin.props, true)
-        }));
-      }
-    });
-  }
-  return behaviors;
-}
-function parsePropType(key, type, defaultValue, file) {
-  // [String]=>String
-  if (Array.isArray(type) && type.length === 1) {
-    return type[0];
-  }
-  return type;
-}
-function initProperties(props) {
-  var isBehavior = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-  var file = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
-  var options = arguments.length > 3 ? arguments[3] : undefined;
-  var properties = {};
-  if (!isBehavior) {
-    properties.vueId = {
-      type: String,
-      value: ''
-    };
-    {
-      if (options.virtualHost) {
-        properties.virtualHostStyle = {
-          type: null,
-          value: ''
-        };
-        properties.virtualHostClass = {
-          type: null,
-          value: ''
-        };
-      }
-    }
-    // scopedSlotsCompiler auto
-    properties.scopedSlotsCompiler = {
-      type: String,
-      value: ''
-    };
-    properties.vueSlots = {
-      // 小程序不能直接定义 $slots 的 props，所以通过 vueSlots 转换到 $slots
-      type: null,
-      value: [],
-      observer: function observer(newVal, oldVal) {
-        var $slots = Object.create(null);
-        newVal.forEach(function (slotName) {
-          $slots[slotName] = true;
-        });
-        this.setData({
-          $slots: $slots
-        });
-      }
-    };
-  }
-  if (Array.isArray(props)) {
-    // ['title']
-    props.forEach(function (key) {
-      properties[key] = {
-        type: null,
-        observer: createObserver(key)
-      };
-    });
-  } else if (isPlainObject(props)) {
-    // {title:{type:String,default:''},content:String}
-    Object.keys(props).forEach(function (key) {
-      var opts = props[key];
-      if (isPlainObject(opts)) {
-        // title:{type:String,default:''}
-        var value = opts.default;
-        if (isFn(value)) {
-          value = value();
-        }
-        opts.type = parsePropType(key, opts.type);
-        properties[key] = {
-          type: PROP_TYPES.indexOf(opts.type) !== -1 ? opts.type : null,
-          value: value,
-          observer: createObserver(key)
-        };
-      } else {
-        // content:String
-        var type = parsePropType(key, opts);
-        properties[key] = {
-          type: PROP_TYPES.indexOf(type) !== -1 ? type : null,
-          observer: createObserver(key)
-        };
-      }
-    });
-  }
-  return properties;
-}
-function wrapper$1(event) {
-  // TODO 又得兼容 mpvue 的 mp 对象
-  try {
-    event.mp = JSON.parse(JSON.stringify(event));
-  } catch (e) {}
-  event.stopPropagation = noop;
-  event.preventDefault = noop;
-  event.target = event.target || {};
-  if (!hasOwn(event, 'detail')) {
-    event.detail = {};
-  }
-  if (hasOwn(event, 'markerId')) {
-    event.detail = (0, _typeof2.default)(event.detail) === 'object' ? event.detail : {};
-    event.detail.markerId = event.markerId;
-  }
-  if (isPlainObject(event.detail)) {
-    event.target = Object.assign({}, event.target, event.detail);
-  }
-  return event;
-}
-function getExtraValue(vm, dataPathsArray) {
-  var context = vm;
-  dataPathsArray.forEach(function (dataPathArray) {
-    var dataPath = dataPathArray[0];
-    var value = dataPathArray[2];
-    if (dataPath || typeof value !== 'undefined') {
-      // ['','',index,'disable']
-      var propPath = dataPathArray[1];
-      var valuePath = dataPathArray[3];
-      var vFor;
-      if (Number.isInteger(dataPath)) {
-        vFor = dataPath;
-      } else if (!dataPath) {
-        vFor = context;
-      } else if (typeof dataPath === 'string' && dataPath) {
-        if (dataPath.indexOf('#s#') === 0) {
-          vFor = dataPath.substr(3);
-        } else {
-          vFor = vm.__get_value(dataPath, context);
-        }
-      }
-      if (Number.isInteger(vFor)) {
-        context = value;
-      } else if (!propPath) {
-        context = vFor[value];
-      } else {
-        if (Array.isArray(vFor)) {
-          context = vFor.find(function (vForItem) {
-            return vm.__get_value(propPath, vForItem) === value;
-          });
-        } else if (isPlainObject(vFor)) {
-          context = Object.keys(vFor).find(function (vForKey) {
-            return vm.__get_value(propPath, vFor[vForKey]) === value;
-          });
-        } else {
-          console.error('v-for 暂不支持循环数据：', vFor);
-        }
-      }
-      if (valuePath) {
-        context = vm.__get_value(valuePath, context);
-      }
-    }
-  });
-  return context;
-}
-function processEventExtra(vm, extra, event, __args__) {
-  var extraObj = {};
-  if (Array.isArray(extra) && extra.length) {
-    /**
-     *[
-     *    ['data.items', 'data.id', item.data.id],
-     *    ['metas', 'id', meta.id]
-     *],
-     *[
-     *    ['data.items', 'data.id', item.data.id],
-     *    ['metas', 'id', meta.id]
-     *],
-     *'test'
-     */
-    extra.forEach(function (dataPath, index) {
-      if (typeof dataPath === 'string') {
-        if (!dataPath) {
-          // model,prop.sync
-          extraObj['$' + index] = vm;
-        } else {
-          if (dataPath === '$event') {
-            // $event
-            extraObj['$' + index] = event;
-          } else if (dataPath === 'arguments') {
-            extraObj['$' + index] = event.detail ? event.detail.__args__ || __args__ : __args__;
-          } else if (dataPath.indexOf('$event.') === 0) {
-            // $event.target.value
-            extraObj['$' + index] = vm.__get_value(dataPath.replace('$event.', ''), event);
-          } else {
-            extraObj['$' + index] = vm.__get_value(dataPath);
-          }
-        }
-      } else {
-        extraObj['$' + index] = getExtraValue(vm, dataPath);
-      }
-    });
-  }
-  return extraObj;
-}
-function getObjByArray(arr) {
-  var obj = {};
-  for (var i = 1; i < arr.length; i++) {
-    var element = arr[i];
-    obj[element[0]] = element[1];
-  }
-  return obj;
-}
-function processEventArgs(vm, event) {
-  var args = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
-  var extra = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : [];
-  var isCustom = arguments.length > 4 ? arguments[4] : undefined;
-  var methodName = arguments.length > 5 ? arguments[5] : undefined;
-  var isCustomMPEvent = false; // wxcomponent 组件，传递原始 event 对象
-
-  // fixed 用户直接触发 mpInstance.triggerEvent
-  var __args__ = isPlainObject(event.detail) ? event.detail.__args__ || [event.detail] : [event.detail];
-  if (isCustom) {
-    // 自定义事件
-    isCustomMPEvent = event.currentTarget && event.currentTarget.dataset && event.currentTarget.dataset.comType === 'wx';
-    if (!args.length) {
-      // 无参数，直接传入 event 或 detail 数组
-      if (isCustomMPEvent) {
-        return [event];
-      }
-      return __args__;
-    }
-  }
-  var extraObj = processEventExtra(vm, extra, event, __args__);
-  var ret = [];
-  args.forEach(function (arg) {
-    if (arg === '$event') {
-      if (methodName === '__set_model' && !isCustom) {
-        // input v-model value
-        ret.push(event.target.value);
-      } else {
-        if (isCustom && !isCustomMPEvent) {
-          ret.push(__args__[0]);
-        } else {
-          // wxcomponent 组件或内置组件
-          ret.push(event);
-        }
-      }
-    } else {
-      if (Array.isArray(arg) && arg[0] === 'o') {
-        ret.push(getObjByArray(arg));
-      } else if (typeof arg === 'string' && hasOwn(extraObj, arg)) {
-        ret.push(extraObj[arg]);
-      } else {
-        ret.push(arg);
-      }
-    }
-  });
-  return ret;
-}
-var ONCE = '~';
-var CUSTOM = '^';
-function isMatchEventType(eventType, optType) {
-  return eventType === optType || optType === 'regionchange' && (eventType === 'begin' || eventType === 'end');
-}
-function getContextVm(vm) {
-  var $parent = vm.$parent;
-  // 父组件是 scoped slots 或者其他自定义组件时继续查找
-  while ($parent && $parent.$parent && ($parent.$options.generic || $parent.$parent.$options.generic || $parent.$scope._$vuePid)) {
-    $parent = $parent.$parent;
-  }
-  return $parent && $parent.$parent;
-}
-function handleEvent(event) {
-  var _this2 = this;
-  event = wrapper$1(event);
-
-  // [['tap',[['handle',[1,2,a]],['handle1',[1,2,a]]]]]
-  var dataset = (event.currentTarget || event.target).dataset;
-  if (!dataset) {
-    return console.warn('事件信息不存在');
-  }
-  var eventOpts = dataset.eventOpts || dataset['event-opts']; // 支付宝 web-view 组件 dataset 非驼峰
-  if (!eventOpts) {
-    return console.warn('事件信息不存在');
-  }
-
-  // [['handle',[1,2,a]],['handle1',[1,2,a]]]
-  var eventType = event.type;
-  var ret = [];
-  eventOpts.forEach(function (eventOpt) {
-    var type = eventOpt[0];
-    var eventsArray = eventOpt[1];
-    var isCustom = type.charAt(0) === CUSTOM;
-    type = isCustom ? type.slice(1) : type;
-    var isOnce = type.charAt(0) === ONCE;
-    type = isOnce ? type.slice(1) : type;
-    if (eventsArray && isMatchEventType(eventType, type)) {
-      eventsArray.forEach(function (eventArray) {
-        var methodName = eventArray[0];
-        if (methodName) {
-          var handlerCtx = _this2.$vm;
-          if (handlerCtx.$options.generic) {
-            // mp-weixin,mp-toutiao 抽象节点模拟 scoped slots
-            handlerCtx = getContextVm(handlerCtx) || handlerCtx;
-          }
-          if (methodName === '$emit') {
-            handlerCtx.$emit.apply(handlerCtx, processEventArgs(_this2.$vm, event, eventArray[1], eventArray[2], isCustom, methodName));
-            return;
-          }
-          var handler = handlerCtx[methodName];
-          if (!isFn(handler)) {
-            var _type = _this2.$vm.mpType === 'page' ? 'Page' : 'Component';
-            var path = _this2.route || _this2.is;
-            throw new Error("".concat(_type, " \"").concat(path, "\" does not have a method \"").concat(methodName, "\""));
-          }
-          if (isOnce) {
-            if (handler.once) {
-              return;
-            }
-            handler.once = true;
-          }
-          var params = processEventArgs(_this2.$vm, event, eventArray[1], eventArray[2], isCustom, methodName);
-          params = Array.isArray(params) ? params : [];
-          // 参数尾部增加原始事件对象用于复杂表达式内获取额外数据
-          if (/=\s*\S+\.eventParams\s*\|\|\s*\S+\[['"]event-params['"]\]/.test(handler.toString())) {
-            // eslint-disable-next-line no-sparse-arrays
-            params = params.concat([,,,,,,,,,, event]);
-          }
-          ret.push(handler.apply(handlerCtx, params));
-        }
-      });
-    }
-  });
-  if (eventType === 'input' && ret.length === 1 && typeof ret[0] !== 'undefined') {
-    return ret[0];
-  }
-}
-var eventChannels = {};
-var eventChannelStack = [];
-function getEventChannel(id) {
-  if (id) {
-    var eventChannel = eventChannels[id];
-    delete eventChannels[id];
-    return eventChannel;
-  }
-  return eventChannelStack.shift();
-}
-var hooks = ['onShow', 'onHide', 'onError', 'onPageNotFound', 'onThemeChange', 'onUnhandledRejection'];
-function initEventChannel() {
-  _vue.default.prototype.getOpenerEventChannel = function () {
-    // 微信小程序使用自身getOpenerEventChannel
-    {
-      return this.$scope.getOpenerEventChannel();
-    }
-  };
-  var callHook = _vue.default.prototype.__call_hook;
-  _vue.default.prototype.__call_hook = function (hook, args) {
-    if (hook === 'onLoad' && args && args.__id__) {
-      this.__eventChannel__ = getEventChannel(args.__id__);
-      delete args.__id__;
-    }
-    return callHook.call(this, hook, args);
-  };
-}
-function initScopedSlotsParams() {
-  var center = {};
-  var parents = {};
-  _vue.default.prototype.$hasScopedSlotsParams = function (vueId) {
-    var has = center[vueId];
-    if (!has) {
-      parents[vueId] = this;
-      this.$on('hook:destroyed', function () {
-        delete parents[vueId];
-      });
-    }
-    return has;
-  };
-  _vue.default.prototype.$getScopedSlotsParams = function (vueId, name, key) {
-    var data = center[vueId];
-    if (data) {
-      var object = data[name] || {};
-      return key ? object[key] : object;
-    } else {
-      parents[vueId] = this;
-      this.$on('hook:destroyed', function () {
-        delete parents[vueId];
-      });
-    }
-  };
-  _vue.default.prototype.$setScopedSlotsParams = function (name, value) {
-    var vueIds = this.$options.propsData.vueId;
-    if (vueIds) {
-      var vueId = vueIds.split(',')[0];
-      var object = center[vueId] = center[vueId] || {};
-      object[name] = value;
-      if (parents[vueId]) {
-        parents[vueId].$forceUpdate();
-      }
-    }
-  };
-  _vue.default.mixin({
-    destroyed: function destroyed() {
-      var propsData = this.$options.propsData;
-      var vueId = propsData && propsData.vueId;
-      if (vueId) {
-        delete center[vueId];
-        delete parents[vueId];
-      }
-    }
-  });
-}
-function parseBaseApp(vm, _ref4) {
-  var mocks = _ref4.mocks,
-    initRefs = _ref4.initRefs;
-  initEventChannel();
-  {
-    initScopedSlotsParams();
-  }
-  if (vm.$options.store) {
-    _vue.default.prototype.$store = vm.$options.store;
-  }
-  uniIdMixin(_vue.default);
-  _vue.default.prototype.mpHost = "mp-weixin";
-  _vue.default.mixin({
-    beforeCreate: function beforeCreate() {
-      if (!this.$options.mpType) {
-        return;
-      }
-      this.mpType = this.$options.mpType;
-      this.$mp = (0, _defineProperty2.default)({
-        data: {}
-      }, this.mpType, this.$options.mpInstance);
-      this.$scope = this.$options.mpInstance;
-      delete this.$options.mpType;
-      delete this.$options.mpInstance;
-      if (this.mpType === 'page' && typeof getApp === 'function') {
-        // hack vue-i18n
-        var app = getApp();
-        if (app.$vm && app.$vm.$i18n) {
-          this._i18n = app.$vm.$i18n;
-        }
-      }
-      if (this.mpType !== 'app') {
-        initRefs(this);
-        initMocks(this, mocks);
-      }
-    }
-  });
-  var appOptions = {
-    onLaunch: function onLaunch(args) {
-      if (this.$vm) {
-        // 已经初始化过了，主要是为了百度，百度 onShow 在 onLaunch 之前
-        return;
-      }
-      {
-        if (wx.canIUse && !wx.canIUse('nextTick')) {
-          // 事实 上2.2.3 即可，简单使用 2.3.0 的 nextTick 判断
-          console.error('当前微信基础库版本过低，请将 微信开发者工具-详情-项目设置-调试基础库版本 更换为`2.3.0`以上');
-        }
-      }
-      this.$vm = vm;
-      this.$vm.$mp = {
-        app: this
-      };
-      this.$vm.$scope = this;
-      // vm 上也挂载 globalData
-      this.$vm.globalData = this.globalData;
-      this.$vm._isMounted = true;
-      this.$vm.__call_hook('mounted', args);
-      this.$vm.__call_hook('onLaunch', args);
-    }
-  };
-
-  // 兼容旧版本 globalData
-  appOptions.globalData = vm.$options.globalData || {};
-  // 将 methods 中的方法挂在 getApp() 中
-  var methods = vm.$options.methods;
-  if (methods) {
-    Object.keys(methods).forEach(function (name) {
-      appOptions[name] = methods[name];
-    });
-  }
-  initAppLocale(_vue.default, vm, normalizeLocale(wx.getSystemInfoSync().language) || LOCALE_EN);
-  initHooks(appOptions, hooks);
-  initUnknownHooks(appOptions, vm.$options);
-  return appOptions;
-}
 function parseApp(vm) {
   return parseBaseApp(vm, {
     mocks: mocks,
-    initRefs: initRefs
-  });
+    initRefs: initRefs });
+
 }
+
 function createApp(vm) {
   App(parseApp(vm));
   return vm;
 }
+
 var encodeReserveRE = /[!'()*]/g;
-var encodeReserveReplacer = function encodeReserveReplacer(c) {
-  return '%' + c.charCodeAt(0).toString(16);
-};
+var encodeReserveReplacer = function encodeReserveReplacer(c) {return '%' + c.charCodeAt(0).toString(16);};
 var commaRE = /%2C/g;
 
 // fixed encodeURIComponent which is more conformant to RFC3986:
 // - escapes [!'()*]
 // - preserve commas
-var encode = function encode(str) {
-  return encodeURIComponent(str).replace(encodeReserveRE, encodeReserveReplacer).replace(commaRE, ',');
-};
-function stringifyQuery(obj) {
-  var encodeStr = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : encode;
+var encode = function encode(str) {return encodeURIComponent(str).
+  replace(encodeReserveRE, encodeReserveReplacer).
+  replace(commaRE, ',');};
+
+function stringifyQuery(obj) {var encodeStr = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : encode;
   var res = obj ? Object.keys(obj).map(function (key) {
     var val = obj[key];
+
     if (val === undefined) {
       return '';
     }
+
     if (val === null) {
       return encodeStr(key);
     }
+
     if (Array.isArray(val)) {
       var result = [];
       val.forEach(function (val2) {
@@ -2069,51 +2156,53 @@ function stringifyQuery(obj) {
       });
       return result.join('&');
     }
+
     return encodeStr(key) + '=' + encodeStr(val);
-  }).filter(function (x) {
-    return x.length > 0;
-  }).join('&') : null;
+  }).filter(function (x) {return x.length > 0;}).join('&') : null;
   return res ? "?".concat(res) : '';
 }
-function parseBaseComponent(vueComponentOptions) {
-  var _ref5 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
-    isPage = _ref5.isPage,
-    initRelation = _ref5.initRelation;
-  var needVueOptions = arguments.length > 2 ? arguments[2] : undefined;
-  var _initVueComponent = initVueComponent(_vue.default, vueComponentOptions),
-    _initVueComponent2 = (0, _slicedToArray2.default)(_initVueComponent, 2),
-    VueComponent = _initVueComponent2[0],
-    vueOptions = _initVueComponent2[1];
+
+function parseBaseComponent(vueComponentOptions)
+
+
+{var _ref5 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},isPage = _ref5.isPage,initRelation = _ref5.initRelation;var _initVueComponent =
+  initVueComponent(_vue.default, vueComponentOptions),_initVueComponent2 = _slicedToArray(_initVueComponent, 2),VueComponent = _initVueComponent2[0],vueOptions = _initVueComponent2[1];
+
   var options = _objectSpread({
     multipleSlots: true,
-    addGlobalClass: true
-  }, vueOptions.options || {});
+    addGlobalClass: true },
+  vueOptions.options || {});
+
+
   {
     // 微信 multipleSlots 部分情况有 bug，导致内容顺序错乱 如 u-list，提供覆盖选项
     if (vueOptions['mp-weixin'] && vueOptions['mp-weixin'].options) {
       Object.assign(options, vueOptions['mp-weixin'].options);
     }
   }
+
   var componentOptions = {
     options: options,
     data: initData(vueOptions, _vue.default.prototype),
     behaviors: initBehaviors(vueOptions, initBehavior),
-    properties: initProperties(vueOptions.props, false, vueOptions.__file, options),
+    properties: initProperties(vueOptions.props, false, vueOptions.__file),
     lifetimes: {
       attached: function attached() {
         var properties = this.properties;
+
         var options = {
           mpType: isPage.call(this) ? 'page' : 'component',
           mpInstance: this,
-          propsData: properties
-        };
+          propsData: properties };
+
+
         initVueIds(properties.vueId, this);
 
         // 处理父子关系
         initRelation.call(this, {
           vuePid: this._$vuePid,
-          vueOptions: options
-        });
+          vueOptions: options });
+
 
         // 初始化 vue 实例
         this.$vm = new VueComponent(options);
@@ -2135,8 +2224,8 @@ function parseBaseComponent(vueComponentOptions) {
       },
       detached: function detached() {
         this.$vm && this.$vm.$destroy();
-      }
-    },
+      } },
+
     pageLifetimes: {
       show: function show(args) {
         this.$vm && this.$vm.__call_hook('onPageShow', args);
@@ -2146,17 +2235,18 @@ function parseBaseComponent(vueComponentOptions) {
       },
       resize: function resize(size) {
         this.$vm && this.$vm.__call_hook('onPageResize', size);
-      }
-    },
+      } },
+
     methods: {
       __l: handleLink,
-      __e: handleEvent
-    }
-  };
+      __e: handleEvent } };
+
+
   // externalClasses
   if (vueOptions.externalClasses) {
     componentOptions.externalClasses = vueOptions.externalClasses;
   }
+
   if (Array.isArray(vueOptions.wxsCallMethods)) {
     vueOptions.wxsCallMethods.forEach(function (callMethod) {
       componentOptions.methods[callMethod] = function (args) {
@@ -2164,61 +2254,74 @@ function parseBaseComponent(vueComponentOptions) {
       };
     });
   }
-  if (needVueOptions) {
-    return [componentOptions, vueOptions, VueComponent];
-  }
+
   if (isPage) {
     return componentOptions;
   }
   return [componentOptions, VueComponent];
 }
-function parseComponent(vueComponentOptions, needVueOptions) {
+
+function parseComponent(vueComponentOptions) {
   return parseBaseComponent(vueComponentOptions, {
     isPage: isPage,
-    initRelation: initRelation
-  }, needVueOptions);
+    initRelation: initRelation });
+
 }
-var hooks$1 = ['onShow', 'onHide', 'onUnload'];
+
+var hooks$1 = [
+'onShow',
+'onHide',
+'onUnload'];
+
+
 hooks$1.push.apply(hooks$1, PAGE_EVENT_HOOKS);
-function parseBasePage(vuePageOptions) {
-  var _parseComponent = parseComponent(vuePageOptions, true),
-    _parseComponent2 = (0, _slicedToArray2.default)(_parseComponent, 2),
-    pageOptions = _parseComponent2[0],
-    vueOptions = _parseComponent2[1];
-  initHooks(pageOptions.methods, hooks$1, vueOptions);
+
+function parseBasePage(vuePageOptions, _ref6)
+
+
+{var isPage = _ref6.isPage,initRelation = _ref6.initRelation;
+  var pageOptions = parseComponent(vuePageOptions);
+
+  initHooks(pageOptions.methods, hooks$1, vuePageOptions);
+
   pageOptions.methods.onLoad = function (query) {
     this.options = query;
     var copyQuery = Object.assign({}, query);
     delete copyQuery.__id__;
     this.$page = {
-      fullPath: '/' + (this.route || this.is) + stringifyQuery(copyQuery)
-    };
+      fullPath: '/' + (this.route || this.is) + stringifyQuery(copyQuery) };
+
     this.$vm.$mp.query = query; // 兼容 mpvue
     this.$vm.__call_hook('onLoad', query);
   };
-  {
-    initUnknownHooks(pageOptions.methods, vuePageOptions, ['onReady']);
-  }
+
   return pageOptions;
 }
+
 function parsePage(vuePageOptions) {
-  return parseBasePage(vuePageOptions);
+  return parseBasePage(vuePageOptions, {
+    isPage: isPage,
+    initRelation: initRelation });
+
 }
+
 function createPage(vuePageOptions) {
   {
     return Component(parsePage(vuePageOptions));
   }
 }
+
 function createComponent(vueOptions) {
   {
     return Component(parseComponent(vueOptions));
   }
 }
+
 function createSubpackageApp(vm) {
   var appOptions = parseApp(vm);
   var app = getApp({
-    allowDefault: true
-  });
+    allowDefault: true });
+
   vm.$scope = app;
   var globalData = app.globalData;
   if (globalData) {
@@ -2234,18 +2337,12 @@ function createSubpackageApp(vm) {
     }
   });
   if (isFn(appOptions.onShow) && wx.onAppShow) {
-    wx.onAppShow(function () {
-      for (var _len5 = arguments.length, args = new Array(_len5), _key5 = 0; _key5 < _len5; _key5++) {
-        args[_key5] = arguments[_key5];
-      }
+    wx.onAppShow(function () {for (var _len5 = arguments.length, args = new Array(_len5), _key5 = 0; _key5 < _len5; _key5++) {args[_key5] = arguments[_key5];}
       vm.__call_hook('onShow', args);
     });
   }
   if (isFn(appOptions.onHide) && wx.onAppHide) {
-    wx.onAppHide(function () {
-      for (var _len6 = arguments.length, args = new Array(_len6), _key6 = 0; _key6 < _len6; _key6++) {
-        args[_key6] = arguments[_key6];
-      }
+    wx.onAppHide(function () {for (var _len6 = arguments.length, args = new Array(_len6), _key6 = 0; _key6 < _len6; _key6++) {args[_key6] = arguments[_key6];}
       vm.__call_hook('onHide', args);
     });
   }
@@ -2255,21 +2352,16 @@ function createSubpackageApp(vm) {
   }
   return vm;
 }
+
 function createPlugin(vm) {
   var appOptions = parseApp(vm);
   if (isFn(appOptions.onShow) && wx.onAppShow) {
-    wx.onAppShow(function () {
-      for (var _len7 = arguments.length, args = new Array(_len7), _key7 = 0; _key7 < _len7; _key7++) {
-        args[_key7] = arguments[_key7];
-      }
+    wx.onAppShow(function () {for (var _len7 = arguments.length, args = new Array(_len7), _key7 = 0; _key7 < _len7; _key7++) {args[_key7] = arguments[_key7];}
       vm.__call_hook('onShow', args);
     });
   }
   if (isFn(appOptions.onHide) && wx.onAppHide) {
-    wx.onAppHide(function () {
-      for (var _len8 = arguments.length, args = new Array(_len8), _key8 = 0; _key8 < _len8; _key8++) {
-        args[_key8] = arguments[_key8];
-      }
+    wx.onAppHide(function () {for (var _len8 = arguments.length, args = new Array(_len8), _key8 = 0; _key8 < _len8; _key8++) {args[_key8] = arguments[_key8];}
       vm.__call_hook('onHide', args);
     });
   }
@@ -2279,16 +2371,21 @@ function createPlugin(vm) {
   }
   return vm;
 }
+
 todos.forEach(function (todoApi) {
   protocols[todoApi] = false;
 });
+
 canIUses.forEach(function (canIUseApi) {
-  var apiName = protocols[canIUseApi] && protocols[canIUseApi].name ? protocols[canIUseApi].name : canIUseApi;
+  var apiName = protocols[canIUseApi] && protocols[canIUseApi].name ? protocols[canIUseApi].name :
+  canIUseApi;
   if (!wx.canIUse(apiName)) {
     protocols[canIUseApi] = false;
   }
 });
+
 var uni = {};
+
 if (typeof Proxy !== 'undefined' && "mp-weixin" !== 'app-plus') {
   uni = new Proxy({}, {
     get: function get(target, name) {
@@ -2312,7 +2409,7 @@ if (typeof Proxy !== 'undefined' && "mp-weixin" !== 'app-plus') {
       if (eventApi[name]) {
         return eventApi[name];
       }
-      if (typeof wx[name] !== 'function' && !hasOwn(protocols, name)) {
+      if (!hasOwn(wx, name) && !hasOwn(protocols, name)) {
         return;
       }
       return promisify(name, wrapper(name, wx[name]));
@@ -2320,12 +2417,13 @@ if (typeof Proxy !== 'undefined' && "mp-weixin" !== 'app-plus') {
     set: function set(target, name, value) {
       target[name] = value;
       return true;
-    }
-  });
+    } });
+
 } else {
   Object.keys(baseApi).forEach(function (name) {
     uni[name] = baseApi[name];
   });
+
   {
     Object.keys(todoApis).forEach(function (name) {
       uni[name] = promisify(name, todoApis[name]);
@@ -2334,26 +2432,31 @@ if (typeof Proxy !== 'undefined' && "mp-weixin" !== 'app-plus') {
       uni[name] = promisify(name, todoApis[name]);
     });
   }
+
   Object.keys(eventApi).forEach(function (name) {
     uni[name] = eventApi[name];
   });
+
   Object.keys(api).forEach(function (name) {
     uni[name] = promisify(name, api[name]);
   });
+
   Object.keys(wx).forEach(function (name) {
     if (hasOwn(wx, name) || hasOwn(protocols, name)) {
       uni[name] = promisify(name, wrapper(name, wx[name]));
     }
   });
 }
+
 wx.createApp = createApp;
 wx.createPage = createPage;
 wx.createComponent = createComponent;
 wx.createSubpackageApp = createSubpackageApp;
 wx.createPlugin = createPlugin;
-var uni$1 = uni;
-var _default = uni$1;
-exports.default = _default;
+
+var uni$1 = uni;var _default =
+
+uni$1;exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../webpack/buildin/global.js */ 2)))
 
 /***/ }),
@@ -2388,342 +2491,6 @@ module.exports = g;
 
 /***/ }),
 /* 3 */
-/*!**********************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/interopRequireDefault.js ***!
-  \**********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : {
-    "default": obj
-  };
-}
-module.exports = _interopRequireDefault, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-/* 4 */
-/*!**************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/slicedToArray.js ***!
-  \**************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var arrayWithHoles = __webpack_require__(/*! ./arrayWithHoles.js */ 5);
-var iterableToArrayLimit = __webpack_require__(/*! ./iterableToArrayLimit.js */ 6);
-var unsupportedIterableToArray = __webpack_require__(/*! ./unsupportedIterableToArray.js */ 7);
-var nonIterableRest = __webpack_require__(/*! ./nonIterableRest.js */ 9);
-function _slicedToArray(arr, i) {
-  return arrayWithHoles(arr) || iterableToArrayLimit(arr, i) || unsupportedIterableToArray(arr, i) || nonIterableRest();
-}
-module.exports = _slicedToArray, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-/* 5 */
-/*!***************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/arrayWithHoles.js ***!
-  \***************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _arrayWithHoles(arr) {
-  if (Array.isArray(arr)) return arr;
-}
-module.exports = _arrayWithHoles, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-/* 6 */
-/*!*********************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/iterableToArrayLimit.js ***!
-  \*********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _iterableToArrayLimit(arr, i) {
-  var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"];
-  if (null != _i) {
-    var _s,
-      _e,
-      _x,
-      _r,
-      _arr = [],
-      _n = !0,
-      _d = !1;
-    try {
-      if (_x = (_i = _i.call(arr)).next, 0 === i) {
-        if (Object(_i) !== _i) return;
-        _n = !1;
-      } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0) {
-        ;
-      }
-    } catch (err) {
-      _d = !0, _e = err;
-    } finally {
-      try {
-        if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return;
-      } finally {
-        if (_d) throw _e;
-      }
-    }
-    return _arr;
-  }
-}
-module.exports = _iterableToArrayLimit, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-/* 7 */
-/*!***************************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/unsupportedIterableToArray.js ***!
-  \***************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var arrayLikeToArray = __webpack_require__(/*! ./arrayLikeToArray.js */ 8);
-function _unsupportedIterableToArray(o, minLen) {
-  if (!o) return;
-  if (typeof o === "string") return arrayLikeToArray(o, minLen);
-  var n = Object.prototype.toString.call(o).slice(8, -1);
-  if (n === "Object" && o.constructor) n = o.constructor.name;
-  if (n === "Map" || n === "Set") return Array.from(o);
-  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return arrayLikeToArray(o, minLen);
-}
-module.exports = _unsupportedIterableToArray, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-/* 8 */
-/*!*****************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/arrayLikeToArray.js ***!
-  \*****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _arrayLikeToArray(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-  for (var i = 0, arr2 = new Array(len); i < len; i++) {
-    arr2[i] = arr[i];
-  }
-  return arr2;
-}
-module.exports = _arrayLikeToArray, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-/* 9 */
-/*!****************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/nonIterableRest.js ***!
-  \****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _nonIterableRest() {
-  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-module.exports = _nonIterableRest, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-/* 10 */
-/*!***************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/defineProperty.js ***!
-  \***************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var toPropertyKey = __webpack_require__(/*! ./toPropertyKey.js */ 11);
-function _defineProperty(obj, key, value) {
-  key = toPropertyKey(key);
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-  return obj;
-}
-module.exports = _defineProperty, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-/* 11 */
-/*!**************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/toPropertyKey.js ***!
-  \**************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var _typeof = __webpack_require__(/*! ./typeof.js */ 12)["default"];
-var toPrimitive = __webpack_require__(/*! ./toPrimitive.js */ 13);
-function _toPropertyKey(arg) {
-  var key = toPrimitive(arg, "string");
-  return _typeof(key) === "symbol" ? key : String(key);
-}
-module.exports = _toPropertyKey, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-/* 12 */
-/*!*******************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/typeof.js ***!
-  \*******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _typeof(obj) {
-  "@babel/helpers - typeof";
-
-  return (module.exports = _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) {
-    return typeof obj;
-  } : function (obj) {
-    return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-  }, module.exports.__esModule = true, module.exports["default"] = module.exports), _typeof(obj);
-}
-module.exports = _typeof, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-/* 13 */
-/*!************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/toPrimitive.js ***!
-  \************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var _typeof = __webpack_require__(/*! ./typeof.js */ 12)["default"];
-function _toPrimitive(input, hint) {
-  if (_typeof(input) !== "object" || input === null) return input;
-  var prim = input[Symbol.toPrimitive];
-  if (prim !== undefined) {
-    var res = prim.call(input, hint || "default");
-    if (_typeof(res) !== "object") return res;
-    throw new TypeError("@@toPrimitive must return a primitive value.");
-  }
-  return (hint === "string" ? String : Number)(input);
-}
-module.exports = _toPrimitive, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-/* 14 */
-/*!**********************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/construct.js ***!
-  \**********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var setPrototypeOf = __webpack_require__(/*! ./setPrototypeOf.js */ 15);
-var isNativeReflectConstruct = __webpack_require__(/*! ./isNativeReflectConstruct.js */ 16);
-function _construct(Parent, args, Class) {
-  if (isNativeReflectConstruct()) {
-    module.exports = _construct = Reflect.construct.bind(), module.exports.__esModule = true, module.exports["default"] = module.exports;
-  } else {
-    module.exports = _construct = function _construct(Parent, args, Class) {
-      var a = [null];
-      a.push.apply(a, args);
-      var Constructor = Function.bind.apply(Parent, a);
-      var instance = new Constructor();
-      if (Class) setPrototypeOf(instance, Class.prototype);
-      return instance;
-    }, module.exports.__esModule = true, module.exports["default"] = module.exports;
-  }
-  return _construct.apply(null, arguments);
-}
-module.exports = _construct, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-/* 15 */
-/*!***************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/setPrototypeOf.js ***!
-  \***************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _setPrototypeOf(o, p) {
-  module.exports = _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) {
-    o.__proto__ = p;
-    return o;
-  }, module.exports.__esModule = true, module.exports["default"] = module.exports;
-  return _setPrototypeOf(o, p);
-}
-module.exports = _setPrototypeOf, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-/* 16 */
-/*!*************************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/isNativeReflectConstruct.js ***!
-  \*************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _isNativeReflectConstruct() {
-  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
-  if (Reflect.construct.sham) return false;
-  if (typeof Proxy === "function") return true;
-  try {
-    Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}));
-    return true;
-  } catch (e) {
-    return false;
-  }
-}
-module.exports = _isNativeReflectConstruct, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-/* 17 */
-/*!******************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/toConsumableArray.js ***!
-  \******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var arrayWithoutHoles = __webpack_require__(/*! ./arrayWithoutHoles.js */ 18);
-var iterableToArray = __webpack_require__(/*! ./iterableToArray.js */ 19);
-var unsupportedIterableToArray = __webpack_require__(/*! ./unsupportedIterableToArray.js */ 7);
-var nonIterableSpread = __webpack_require__(/*! ./nonIterableSpread.js */ 20);
-function _toConsumableArray(arr) {
-  return arrayWithoutHoles(arr) || iterableToArray(arr) || unsupportedIterableToArray(arr) || nonIterableSpread();
-}
-module.exports = _toConsumableArray, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-/* 18 */
-/*!******************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/arrayWithoutHoles.js ***!
-  \******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var arrayLikeToArray = __webpack_require__(/*! ./arrayLikeToArray.js */ 8);
-function _arrayWithoutHoles(arr) {
-  if (Array.isArray(arr)) return arrayLikeToArray(arr);
-}
-module.exports = _arrayWithoutHoles, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-/* 19 */
-/*!****************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/iterableToArray.js ***!
-  \****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _iterableToArray(iter) {
-  if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
-}
-module.exports = _iterableToArray, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-/* 20 */
-/*!******************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/nonIterableSpread.js ***!
-  \******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _nonIterableSpread() {
-  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-module.exports = _nonIterableSpread, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-/* 21 */
 /*!*************************************************************!*\
   !*** ./node_modules/@dcloudio/uni-i18n/dist/uni-i18n.es.js ***!
   \*************************************************************/
@@ -2731,39 +2498,14 @@ module.exports = _nonIterableSpread, module.exports.__esModule = true, module.ex
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni, global) {
-
-var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 3);
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.LOCALE_ZH_HANT = exports.LOCALE_ZH_HANS = exports.LOCALE_FR = exports.LOCALE_ES = exports.LOCALE_EN = exports.I18n = exports.Formatter = void 0;
-exports.compileI18nJsonStr = compileI18nJsonStr;
-exports.hasI18nJson = hasI18nJson;
-exports.initVueI18n = initVueI18n;
-exports.isI18nStr = isI18nStr;
-exports.isString = void 0;
-exports.normalizeLocale = normalizeLocale;
-exports.parseI18nJson = parseI18nJson;
-exports.resolveLocale = resolveLocale;
-var _slicedToArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ 4));
-var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ 22));
-var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ 23));
-var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 12));
-var isArray = Array.isArray;
-var isObject = function isObject(val) {
-  return val !== null && (0, _typeof2.default)(val) === 'object';
-};
-var defaultDelimiters = ['{', '}'];
-var BaseFormatter = /*#__PURE__*/function () {
-  function BaseFormatter() {
-    (0, _classCallCheck2.default)(this, BaseFormatter);
+/* WEBPACK VAR INJECTION */(function(uni, global) {Object.defineProperty(exports, "__esModule", { value: true });exports.compileI18nJsonStr = compileI18nJsonStr;exports.hasI18nJson = hasI18nJson;exports.initVueI18n = initVueI18n;exports.isI18nStr = isI18nStr;exports.normalizeLocale = normalizeLocale;exports.parseI18nJson = parseI18nJson;exports.resolveLocale = resolveLocale;exports.isString = exports.LOCALE_ZH_HANT = exports.LOCALE_ZH_HANS = exports.LOCALE_FR = exports.LOCALE_ES = exports.LOCALE_EN = exports.I18n = exports.Formatter = void 0;function _slicedToArray(arr, i) {return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();}function _nonIterableRest() {throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(o);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;}function _iterableToArrayLimit(arr, i) {if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;var _arr = [];var _n = true;var _d = false;var _e = undefined;try {for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {_arr.push(_s.value);if (i && _arr.length === i) break;}} catch (err) {_d = true;_e = err;} finally {try {if (!_n && _i["return"] != null) _i["return"]();} finally {if (_d) throw _e;}}return _arr;}function _arrayWithHoles(arr) {if (Array.isArray(arr)) return arr;}function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;}var isArray = Array.isArray;
+var isObject = function isObject(val) {return val !== null && typeof val === 'object';};
+var defaultDelimiters = ['{', '}'];var
+BaseFormatter = /*#__PURE__*/function () {
+  function BaseFormatter() {_classCallCheck(this, BaseFormatter);
     this._caches = Object.create(null);
-  }
-  (0, _createClass2.default)(BaseFormatter, [{
-    key: "interpolate",
-    value: function interpolate(message, values) {
-      var delimiters = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : defaultDelimiters;
+  }_createClass(BaseFormatter, [{ key: "interpolate", value: function interpolate(
+    message, values) {var delimiters = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : defaultDelimiters;
       if (!values) {
         return [message];
       }
@@ -2773,17 +2515,11 @@ var BaseFormatter = /*#__PURE__*/function () {
         this._caches[message] = tokens;
       }
       return compile(tokens, values);
-    }
-  }]);
-  return BaseFormatter;
-}();
-exports.Formatter = BaseFormatter;
+    } }]);return BaseFormatter;}();exports.Formatter = BaseFormatter;
+
 var RE_TOKEN_LIST_VALUE = /^(?:\d)+/;
 var RE_TOKEN_NAMED_VALUE = /^(?:\w)+/;
-function parse(format, _ref) {
-  var _ref2 = (0, _slicedToArray2.default)(_ref, 2),
-    startDelimiter = _ref2[0],
-    endDelimiter = _ref2[1];
+function parse(format, _ref) {var _ref2 = _slicedToArray(_ref, 2),startDelimiter = _ref2[0],endDelimiter = _ref2[1];
   var tokens = [];
   var position = 0;
   var text = '';
@@ -2791,10 +2527,7 @@ function parse(format, _ref) {
     var char = format[position++];
     if (char === startDelimiter) {
       if (text) {
-        tokens.push({
-          type: 'text',
-          value: text
-        });
+        tokens.push({ type: 'text', value: text });
       }
       text = '';
       var sub = '';
@@ -2804,11 +2537,12 @@ function parse(format, _ref) {
         char = format[position++];
       }
       var isClosed = char === endDelimiter;
-      var type = RE_TOKEN_LIST_VALUE.test(sub) ? 'list' : isClosed && RE_TOKEN_NAMED_VALUE.test(sub) ? 'named' : 'unknown';
-      tokens.push({
-        value: sub,
-        type: type
-      });
+      var type = RE_TOKEN_LIST_VALUE.test(sub) ?
+      'list' :
+      isClosed && RE_TOKEN_NAMED_VALUE.test(sub) ?
+      'named' :
+      'unknown';
+      tokens.push({ value: sub, type: type });
     }
     //  else if (char === '%') {
     //   // when found rails i18n syntax, skip text capture
@@ -2817,19 +2551,20 @@ function parse(format, _ref) {
     //   }
     // }
     else {
-      text += char;
-    }
+        text += char;
+      }
   }
-  text && tokens.push({
-    type: 'text',
-    value: text
-  });
+  text && tokens.push({ type: 'text', value: text });
   return tokens;
 }
 function compile(tokens, values) {
   var compiled = [];
   var index = 0;
-  var mode = isArray(values) ? 'list' : isObject(values) ? 'named' : 'unknown';
+  var mode = isArray(values) ?
+  'list' :
+  isObject(values) ?
+  'named' :
+  'unknown';
   if (mode === 'unknown') {
     return compiled;
   }
@@ -2845,7 +2580,8 @@ function compile(tokens, values) {
       case 'named':
         if (mode === 'named') {
           compiled.push(values[token.value]);
-        } else {
+        } else
+        {
           if (true) {
             console.warn("Type of token '".concat(token.type, "' and format of value '").concat(mode, "' don't match!"));
           }
@@ -2855,36 +2591,26 @@ function compile(tokens, values) {
         if (true) {
           console.warn("Detect 'unknown' type of token!");
         }
-        break;
-    }
+        break;}
+
     index++;
   }
   return compiled;
 }
-var LOCALE_ZH_HANS = 'zh-Hans';
-exports.LOCALE_ZH_HANS = LOCALE_ZH_HANS;
-var LOCALE_ZH_HANT = 'zh-Hant';
-exports.LOCALE_ZH_HANT = LOCALE_ZH_HANT;
-var LOCALE_EN = 'en';
-exports.LOCALE_EN = LOCALE_EN;
-var LOCALE_FR = 'fr';
-exports.LOCALE_FR = LOCALE_FR;
-var LOCALE_ES = 'es';
-exports.LOCALE_ES = LOCALE_ES;
+
+var LOCALE_ZH_HANS = 'zh-Hans';exports.LOCALE_ZH_HANS = LOCALE_ZH_HANS;
+var LOCALE_ZH_HANT = 'zh-Hant';exports.LOCALE_ZH_HANT = LOCALE_ZH_HANT;
+var LOCALE_EN = 'en';exports.LOCALE_EN = LOCALE_EN;
+var LOCALE_FR = 'fr';exports.LOCALE_FR = LOCALE_FR;
+var LOCALE_ES = 'es';exports.LOCALE_ES = LOCALE_ES;
 var hasOwnProperty = Object.prototype.hasOwnProperty;
-var hasOwn = function hasOwn(val, key) {
-  return hasOwnProperty.call(val, key);
-};
+var hasOwn = function hasOwn(val, key) {return hasOwnProperty.call(val, key);};
 var defaultFormatter = new BaseFormatter();
 function include(str, parts) {
-  return !!parts.find(function (part) {
-    return str.indexOf(part) !== -1;
-  });
+  return !!parts.find(function (part) {return str.indexOf(part) !== -1;});
 }
 function startsWith(str, parts) {
-  return parts.find(function (part) {
-    return str.indexOf(part) === 0;
-  });
+  return parts.find(function (part) {return str.indexOf(part) === 0;});
 }
 function normalizeLocale(locale, messages) {
   if (!locale) {
@@ -2911,15 +2637,9 @@ function normalizeLocale(locale, messages) {
   if (lang) {
     return lang;
   }
-}
-var I18n = /*#__PURE__*/function () {
-  function I18n(_ref3) {
-    var locale = _ref3.locale,
-      fallbackLocale = _ref3.fallbackLocale,
-      messages = _ref3.messages,
-      watcher = _ref3.watcher,
-      formater = _ref3.formater;
-    (0, _classCallCheck2.default)(this, I18n);
+}var
+I18n = /*#__PURE__*/function () {
+  function I18n(_ref3) {var locale = _ref3.locale,fallbackLocale = _ref3.fallbackLocale,messages = _ref3.messages,watcher = _ref3.watcher,formater = _ref3.formater;_classCallCheck(this, I18n);
     this.locale = LOCALE_EN;
     this.fallbackLocale = LOCALE_EN;
     this.message = {};
@@ -2934,11 +2654,8 @@ var I18n = /*#__PURE__*/function () {
     if (watcher) {
       this.watchLocale(watcher);
     }
-  }
-  (0, _createClass2.default)(I18n, [{
-    key: "setLocale",
-    value: function setLocale(locale) {
-      var _this = this;
+  }_createClass(I18n, [{ key: "setLocale", value: function setLocale(
+    locale) {var _this = this;
       var oldLocale = this.locale;
       this.locale = normalizeLocale(locale, this.messages) || this.fallbackLocale;
       if (!this.messages[this.locale]) {
@@ -2952,53 +2669,44 @@ var I18n = /*#__PURE__*/function () {
           watcher(_this.locale, oldLocale);
         });
       }
-    }
-  }, {
-    key: "getLocale",
-    value: function getLocale() {
+    } }, { key: "getLocale", value: function getLocale()
+    {
       return this.locale;
-    }
-  }, {
-    key: "watchLocale",
-    value: function watchLocale(fn) {
-      var _this2 = this;
+    } }, { key: "watchLocale", value: function watchLocale(
+    fn) {var _this2 = this;
       var index = this.watchers.push(fn) - 1;
       return function () {
         _this2.watchers.splice(index, 1);
       };
-    }
-  }, {
-    key: "add",
-    value: function add(locale, message) {
-      var override = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+    } }, { key: "add", value: function add(
+    locale, message) {var override = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
       var curMessages = this.messages[locale];
       if (curMessages) {
         if (override) {
           Object.assign(curMessages, message);
-        } else {
+        } else
+        {
           Object.keys(message).forEach(function (key) {
             if (!hasOwn(curMessages, key)) {
               curMessages[key] = message[key];
             }
           });
         }
-      } else {
+      } else
+      {
         this.messages[locale] = message;
       }
-    }
-  }, {
-    key: "f",
-    value: function f(message, values, delimiters) {
+    } }, { key: "f", value: function f(
+    message, values, delimiters) {
       return this.formater.interpolate(message, values, delimiters).join('');
-    }
-  }, {
-    key: "t",
-    value: function t(key, locale, values) {
+    } }, { key: "t", value: function t(
+    key, locale, values) {
       var message = this.message;
       if (typeof locale === 'string') {
         locale = normalizeLocale(locale, this.messages);
         locale && (message = this.messages[locale]);
-      } else {
+      } else
+      {
         values = locale;
       }
       if (!hasOwn(message, key)) {
@@ -3006,11 +2714,9 @@ var I18n = /*#__PURE__*/function () {
         return key;
       }
       return this.formater.interpolate(message[key], values).join('');
-    }
-  }]);
-  return I18n;
-}();
-exports.I18n = I18n;
+    } }]);return I18n;}();exports.I18n = I18n;
+
+
 function watchAppLocale(appVm, i18n) {
   // 需要保证 watch 的触发在组件渲染之前
   if (appVm.$watchLocale) {
@@ -3018,10 +2724,9 @@ function watchAppLocale(appVm, i18n) {
     appVm.$watchLocale(function (newLocale) {
       i18n.setLocale(newLocale);
     });
-  } else {
-    appVm.$watch(function () {
-      return appVm.$locale;
-    }, function (newLocale) {
+  } else
+  {
+    appVm.$watch(function () {return appVm.$locale;}, function (newLocale) {
       i18n.setLocale(newLocale);
     });
   }
@@ -3036,29 +2741,29 @@ function getDefaultLocale() {
   }
   return LOCALE_EN;
 }
-function initVueI18n(locale) {
-  var messages = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  var fallbackLocale = arguments.length > 2 ? arguments[2] : undefined;
-  var watcher = arguments.length > 3 ? arguments[3] : undefined;
+function initVueI18n(locale) {var messages = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};var fallbackLocale = arguments.length > 2 ? arguments[2] : undefined;var watcher = arguments.length > 3 ? arguments[3] : undefined;
   // 兼容旧版本入参
-  if (typeof locale !== 'string') {
-    var _ref4 = [messages, locale];
-    locale = _ref4[0];
-    messages = _ref4[1];
+  if (typeof locale !== 'string') {var _ref4 =
+    [
+    messages,
+    locale];locale = _ref4[0];messages = _ref4[1];
+
   }
   if (typeof locale !== 'string') {
     // 因为小程序平台，uni-i18n 和 uni 互相引用，导致此时访问 uni 时，为 undefined
     locale = getDefaultLocale();
   }
   if (typeof fallbackLocale !== 'string') {
-    fallbackLocale = typeof __uniConfig !== 'undefined' && __uniConfig.fallbackLocale || LOCALE_EN;
+    fallbackLocale =
+    typeof __uniConfig !== 'undefined' && __uniConfig.fallbackLocale ||
+    LOCALE_EN;
   }
   var i18n = new I18n({
     locale: locale,
     fallbackLocale: fallbackLocale,
     messages: messages,
-    watcher: watcher
-  });
+    watcher: watcher });
+
   var _t = function t(key, values) {
     if (typeof getApp !== 'function') {
       // app view
@@ -3066,7 +2771,8 @@ function initVueI18n(locale) {
       _t = function t(key, values) {
         return i18n.t(key, values);
       };
-    } else {
+    } else
+    {
       var isWatchedAppLocale = false;
       _t = function t(key, values) {
         var appVm = getApp().$vm;
@@ -3104,8 +2810,7 @@ function initVueI18n(locale) {
     t: function t(key, values) {
       return _t(key, values);
     },
-    add: function add(locale, message) {
-      var override = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+    add: function add(locale, message) {var override = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
       return i18n.add(locale, message, override);
     },
     watch: function watch(fn) {
@@ -3116,13 +2821,11 @@ function initVueI18n(locale) {
     },
     setLocale: function setLocale(newLocale) {
       return i18n.setLocale(newLocale);
-    }
-  };
+    } };
+
 }
-var isString = function isString(val) {
-  return typeof val === 'string';
-};
-exports.isString = isString;
+
+var isString = function isString(val) {return typeof val === 'string';};exports.isString = isString;
 var formater;
 function hasI18nJson(jsonObj, delimiters) {
   if (!formater) {
@@ -3134,7 +2837,8 @@ function hasI18nJson(jsonObj, delimiters) {
       if (isI18nStr(value, delimiters)) {
         return true;
       }
-    } else {
+    } else
+    {
       return hasI18nJson(value, delimiters);
     }
   });
@@ -3149,16 +2853,14 @@ function parseI18nJson(jsonObj, values, delimiters) {
       if (isI18nStr(value, delimiters)) {
         jsonObj[key] = compileStr(value, values, delimiters);
       }
-    } else {
+    } else
+    {
       parseI18nJson(value, values, delimiters);
     }
   });
   return jsonObj;
 }
-function compileI18nJsonStr(jsonStr, _ref5) {
-  var locale = _ref5.locale,
-    locales = _ref5.locales,
-    delimiters = _ref5.delimiters;
+function compileI18nJsonStr(jsonStr, _ref5) {var locale = _ref5.locale,locales = _ref5.locales,delimiters = _ref5.delimiters;
   if (!isI18nStr(jsonStr, delimiters)) {
     return jsonStr;
   }
@@ -3170,17 +2872,15 @@ function compileI18nJsonStr(jsonStr, _ref5) {
     if (name !== locale) {
       localeValues.push({
         locale: name,
-        values: locales[name]
-      });
+        values: locales[name] });
+
     }
   });
-  localeValues.unshift({
-    locale: locale,
-    values: locales[locale]
-  });
+  localeValues.unshift({ locale: locale, values: locales[locale] });
   try {
     return JSON.stringify(compileJsonObj(JSON.parse(jsonStr), localeValues, delimiters), null, 2);
-  } catch (e) {}
+  }
+  catch (e) {}
   return jsonStr;
 }
 function isI18nStr(value, delimiters) {
@@ -3203,7 +2903,8 @@ function compileValue(jsonObj, key, localeValues, delimiters) {
         });
       }
     }
-  } else {
+  } else
+  {
     compileJsonObj(value, localeValues, delimiters);
   }
 }
@@ -3220,7 +2921,8 @@ function walkJsonObj(jsonObj, walk) {
         return true;
       }
     }
-  } else if (isObject(jsonObj)) {
+  } else
+  if (isObject(jsonObj)) {
     for (var key in jsonObj) {
       if (walk(jsonObj, key)) {
         return true;
@@ -3229,15 +2931,14 @@ function walkJsonObj(jsonObj, walk) {
   }
   return false;
 }
+
 function resolveLocale(locales) {
   return function (locale) {
     if (!locale) {
       return locale;
     }
     locale = normalizeLocale(locale) || locale;
-    return resolveLocaleChain(locale).find(function (locale) {
-      return locales.indexOf(locale) > -1;
-    });
+    return resolveLocaleChain(locale).find(function (locale) {return locales.indexOf(locale) > -1;});
   };
 }
 function resolveLocaleChain(locale) {
@@ -3252,50 +2953,7 @@ function resolveLocaleChain(locale) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"], __webpack_require__(/*! ./../../../webpack/buildin/global.js */ 2)))
 
 /***/ }),
-/* 22 */
-/*!***************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/classCallCheck.js ***!
-  \***************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
-module.exports = _classCallCheck, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-/* 23 */
-/*!************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/createClass.js ***!
-  \************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var toPropertyKey = __webpack_require__(/*! ./toPropertyKey.js */ 11);
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, toPropertyKey(descriptor.key), descriptor);
-  }
-}
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  Object.defineProperty(Constructor, "prototype", {
-    writable: false
-  });
-  return Constructor;
-}
-module.exports = _createClass, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-/* 24 */
+/* 4 */
 /*!******************************************************************************************!*\
   !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js ***!
   \******************************************************************************************/
@@ -4297,8 +3955,7 @@ function observe (value, asRootData) {
     !isServerRendering() &&
     (Array.isArray(value) || isPlainObject(value)) &&
     Object.isExtensible(value) &&
-    !value._isVue &&
-    !value.__v_isMPComponent
+    !value._isVue
   ) {
     ob = new Observer(value);
   }
@@ -8716,8 +8373,6 @@ Vue.version = '2.6.11';
  */
 var ARRAYTYPE = '[object Array]';
 var OBJECTTYPE = '[object Object]';
-var NULLTYPE = '[object Null]';
-var UNDEFINEDTYPE = '[object Undefined]';
 // const FUNCTIONTYPE = '[object Function]'
 
 function diff(current, pre) {
@@ -8751,16 +8406,6 @@ function syncKeys(current, pre) {
     }
 }
 
-function nullOrUndefined(currentType, preType) {
-    if(
-        (currentType === NULLTYPE || currentType === UNDEFINEDTYPE) && 
-        (preType === NULLTYPE || preType === UNDEFINEDTYPE)
-    ) {
-        return false
-    }
-    return true
-}
-
 function _diff(current, pre, path, result) {
     if (current === pre) { return }
     var rootCurrentType = type(current);
@@ -8775,7 +8420,7 @@ function _diff(current, pre, path, result) {
                 var currentType = type(currentValue);
                 var preType = type(preValue);
                 if (currentType != ARRAYTYPE && currentType != OBJECTTYPE) {
-                    if (currentValue !== pre[key] && nullOrUndefined(currentType, preType)) {
+                    if (currentValue !== pre[key]) {
                         setResult(result, (path == '' ? '' : path + ".") + key, currentValue);
                     }
                 } else if (currentType == ARRAYTYPE) {
@@ -8834,7 +8479,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"MultiFunctionalToolsUniapp","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"VUE_APP_NAME":"MultiFunctionalToolsUniapp","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -8855,14 +8500,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"MultiFunctionalToolsUniapp","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_NAME":"MultiFunctionalToolsUniapp","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"MultiFunctionalToolsUniapp","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_NAME":"MultiFunctionalToolsUniapp","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -8892,16 +8537,6 @@ function nextTick$1(vm, cb) {
 }
 
 /*  */
-
-function clearInstance(key, value) {
-  // 简易去除 Vue 和小程序组件实例
-  if (value) {
-    if (value._isVue || value.__v_isMPComponent) {
-      return {}
-    }
-  }
-  return value
-}
 
 function cloneWithData(vm) {
   // 确保当前 vm 所有数据被同步
@@ -8934,7 +8569,7 @@ function cloneWithData(vm) {
     ret['value'] = vm.value;
   }
 
-  return JSON.parse(JSON.stringify(ret, clearInstance))
+  return JSON.parse(JSON.stringify(ret))
 }
 
 var patch = function(oldVnode, vnode) {
@@ -8958,7 +8593,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"VUE_APP_DARK_MODE":"false","VUE_APP_NAME":"MultiFunctionalToolsUniapp","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_NAME":"MultiFunctionalToolsUniapp","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -9144,16 +8779,9 @@ function internalMixin(Vue) {
 
   Vue.prototype.$emit = function(event) {
     if (this.$scope && event) {
-      var triggerEvent = this.$scope['_triggerEvent'] || this.$scope['triggerEvent'];
-      if (triggerEvent) {
-        try {
-          triggerEvent.call(this.$scope, event, {
-            __args__: toArray(arguments, 1)
-          });
-        } catch (error) {
-
-        }
-      }
+      (this.$scope['_triggerEvent'] || this.$scope['triggerEvent']).call(this.$scope, event, {
+        __args__: toArray(arguments, 1)
+      });
     }
     return oldEmit.apply(this, arguments)
   };
@@ -9320,8 +8948,7 @@ var LIFECYCLE_HOOKS$1 = [
     // 'onReady', // 兼容旧版本，应该移除该事件
     'onPageShow',
     'onPageHide',
-    'onPageResize',
-    'onUploadDouyinVideo'
+    'onPageResize'
 ];
 function lifecycleMixin$1(Vue) {
 
@@ -9375,22 +9002,22 @@ internalMixin(Vue);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../webpack/buildin/global.js */ 2)))
 
 /***/ }),
-/* 25 */
-/*!**********************************************************************!*\
-  !*** D:/toBeNo1/uniappProject/MultiFunctionalToolsUniapp/pages.json ***!
-  \**********************************************************************/
+/* 5 */
+/*!*******************************************************************************!*\
+  !*** D:/multi-functional-tools-uni-app/multiFunctionalToolsUniapp/pages.json ***!
+  \*******************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
 
 
 /***/ }),
-/* 26 */,
-/* 27 */,
-/* 28 */,
-/* 29 */,
-/* 30 */,
-/* 31 */
+/* 6 */,
+/* 7 */,
+/* 8 */,
+/* 9 */,
+/* 10 */,
+/* 11 */
 /*!**********************************************************************************************************!*\
   !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/runtime/componentNormalizer.js ***!
   \**********************************************************************************************************/
@@ -9518,15 +9145,14 @@ function normalizeComponent (
 
 
 /***/ }),
-/* 32 */
-/*!********************************************************************************************************!*\
-  !*** D:/toBeNo1/uniappProject/MultiFunctionalToolsUniapp/node_modules/es6-promise/dist/es6-promise.js ***!
-  \********************************************************************************************************/
+/* 12 */
+/*!*****************************************************************************************************************!*\
+  !*** D:/multi-functional-tools-uni-app/multiFunctionalToolsUniapp/node_modules/es6-promise/dist/es6-promise.js ***!
+  \*****************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(process, global) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;var _typeof = __webpack_require__(/*! @babel/runtime/helpers/typeof */ 12);
-/*!
+/* WEBPACK VAR INJECTION */(function(process, global) {/*!
  * @overview es6-promise - a tiny implementation of Promises/A+.
  * @copyright Copyright (c) 2014 Yehuda Katz, Tom Dale, Stefan Penner and contributors (Conversion to ES6 API by Jake Archibald)
  * @license   Licensed under MIT license
@@ -9535,21 +9161,21 @@ function normalizeComponent (
  */
 
 (function (global, factory) {
-  ( false ? undefined : _typeof(exports)) === 'object' && typeof module !== 'undefined' ? module.exports = factory() :  true ? !(__WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
-				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
-				(__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) :
-				__WEBPACK_AMD_DEFINE_FACTORY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)) : undefined;
-})(this, function () {
-  'use strict';
+   true ? module.exports = factory() :
+  undefined;
+})(this, function () {'use strict';
 
   function objectOrFunction(x) {
-    var type = _typeof(x);
+    var type = typeof x;
     return x !== null && (type === 'object' || type === 'function');
   }
+
   function isFunction(x) {
     return typeof x === 'function';
   }
+
+
+
   var _isArray = void 0;
   if (Array.isArray) {
     _isArray = Array.isArray;
@@ -9558,10 +9184,13 @@ function normalizeComponent (
       return Object.prototype.toString.call(x) === '[object Array]';
     };
   }
+
   var isArray = _isArray;
+
   var len = 0;
   var vertxNext = void 0;
   var customSchedulerFn = void 0;
+
   var asap = function asap(callback, arg) {
     queue[len] = callback;
     queue[len + 1] = arg;
@@ -9577,12 +9206,15 @@ function normalizeComponent (
       }
     }
   };
+
   function setScheduler(scheduleFn) {
     customSchedulerFn = scheduleFn;
   }
+
   function setAsap(asapFn) {
     asap = asapFn;
   }
+
   var browserWindow = typeof window !== 'undefined' ? window : undefined;
   var browserGlobal = browserWindow || {};
   var BrowserMutationObserver = browserGlobal.MutationObserver || browserGlobal.WebKitMutationObserver;
@@ -9607,15 +9239,16 @@ function normalizeComponent (
         vertxNext(flush);
       };
     }
+
     return useSetTimeout();
   }
+
   function useMutationObserver() {
     var iterations = 0;
     var observer = new BrowserMutationObserver(flush);
     var node = document.createTextNode('');
-    observer.observe(node, {
-      characterData: true
-    });
+    observer.observe(node, { characterData: true });
+
     return function () {
       node.data = iterations = ++iterations % 2;
     };
@@ -9629,6 +9262,7 @@ function normalizeComponent (
       return channel.port2.postMessage(0);
     };
   }
+
   function useSetTimeout() {
     // Store setTimeout reference so es6-promise will be unaffected by
     // other code modifying setTimeout (like sinon.useFakeTimers())
@@ -9637,17 +9271,22 @@ function normalizeComponent (
       return globalSetTimeout(flush, 1);
     };
   }
+
   var queue = new Array(1000);
   function flush() {
     for (var i = 0; i < len; i += 2) {
       var callback = queue[i];
       var arg = queue[i + 1];
+
       callback(arg);
+
       queue[i] = undefined;
       queue[i + 1] = undefined;
     }
+
     len = 0;
   }
+
   function attemptVertx() {
     try {
       var vertx = Function('return this')().require('vertx');
@@ -9657,6 +9296,7 @@ function normalizeComponent (
       return useSetTimeout();
     }
   }
+
   var scheduleFlush = void 0;
   // Decide what async method to use to triggering processing of queued callbacks:
   if (isNode) {
@@ -9670,13 +9310,19 @@ function normalizeComponent (
   } else {
     scheduleFlush = useSetTimeout();
   }
+
   function then(onFulfillment, onRejection) {
     var parent = this;
+
     var child = new this.constructor(noop);
+
     if (child[PROMISE_ID] === undefined) {
       makePromise(child);
     }
+
     var _state = parent._state;
+
+
     if (_state) {
       var callback = arguments[_state - 1];
       asap(function () {
@@ -9685,61 +9331,70 @@ function normalizeComponent (
     } else {
       subscribe(parent, child, onFulfillment, onRejection);
     }
+
     return child;
   }
 
   /**
-    `Promise.resolve` returns a promise that will become resolved with the
-    passed `value`. It is shorthand for the following:
-  
-    ```javascript
-    let promise = new Promise(function(resolve, reject){
-      resolve(1);
-    });
-  
-    promise.then(function(value){
-      // value === 1
-    });
-    ```
-  
-    Instead of writing the above, your code now simply becomes the following:
-  
-    ```javascript
-    let promise = Promise.resolve(1);
-  
-    promise.then(function(value){
-      // value === 1
-    });
-    ```
-  
-    @method resolve
-    @static
-    @param {Any} value value that the returned promise will be resolved with
-    Useful for tooling.
-    @return {Promise} a promise that will become fulfilled with the given
-    `value`
-  */
+      `Promise.resolve` returns a promise that will become resolved with the
+      passed `value`. It is shorthand for the following:
+    
+      ```javascript
+      let promise = new Promise(function(resolve, reject){
+        resolve(1);
+      });
+    
+      promise.then(function(value){
+        // value === 1
+      });
+      ```
+    
+      Instead of writing the above, your code now simply becomes the following:
+    
+      ```javascript
+      let promise = Promise.resolve(1);
+    
+      promise.then(function(value){
+        // value === 1
+      });
+      ```
+    
+      @method resolve
+      @static
+      @param {Any} value value that the returned promise will be resolved with
+      Useful for tooling.
+      @return {Promise} a promise that will become fulfilled with the given
+      `value`
+    */
   function resolve$1(object) {
     /*jshint validthis:true */
     var Constructor = this;
-    if (object && _typeof(object) === 'object' && object.constructor === Constructor) {
+
+    if (object && typeof object === 'object' && object.constructor === Constructor) {
       return object;
     }
+
     var promise = new Constructor(noop);
     resolve(promise, object);
     return promise;
   }
+
   var PROMISE_ID = Math.random().toString(36).substring(2);
+
   function noop() {}
+
   var PENDING = void 0;
   var FULFILLED = 1;
   var REJECTED = 2;
+
   function selfFulfillment() {
     return new TypeError("You cannot resolve a promise with itself");
   }
+
   function cannotReturnOwn() {
     return new TypeError('A promises callback cannot return that same promise.');
   }
+
   function tryThen(then$$1, value, fulfillmentHandler, rejectionHandler) {
     try {
       then$$1.call(value, fulfillmentHandler, rejectionHandler);
@@ -9747,6 +9402,7 @@ function normalizeComponent (
       return e;
     }
   }
+
   function handleForeignThenable(promise, thenable, then$$1) {
     asap(function (promise) {
       var sealed = false;
@@ -9765,14 +9421,17 @@ function normalizeComponent (
           return;
         }
         sealed = true;
+
         reject(promise, reason);
       }, 'Settle: ' + (promise._label || ' unknown promise'));
+
       if (!sealed && error) {
         sealed = true;
         reject(promise, error);
       }
     }, promise);
   }
+
   function handleOwnThenable(promise, thenable) {
     if (thenable._state === FULFILLED) {
       fulfill(promise, thenable._result);
@@ -9786,6 +9445,7 @@ function normalizeComponent (
       });
     }
   }
+
   function handleMaybeThenable(promise, maybeThenable, then$$1) {
     if (maybeThenable.constructor === promise.constructor && then$$1 === then && maybeThenable.constructor.resolve === resolve$1) {
       handleOwnThenable(promise, maybeThenable);
@@ -9799,6 +9459,7 @@ function normalizeComponent (
       }
     }
   }
+
   function resolve(promise, value) {
     if (promise === value) {
       reject(promise, selfFulfillment());
@@ -9815,66 +9476,86 @@ function normalizeComponent (
       fulfill(promise, value);
     }
   }
+
   function publishRejection(promise) {
     if (promise._onerror) {
       promise._onerror(promise._result);
     }
+
     publish(promise);
   }
+
   function fulfill(promise, value) {
     if (promise._state !== PENDING) {
       return;
     }
+
     promise._result = value;
     promise._state = FULFILLED;
+
     if (promise._subscribers.length !== 0) {
       asap(publish, promise);
     }
   }
+
   function reject(promise, reason) {
     if (promise._state !== PENDING) {
       return;
     }
     promise._state = REJECTED;
     promise._result = reason;
+
     asap(publishRejection, promise);
   }
+
   function subscribe(parent, child, onFulfillment, onRejection) {
     var _subscribers = parent._subscribers;
     var length = _subscribers.length;
+
+
     parent._onerror = null;
+
     _subscribers[length] = child;
     _subscribers[length + FULFILLED] = onFulfillment;
     _subscribers[length + REJECTED] = onRejection;
+
     if (length === 0 && parent._state) {
       asap(publish, parent);
     }
   }
+
   function publish(promise) {
     var subscribers = promise._subscribers;
     var settled = promise._state;
+
     if (subscribers.length === 0) {
       return;
     }
+
     var child = void 0,
-      callback = void 0,
-      detail = promise._result;
+    callback = void 0,
+    detail = promise._result;
+
     for (var i = 0; i < subscribers.length; i += 3) {
       child = subscribers[i];
       callback = subscribers[i + settled];
+
       if (child) {
         invokeCallback(settled, child, callback, detail);
       } else {
         callback(detail);
       }
     }
+
     promise._subscribers.length = 0;
   }
+
   function invokeCallback(settled, promise, callback, detail) {
     var hasCallback = isFunction(callback),
-      value = void 0,
-      error = void 0,
-      succeeded = true;
+    value = void 0,
+    error = void 0,
+    succeeded = true;
+
     if (hasCallback) {
       try {
         value = callback(detail);
@@ -9882,6 +9563,7 @@ function normalizeComponent (
         succeeded = false;
         error = e;
       }
+
       if (promise === value) {
         reject(promise, cannotReturnOwn());
         return;
@@ -9889,6 +9571,7 @@ function normalizeComponent (
     } else {
       value = detail;
     }
+
     if (promise._state !== PENDING) {
       // noop
     } else if (hasCallback && succeeded) {
@@ -9901,6 +9584,7 @@ function normalizeComponent (
       reject(promise, value);
     }
   }
+
   function initializePromise(promise, resolver) {
     try {
       resolver(function resolvePromise(value) {
@@ -9912,30 +9596,38 @@ function normalizeComponent (
       reject(promise, e);
     }
   }
+
   var id = 0;
   function nextId() {
     return id++;
   }
+
   function makePromise(promise) {
     promise[PROMISE_ID] = id++;
     promise._state = undefined;
     promise._result = undefined;
     promise._subscribers = [];
   }
+
   function validationError() {
     return new Error('Array Methods must be provided an Array');
   }
+
   var Enumerator = function () {
     function Enumerator(Constructor, input) {
       this._instanceConstructor = Constructor;
       this.promise = new Constructor(noop);
+
       if (!this.promise[PROMISE_ID]) {
         makePromise(this.promise);
       }
+
       if (isArray(input)) {
         this.length = input.length;
         this._remaining = input.length;
+
         this._result = new Array(this.length);
+
         if (this.length === 0) {
           fulfill(this.promise, this._result);
         } else {
@@ -9949,14 +9641,18 @@ function normalizeComponent (
         reject(this.promise, validationError());
       }
     }
+
     Enumerator.prototype._enumerate = function _enumerate(input) {
       for (var i = 0; this._state === PENDING && i < input.length; i++) {
         this._eachEntry(input[i], i);
       }
     };
+
     Enumerator.prototype._eachEntry = function _eachEntry(entry, i) {
       var c = this._instanceConstructor;
       var resolve$$1 = c.resolve;
+
+
       if (resolve$$1 === resolve$1) {
         var _then = void 0;
         var error = void 0;
@@ -9967,6 +9663,7 @@ function normalizeComponent (
           didError = true;
           error = e;
         }
+
         if (_then === then && entry._state !== PENDING) {
           this._settledAt(entry._state, i, entry._result);
         } else if (typeof _then !== 'function') {
@@ -9989,150 +9686,159 @@ function normalizeComponent (
         this._willSettleAt(resolve$$1(entry), i);
       }
     };
+
     Enumerator.prototype._settledAt = function _settledAt(state, i, value) {
       var promise = this.promise;
+
+
       if (promise._state === PENDING) {
         this._remaining--;
+
         if (state === REJECTED) {
           reject(promise, value);
         } else {
           this._result[i] = value;
         }
       }
+
       if (this._remaining === 0) {
         fulfill(promise, this._result);
       }
     };
+
     Enumerator.prototype._willSettleAt = function _willSettleAt(promise, i) {
       var enumerator = this;
+
       subscribe(promise, undefined, function (value) {
         return enumerator._settledAt(FULFILLED, i, value);
       }, function (reason) {
         return enumerator._settledAt(REJECTED, i, reason);
       });
     };
+
     return Enumerator;
   }();
 
   /**
-    `Promise.all` accepts an array of promises, and returns a new promise which
-    is fulfilled with an array of fulfillment values for the passed promises, or
-    rejected with the reason of the first passed promise to be rejected. It casts all
-    elements of the passed iterable to promises as it runs this algorithm.
-  
-    Example:
-  
-    ```javascript
-    let promise1 = resolve(1);
-    let promise2 = resolve(2);
-    let promise3 = resolve(3);
-    let promises = [ promise1, promise2, promise3 ];
-  
-    Promise.all(promises).then(function(array){
-      // The array here would be [ 1, 2, 3 ];
-    });
-    ```
-  
-    If any of the `promises` given to `all` are rejected, the first promise
-    that is rejected will be given as an argument to the returned promises's
-    rejection handler. For example:
-  
-    Example:
-  
-    ```javascript
-    let promise1 = resolve(1);
-    let promise2 = reject(new Error("2"));
-    let promise3 = reject(new Error("3"));
-    let promises = [ promise1, promise2, promise3 ];
-  
-    Promise.all(promises).then(function(array){
-      // Code here never runs because there are rejected promises!
-    }, function(error) {
-      // error.message === "2"
-    });
-    ```
-  
-    @method all
-    @static
-    @param {Array} entries array of promises
-    @param {String} label optional string for labeling the promise.
-    Useful for tooling.
-    @return {Promise} promise that is fulfilled when all `promises` have been
-    fulfilled, or rejected if any of them become rejected.
-    @static
-  */
+         `Promise.all` accepts an array of promises, and returns a new promise which
+         is fulfilled with an array of fulfillment values for the passed promises, or
+         rejected with the reason of the first passed promise to be rejected. It casts all
+         elements of the passed iterable to promises as it runs this algorithm.
+       
+         Example:
+       
+         ```javascript
+         let promise1 = resolve(1);
+         let promise2 = resolve(2);
+         let promise3 = resolve(3);
+         let promises = [ promise1, promise2, promise3 ];
+       
+         Promise.all(promises).then(function(array){
+           // The array here would be [ 1, 2, 3 ];
+         });
+         ```
+       
+         If any of the `promises` given to `all` are rejected, the first promise
+         that is rejected will be given as an argument to the returned promises's
+         rejection handler. For example:
+       
+         Example:
+       
+         ```javascript
+         let promise1 = resolve(1);
+         let promise2 = reject(new Error("2"));
+         let promise3 = reject(new Error("3"));
+         let promises = [ promise1, promise2, promise3 ];
+       
+         Promise.all(promises).then(function(array){
+           // Code here never runs because there are rejected promises!
+         }, function(error) {
+           // error.message === "2"
+         });
+         ```
+       
+         @method all
+         @static
+         @param {Array} entries array of promises
+         @param {String} label optional string for labeling the promise.
+         Useful for tooling.
+         @return {Promise} promise that is fulfilled when all `promises` have been
+         fulfilled, or rejected if any of them become rejected.
+         @static
+       */
   function all(entries) {
     return new Enumerator(this, entries).promise;
   }
 
   /**
-    `Promise.race` returns a new promise which is settled in the same way as the
-    first passed promise to settle.
-  
-    Example:
-  
-    ```javascript
-    let promise1 = new Promise(function(resolve, reject){
-      setTimeout(function(){
-        resolve('promise 1');
-      }, 200);
-    });
-  
-    let promise2 = new Promise(function(resolve, reject){
-      setTimeout(function(){
-        resolve('promise 2');
-      }, 100);
-    });
-  
-    Promise.race([promise1, promise2]).then(function(result){
-      // result === 'promise 2' because it was resolved before promise1
-      // was resolved.
-    });
-    ```
-  
-    `Promise.race` is deterministic in that only the state of the first
-    settled promise matters. For example, even if other promises given to the
-    `promises` array argument are resolved, but the first settled promise has
-    become rejected before the other promises became fulfilled, the returned
-    promise will become rejected:
-  
-    ```javascript
-    let promise1 = new Promise(function(resolve, reject){
-      setTimeout(function(){
-        resolve('promise 1');
-      }, 200);
-    });
-  
-    let promise2 = new Promise(function(resolve, reject){
-      setTimeout(function(){
-        reject(new Error('promise 2'));
-      }, 100);
-    });
-  
-    Promise.race([promise1, promise2]).then(function(result){
-      // Code here never runs
-    }, function(reason){
-      // reason.message === 'promise 2' because promise 2 became rejected before
-      // promise 1 became fulfilled
-    });
-    ```
-  
-    An example real-world use case is implementing timeouts:
-  
-    ```javascript
-    Promise.race([ajax('foo.json'), timeout(5000)])
-    ```
-  
-    @method race
-    @static
-    @param {Array} promises array of promises to observe
-    Useful for tooling.
-    @return {Promise} a promise which settles in the same way as the first passed
-    promise to settle.
-  */
+      `Promise.race` returns a new promise which is settled in the same way as the
+      first passed promise to settle.
+    
+      Example:
+    
+      ```javascript
+      let promise1 = new Promise(function(resolve, reject){
+        setTimeout(function(){
+          resolve('promise 1');
+        }, 200);
+      });
+    
+      let promise2 = new Promise(function(resolve, reject){
+        setTimeout(function(){
+          resolve('promise 2');
+        }, 100);
+      });
+    
+      Promise.race([promise1, promise2]).then(function(result){
+        // result === 'promise 2' because it was resolved before promise1
+        // was resolved.
+      });
+      ```
+    
+      `Promise.race` is deterministic in that only the state of the first
+      settled promise matters. For example, even if other promises given to the
+      `promises` array argument are resolved, but the first settled promise has
+      become rejected before the other promises became fulfilled, the returned
+      promise will become rejected:
+    
+      ```javascript
+      let promise1 = new Promise(function(resolve, reject){
+        setTimeout(function(){
+          resolve('promise 1');
+        }, 200);
+      });
+    
+      let promise2 = new Promise(function(resolve, reject){
+        setTimeout(function(){
+          reject(new Error('promise 2'));
+        }, 100);
+      });
+    
+      Promise.race([promise1, promise2]).then(function(result){
+        // Code here never runs
+      }, function(reason){
+        // reason.message === 'promise 2' because promise 2 became rejected before
+        // promise 1 became fulfilled
+      });
+      ```
+    
+      An example real-world use case is implementing timeouts:
+    
+      ```javascript
+      Promise.race([ajax('foo.json'), timeout(5000)])
+      ```
+    
+      @method race
+      @static
+      @param {Array} promises array of promises to observe
+      Useful for tooling.
+      @return {Promise} a promise which settles in the same way as the first passed
+      promise to settle.
+    */
   function race(entries) {
     /*jshint validthis:true */
     var Constructor = this;
+
     if (!isArray(entries)) {
       return new Constructor(function (_, reject) {
         return reject(new TypeError('You must pass an array to race.'));
@@ -10148,39 +9854,39 @@ function normalizeComponent (
   }
 
   /**
-    `Promise.reject` returns a promise rejected with the passed `reason`.
-    It is shorthand for the following:
-  
-    ```javascript
-    let promise = new Promise(function(resolve, reject){
-      reject(new Error('WHOOPS'));
-    });
-  
-    promise.then(function(value){
-      // Code here doesn't run because the promise is rejected!
-    }, function(reason){
-      // reason.message === 'WHOOPS'
-    });
-    ```
-  
-    Instead of writing the above, your code now simply becomes the following:
-  
-    ```javascript
-    let promise = Promise.reject(new Error('WHOOPS'));
-  
-    promise.then(function(value){
-      // Code here doesn't run because the promise is rejected!
-    }, function(reason){
-      // reason.message === 'WHOOPS'
-    });
-    ```
-  
-    @method reject
-    @static
-    @param {Any} reason value that the returned promise will be rejected with.
-    Useful for tooling.
-    @return {Promise} a promise rejected with the given `reason`.
-  */
+      `Promise.reject` returns a promise rejected with the passed `reason`.
+      It is shorthand for the following:
+    
+      ```javascript
+      let promise = new Promise(function(resolve, reject){
+        reject(new Error('WHOOPS'));
+      });
+    
+      promise.then(function(value){
+        // Code here doesn't run because the promise is rejected!
+      }, function(reason){
+        // reason.message === 'WHOOPS'
+      });
+      ```
+    
+      Instead of writing the above, your code now simply becomes the following:
+    
+      ```javascript
+      let promise = Promise.reject(new Error('WHOOPS'));
+    
+      promise.then(function(value){
+        // Code here doesn't run because the promise is rejected!
+      }, function(reason){
+        // reason.message === 'WHOOPS'
+      });
+      ```
+    
+      @method reject
+      @static
+      @param {Any} reason value that the returned promise will be rejected with.
+      Useful for tooling.
+      @return {Promise} a promise rejected with the given `reason`.
+    */
   function reject$1(reason) {
     /*jshint validthis:true */
     var Constructor = this;
@@ -10188,122 +9894,125 @@ function normalizeComponent (
     reject(promise, reason);
     return promise;
   }
+
   function needsResolver() {
     throw new TypeError('You must pass a resolver function as the first argument to the promise constructor');
   }
+
   function needsNew() {
     throw new TypeError("Failed to construct 'Promise': Please use the 'new' operator, this object constructor cannot be called as a function.");
   }
 
   /**
-    Promise objects represent the eventual result of an asynchronous operation. The
-    primary way of interacting with a promise is through its `then` method, which
-    registers callbacks to receive either a promise's eventual value or the reason
-    why the promise cannot be fulfilled.
-  
-    Terminology
-    -----------
-  
-    - `promise` is an object or function with a `then` method whose behavior conforms to this specification.
-    - `thenable` is an object or function that defines a `then` method.
-    - `value` is any legal JavaScript value (including undefined, a thenable, or a promise).
-    - `exception` is a value that is thrown using the throw statement.
-    - `reason` is a value that indicates why a promise was rejected.
-    - `settled` the final resting state of a promise, fulfilled or rejected.
-  
-    A promise can be in one of three states: pending, fulfilled, or rejected.
-  
-    Promises that are fulfilled have a fulfillment value and are in the fulfilled
-    state.  Promises that are rejected have a rejection reason and are in the
-    rejected state.  A fulfillment value is never a thenable.
-  
-    Promises can also be said to *resolve* a value.  If this value is also a
-    promise, then the original promise's settled state will match the value's
-    settled state.  So a promise that *resolves* a promise that rejects will
-    itself reject, and a promise that *resolves* a promise that fulfills will
-    itself fulfill.
-  
-  
-    Basic Usage:
-    ------------
-  
-    ```js
-    let promise = new Promise(function(resolve, reject) {
-      // on success
-      resolve(value);
-  
-      // on failure
-      reject(reason);
-    });
-  
-    promise.then(function(value) {
-      // on fulfillment
-    }, function(reason) {
-      // on rejection
-    });
-    ```
-  
-    Advanced Usage:
-    ---------------
-  
-    Promises shine when abstracting away asynchronous interactions such as
-    `XMLHttpRequest`s.
-  
-    ```js
-    function getJSON(url) {
-      return new Promise(function(resolve, reject){
-        let xhr = new XMLHttpRequest();
-  
-        xhr.open('GET', url);
-        xhr.onreadystatechange = handler;
-        xhr.responseType = 'json';
-        xhr.setRequestHeader('Accept', 'application/json');
-        xhr.send();
-  
-        function handler() {
-          if (this.readyState === this.DONE) {
-            if (this.status === 200) {
-              resolve(this.response);
-            } else {
-              reject(new Error('getJSON: `' + url + '` failed with status: [' + this.status + ']'));
-            }
-          }
-        };
+      Promise objects represent the eventual result of an asynchronous operation. The
+      primary way of interacting with a promise is through its `then` method, which
+      registers callbacks to receive either a promise's eventual value or the reason
+      why the promise cannot be fulfilled.
+    
+      Terminology
+      -----------
+    
+      - `promise` is an object or function with a `then` method whose behavior conforms to this specification.
+      - `thenable` is an object or function that defines a `then` method.
+      - `value` is any legal JavaScript value (including undefined, a thenable, or a promise).
+      - `exception` is a value that is thrown using the throw statement.
+      - `reason` is a value that indicates why a promise was rejected.
+      - `settled` the final resting state of a promise, fulfilled or rejected.
+    
+      A promise can be in one of three states: pending, fulfilled, or rejected.
+    
+      Promises that are fulfilled have a fulfillment value and are in the fulfilled
+      state.  Promises that are rejected have a rejection reason and are in the
+      rejected state.  A fulfillment value is never a thenable.
+    
+      Promises can also be said to *resolve* a value.  If this value is also a
+      promise, then the original promise's settled state will match the value's
+      settled state.  So a promise that *resolves* a promise that rejects will
+      itself reject, and a promise that *resolves* a promise that fulfills will
+      itself fulfill.
+    
+    
+      Basic Usage:
+      ------------
+    
+      ```js
+      let promise = new Promise(function(resolve, reject) {
+        // on success
+        resolve(value);
+    
+        // on failure
+        reject(reason);
       });
-    }
-  
-    getJSON('/posts.json').then(function(json) {
-      // on fulfillment
-    }, function(reason) {
-      // on rejection
-    });
-    ```
-  
-    Unlike callbacks, promises are great composable primitives.
-  
-    ```js
-    Promise.all([
-      getJSON('/posts'),
-      getJSON('/comments')
-    ]).then(function(values){
-      values[0] // => postsJSON
-      values[1] // => commentsJSON
-  
-      return values;
-    });
-    ```
-  
-    @class Promise
-    @param {Function} resolver
-    Useful for tooling.
-    @constructor
-  */
+    
+      promise.then(function(value) {
+        // on fulfillment
+      }, function(reason) {
+        // on rejection
+      });
+      ```
+    
+      Advanced Usage:
+      ---------------
+    
+      Promises shine when abstracting away asynchronous interactions such as
+      `XMLHttpRequest`s.
+    
+      ```js
+      function getJSON(url) {
+        return new Promise(function(resolve, reject){
+          let xhr = new XMLHttpRequest();
+    
+          xhr.open('GET', url);
+          xhr.onreadystatechange = handler;
+          xhr.responseType = 'json';
+          xhr.setRequestHeader('Accept', 'application/json');
+          xhr.send();
+    
+          function handler() {
+            if (this.readyState === this.DONE) {
+              if (this.status === 200) {
+                resolve(this.response);
+              } else {
+                reject(new Error('getJSON: `' + url + '` failed with status: [' + this.status + ']'));
+              }
+            }
+          };
+        });
+      }
+    
+      getJSON('/posts.json').then(function(json) {
+        // on fulfillment
+      }, function(reason) {
+        // on rejection
+      });
+      ```
+    
+      Unlike callbacks, promises are great composable primitives.
+    
+      ```js
+      Promise.all([
+        getJSON('/posts'),
+        getJSON('/comments')
+      ]).then(function(values){
+        values[0] // => postsJSON
+        values[1] // => commentsJSON
+    
+        return values;
+      });
+      ```
+    
+      @class Promise
+      @param {Function} resolver
+      Useful for tooling.
+      @constructor
+    */
 
   var Promise$1 = function () {
     function Promise(resolver) {
       this[PROMISE_ID] = nextId();
       this._result = this._state = undefined;
       this._subscribers = [];
+
       if (noop !== resolver) {
         typeof resolver !== 'function' && needsResolver();
         this instanceof Promise ? initializePromise(this, resolver) : needsNew();
@@ -10311,236 +10020,239 @@ function normalizeComponent (
     }
 
     /**
-    The primary way of interacting with a promise is through its `then` method,
-    which registers callbacks to receive either a promise's eventual value or the
-    reason why the promise cannot be fulfilled.
-     ```js
-    findUser().then(function(user){
-      // user is available
-    }, function(reason){
-      // user is unavailable, and you are given the reason why
-    });
-    ```
-     Chaining
-    --------
-     The return value of `then` is itself a promise.  This second, 'downstream'
-    promise is resolved with the return value of the first promise's fulfillment
-    or rejection handler, or rejected if the handler throws an exception.
-     ```js
-    findUser().then(function (user) {
-      return user.name;
-    }, function (reason) {
-      return 'default name';
-    }).then(function (userName) {
-      // If `findUser` fulfilled, `userName` will be the user's name, otherwise it
-      // will be `'default name'`
-    });
-     findUser().then(function (user) {
-      throw new Error('Found user, but still unhappy');
-    }, function (reason) {
-      throw new Error('`findUser` rejected and we're unhappy');
-    }).then(function (value) {
-      // never reached
-    }, function (reason) {
-      // if `findUser` fulfilled, `reason` will be 'Found user, but still unhappy'.
-      // If `findUser` rejected, `reason` will be '`findUser` rejected and we're unhappy'.
-    });
-    ```
-    If the downstream promise does not specify a rejection handler, rejection reasons will be propagated further downstream.
-     ```js
-    findUser().then(function (user) {
-      throw new PedagogicalException('Upstream error');
-    }).then(function (value) {
-      // never reached
-    }).then(function (value) {
-      // never reached
-    }, function (reason) {
-      // The `PedgagocialException` is propagated all the way down to here
-    });
-    ```
-     Assimilation
-    ------------
-     Sometimes the value you want to propagate to a downstream promise can only be
-    retrieved asynchronously. This can be achieved by returning a promise in the
-    fulfillment or rejection handler. The downstream promise will then be pending
-    until the returned promise is settled. This is called *assimilation*.
-     ```js
-    findUser().then(function (user) {
-      return findCommentsByAuthor(user);
-    }).then(function (comments) {
-      // The user's comments are now available
-    });
-    ```
-     If the assimliated promise rejects, then the downstream promise will also reject.
-     ```js
-    findUser().then(function (user) {
-      return findCommentsByAuthor(user);
-    }).then(function (comments) {
-      // If `findCommentsByAuthor` fulfills, we'll have the value here
-    }, function (reason) {
-      // If `findCommentsByAuthor` rejects, we'll have the reason here
-    });
-    ```
-     Simple Example
-    --------------
-     Synchronous Example
-     ```javascript
-    let result;
-     try {
-      result = findResult();
-      // success
-    } catch(reason) {
-      // failure
-    }
-    ```
-     Errback Example
-     ```js
-    findResult(function(result, err){
-      if (err) {
-        // failure
-      } else {
+      The primary way of interacting with a promise is through its `then` method,
+      which registers callbacks to receive either a promise's eventual value or the
+      reason why the promise cannot be fulfilled.
+       ```js
+      findUser().then(function(user){
+        // user is available
+      }, function(reason){
+        // user is unavailable, and you are given the reason why
+      });
+      ```
+       Chaining
+      --------
+       The return value of `then` is itself a promise.  This second, 'downstream'
+      promise is resolved with the return value of the first promise's fulfillment
+      or rejection handler, or rejected if the handler throws an exception.
+       ```js
+      findUser().then(function (user) {
+        return user.name;
+      }, function (reason) {
+        return 'default name';
+      }).then(function (userName) {
+        // If `findUser` fulfilled, `userName` will be the user's name, otherwise it
+        // will be `'default name'`
+      });
+       findUser().then(function (user) {
+        throw new Error('Found user, but still unhappy');
+      }, function (reason) {
+        throw new Error('`findUser` rejected and we're unhappy');
+      }).then(function (value) {
+        // never reached
+      }, function (reason) {
+        // if `findUser` fulfilled, `reason` will be 'Found user, but still unhappy'.
+        // If `findUser` rejected, `reason` will be '`findUser` rejected and we're unhappy'.
+      });
+      ```
+      If the downstream promise does not specify a rejection handler, rejection reasons will be propagated further downstream.
+       ```js
+      findUser().then(function (user) {
+        throw new PedagogicalException('Upstream error');
+      }).then(function (value) {
+        // never reached
+      }).then(function (value) {
+        // never reached
+      }, function (reason) {
+        // The `PedgagocialException` is propagated all the way down to here
+      });
+      ```
+       Assimilation
+      ------------
+       Sometimes the value you want to propagate to a downstream promise can only be
+      retrieved asynchronously. This can be achieved by returning a promise in the
+      fulfillment or rejection handler. The downstream promise will then be pending
+      until the returned promise is settled. This is called *assimilation*.
+       ```js
+      findUser().then(function (user) {
+        return findCommentsByAuthor(user);
+      }).then(function (comments) {
+        // The user's comments are now available
+      });
+      ```
+       If the assimliated promise rejects, then the downstream promise will also reject.
+       ```js
+      findUser().then(function (user) {
+        return findCommentsByAuthor(user);
+      }).then(function (comments) {
+        // If `findCommentsByAuthor` fulfills, we'll have the value here
+      }, function (reason) {
+        // If `findCommentsByAuthor` rejects, we'll have the reason here
+      });
+      ```
+       Simple Example
+      --------------
+       Synchronous Example
+       ```javascript
+      let result;
+       try {
+        result = findResult();
         // success
-      }
-    });
-    ```
-     Promise Example;
-     ```javascript
-    findResult().then(function(result){
-      // success
-    }, function(reason){
-      // failure
-    });
-    ```
-     Advanced Example
-    --------------
-     Synchronous Example
-     ```javascript
-    let author, books;
-     try {
-      author = findAuthor();
-      books  = findBooksByAuthor(author);
-      // success
-    } catch(reason) {
-      // failure
-    }
-    ```
-     Errback Example
-     ```js
-     function foundBooks(books) {
-     }
-     function failure(reason) {
-     }
-     findAuthor(function(author, err){
-      if (err) {
-        failure(err);
+      } catch(reason) {
         // failure
-      } else {
-        try {
-          findBoooksByAuthor(author, function(books, err) {
-            if (err) {
-              failure(err);
-            } else {
-              try {
-                foundBooks(books);
-              } catch(reason) {
-                failure(reason);
-              }
-            }
-          });
-        } catch(error) {
-          failure(err);
+      }
+      ```
+       Errback Example
+       ```js
+      findResult(function(result, err){
+        if (err) {
+          // failure
+        } else {
+          // success
         }
+      });
+      ```
+       Promise Example;
+       ```javascript
+      findResult().then(function(result){
         // success
+      }, function(reason){
+        // failure
+      });
+      ```
+       Advanced Example
+      --------------
+       Synchronous Example
+       ```javascript
+      let author, books;
+       try {
+        author = findAuthor();
+        books  = findBooksByAuthor(author);
+        // success
+      } catch(reason) {
+        // failure
       }
-    });
-    ```
-     Promise Example;
-     ```javascript
-    findAuthor().
-      then(findBooksByAuthor).
-      then(function(books){
-        // found books
-    }).catch(function(reason){
-      // something went wrong
-    });
-    ```
-     @method then
-    @param {Function} onFulfilled
-    @param {Function} onRejected
-    Useful for tooling.
-    @return {Promise}
-    */
+      ```
+       Errback Example
+       ```js
+       function foundBooks(books) {
+       }
+       function failure(reason) {
+       }
+       findAuthor(function(author, err){
+        if (err) {
+          failure(err);
+          // failure
+        } else {
+          try {
+            findBoooksByAuthor(author, function(books, err) {
+              if (err) {
+                failure(err);
+              } else {
+                try {
+                  foundBooks(books);
+                } catch(reason) {
+                  failure(reason);
+                }
+              }
+            });
+          } catch(error) {
+            failure(err);
+          }
+          // success
+        }
+      });
+      ```
+       Promise Example;
+       ```javascript
+      findAuthor().
+        then(findBooksByAuthor).
+        then(function(books){
+          // found books
+      }).catch(function(reason){
+        // something went wrong
+      });
+      ```
+       @method then
+      @param {Function} onFulfilled
+      @param {Function} onRejected
+      Useful for tooling.
+      @return {Promise}
+      */
 
     /**
-    `catch` is simply sugar for `then(undefined, onRejection)` which makes it the same
-    as the catch block of a try/catch statement.
-    ```js
-    function findAuthor(){
-    throw new Error('couldn't find that author');
-    }
-    // synchronous
-    try {
-    findAuthor();
-    } catch(reason) {
-    // something went wrong
-    }
-    // async with promises
-    findAuthor().catch(function(reason){
-    // something went wrong
-    });
-    ```
-    @method catch
-    @param {Function} onRejection
-    Useful for tooling.
-    @return {Promise}
-    */
+         `catch` is simply sugar for `then(undefined, onRejection)` which makes it the same
+         as the catch block of a try/catch statement.
+         ```js
+         function findAuthor(){
+         throw new Error('couldn't find that author');
+         }
+         // synchronous
+         try {
+         findAuthor();
+         } catch(reason) {
+         // something went wrong
+         }
+         // async with promises
+         findAuthor().catch(function(reason){
+         // something went wrong
+         });
+         ```
+         @method catch
+         @param {Function} onRejection
+         Useful for tooling.
+         @return {Promise}
+         */
+
 
     Promise.prototype.catch = function _catch(onRejection) {
       return this.then(null, onRejection);
     };
 
     /**
-      `finally` will be invoked regardless of the promise's fate just as native
-      try/catch/finally behaves
-    
-      Synchronous example:
-    
-      ```js
-      findAuthor() {
-        if (Math.random() > 0.5) {
-          throw new Error();
-        }
-        return new Author();
-      }
-    
-      try {
-        return findAuthor(); // succeed or fail
-      } catch(error) {
-        return findOtherAuther();
-      } finally {
-        // always runs
-        // doesn't affect the return value
-      }
-      ```
-    
-      Asynchronous example:
-    
-      ```js
-      findAuthor().catch(function(reason){
-        return findOtherAuther();
-      }).finally(function(){
-        // author was either found, or not
-      });
-      ```
-    
-      @method finally
-      @param {Function} callback
-      @return {Promise}
-    */
+         `finally` will be invoked regardless of the promise's fate just as native
+         try/catch/finally behaves
+       
+         Synchronous example:
+       
+         ```js
+         findAuthor() {
+           if (Math.random() > 0.5) {
+             throw new Error();
+           }
+           return new Author();
+         }
+       
+         try {
+           return findAuthor(); // succeed or fail
+         } catch(error) {
+           return findOtherAuther();
+         } finally {
+           // always runs
+           // doesn't affect the return value
+         }
+         ```
+       
+         Asynchronous example:
+       
+         ```js
+         findAuthor().catch(function(reason){
+           return findOtherAuther();
+         }).finally(function(){
+           // author was either found, or not
+         });
+         ```
+       
+         @method finally
+         @param {Function} callback
+         @return {Promise}
+       */
+
 
     Promise.prototype.finally = function _finally(callback) {
       var promise = this;
       var constructor = promise.constructor;
+
       if (isFunction(callback)) {
         return promise.then(function (value) {
           return constructor.resolve(callback()).then(function () {
@@ -10552,10 +10264,13 @@ function normalizeComponent (
           });
         });
       }
+
       return promise.then(callback, callback);
     };
+
     return Promise;
   }();
+
   Promise$1.prototype.then = then;
   Promise$1.all = all;
   Promise$1.race = race;
@@ -10568,6 +10283,7 @@ function normalizeComponent (
   /*global self*/
   function polyfill() {
     var local = void 0;
+
     if (typeof global !== 'undefined') {
       local = global;
     } else if (typeof self !== 'undefined') {
@@ -10579,7 +10295,9 @@ function normalizeComponent (
         throw new Error('polyfill failed because global object is unavailable in this environment');
       }
     }
+
     var P = local.Promise;
+
     if (P) {
       var promiseToString = null;
       try {
@@ -10587,22 +10305,26 @@ function normalizeComponent (
       } catch (e) {
         // silently ignored
       }
+
       if (promiseToString === '[object Promise]' && !P.cast) {
         return;
       }
     }
+
     local.Promise = Promise$1;
   }
 
   // Strange compat..
   Promise$1.polyfill = polyfill;
   Promise$1.Promise = Promise$1;
+
   return Promise$1;
+
 });
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/node-libs-browser/mock/process.js */ 33), __webpack_require__(/*! (webpack)/buildin/global.js */ 2)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../HBuilderX/plugins/uniapp-cli/node_modules/node-libs-browser/mock/process.js */ 13), __webpack_require__(/*! ./../../../../../HBuilderX/plugins/uniapp-cli/node_modules/webpack/buildin/global.js */ 2)))
 
 /***/ }),
-/* 33 */
+/* 13 */
 /*!********************************************************!*\
   !*** ./node_modules/node-libs-browser/mock/process.js ***!
   \********************************************************/
@@ -10633,7 +10355,7 @@ exports.binding = function (name) {
     var path;
     exports.cwd = function () { return cwd };
     exports.chdir = function (dir) {
-        if (!path) path = __webpack_require__(/*! path */ 34);
+        if (!path) path = __webpack_require__(/*! path */ 14);
         cwd = path.resolve(dir, cwd);
     };
 })();
@@ -10646,7 +10368,7 @@ exports.features = {};
 
 
 /***/ }),
-/* 34 */
+/* 14 */
 /*!***********************************************!*\
   !*** ./node_modules/path-browserify/index.js ***!
   \***********************************************/
@@ -10956,41 +10678,41 @@ var substr = 'ab'.substr(-1) === 'b'
     }
 ;
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node-libs-browser/mock/process.js */ 33)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node-libs-browser/mock/process.js */ 13)))
 
 /***/ }),
-/* 35 */
-/*!***************************************************************************************!*\
-  !*** D:/toBeNo1/uniappProject/MultiFunctionalToolsUniapp/node_modules/axios/index.js ***!
-  \***************************************************************************************/
+/* 15 */
+/*!************************************************************************************************!*\
+  !*** D:/multi-functional-tools-uni-app/multiFunctionalToolsUniapp/node_modules/axios/index.js ***!
+  \************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! ./lib/axios */ 36);
+module.exports = __webpack_require__(/*! ./lib/axios */ 16);
 
 /***/ }),
-/* 36 */
-/*!*******************************************************************************************!*\
-  !*** D:/toBeNo1/uniappProject/MultiFunctionalToolsUniapp/node_modules/axios/lib/axios.js ***!
-  \*******************************************************************************************/
+/* 16 */
+/*!****************************************************************************************************!*\
+  !*** D:/multi-functional-tools-uni-app/multiFunctionalToolsUniapp/node_modules/axios/lib/axios.js ***!
+  \****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(/*! ./utils */ 37);
-var bind = __webpack_require__(/*! ./helpers/bind */ 38);
-var Axios = __webpack_require__(/*! ./core/Axios */ 39);
-var mergeConfig = __webpack_require__(/*! ./core/mergeConfig */ 57);
-var defaults = __webpack_require__(/*! ./defaults */ 45);
+var utils = __webpack_require__(/*! ./utils */ 17);
+var bind = __webpack_require__(/*! ./helpers/bind */ 18);
+var Axios = __webpack_require__(/*! ./core/Axios */ 19);
+var mergeConfig = __webpack_require__(/*! ./core/mergeConfig */ 37);
+var defaults = __webpack_require__(/*! ./defaults */ 25);
 
 /**
- * Create an instance of Axios
- *
- * @param {Object} defaultConfig The default config for the instance
- * @return {Axios} A new instance of Axios
- */
+                                       * Create an instance of Axios
+                                       *
+                                       * @param {Object} defaultConfig The default config for the instance
+                                       * @return {Axios} A new instance of Axios
+                                       */
 function createInstance(defaultConfig) {
   var context = new Axios(defaultConfig);
   var instance = bind(Axios.prototype.request, context);
@@ -11000,6 +10722,7 @@ function createInstance(defaultConfig) {
 
   // Copy context to instance
   utils.extend(instance, context);
+
   return instance;
 }
 
@@ -11015,33 +10738,33 @@ axios.create = function create(instanceConfig) {
 };
 
 // Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(/*! ./cancel/Cancel */ 58);
-axios.CancelToken = __webpack_require__(/*! ./cancel/CancelToken */ 59);
-axios.isCancel = __webpack_require__(/*! ./cancel/isCancel */ 44);
+axios.Cancel = __webpack_require__(/*! ./cancel/Cancel */ 38);
+axios.CancelToken = __webpack_require__(/*! ./cancel/CancelToken */ 39);
+axios.isCancel = __webpack_require__(/*! ./cancel/isCancel */ 24);
 
 // Expose all/spread
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(/*! ./helpers/spread */ 60);
+axios.spread = __webpack_require__(/*! ./helpers/spread */ 40);
+
 module.exports = axios;
 
 // Allow use of default import syntax in TypeScript
 module.exports.default = axios;
 
 /***/ }),
-/* 37 */
-/*!*******************************************************************************************!*\
-  !*** D:/toBeNo1/uniappProject/MultiFunctionalToolsUniapp/node_modules/axios/lib/utils.js ***!
-  \*******************************************************************************************/
+/* 17 */
+/*!****************************************************************************************************!*\
+  !*** D:/multi-functional-tools-uni-app/multiFunctionalToolsUniapp/node_modules/axios/lib/utils.js ***!
+  \****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _typeof = __webpack_require__(/*! @babel/runtime/helpers/typeof */ 12);
-var bind = __webpack_require__(/*! ./helpers/bind */ 38);
+var bind = __webpack_require__(/*! ./helpers/bind */ 18);
 
 /*global toString:true*/
 
@@ -11050,61 +10773,62 @@ var bind = __webpack_require__(/*! ./helpers/bind */ 38);
 var toString = Object.prototype.toString;
 
 /**
- * Determine if a value is an Array
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is an Array, otherwise false
- */
+                                           * Determine if a value is an Array
+                                           *
+                                           * @param {Object} val The value to test
+                                           * @returns {boolean} True if value is an Array, otherwise false
+                                           */
 function isArray(val) {
   return toString.call(val) === '[object Array]';
 }
 
 /**
- * Determine if a value is undefined
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if the value is undefined, otherwise false
- */
+   * Determine if a value is undefined
+   *
+   * @param {Object} val The value to test
+   * @returns {boolean} True if the value is undefined, otherwise false
+   */
 function isUndefined(val) {
   return typeof val === 'undefined';
 }
 
 /**
- * Determine if a value is a Buffer
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is a Buffer, otherwise false
- */
+   * Determine if a value is a Buffer
+   *
+   * @param {Object} val The value to test
+   * @returns {boolean} True if value is a Buffer, otherwise false
+   */
 function isBuffer(val) {
-  return val !== null && !isUndefined(val) && val.constructor !== null && !isUndefined(val.constructor) && typeof val.constructor.isBuffer === 'function' && val.constructor.isBuffer(val);
+  return val !== null && !isUndefined(val) && val.constructor !== null && !isUndefined(val.constructor) &&
+  typeof val.constructor.isBuffer === 'function' && val.constructor.isBuffer(val);
 }
 
 /**
- * Determine if a value is an ArrayBuffer
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is an ArrayBuffer, otherwise false
- */
+   * Determine if a value is an ArrayBuffer
+   *
+   * @param {Object} val The value to test
+   * @returns {boolean} True if value is an ArrayBuffer, otherwise false
+   */
 function isArrayBuffer(val) {
   return toString.call(val) === '[object ArrayBuffer]';
 }
 
 /**
- * Determine if a value is a FormData
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is an FormData, otherwise false
- */
+   * Determine if a value is a FormData
+   *
+   * @param {Object} val The value to test
+   * @returns {boolean} True if value is an FormData, otherwise false
+   */
 function isFormData(val) {
   return typeof FormData !== 'undefined' && val instanceof FormData;
 }
 
 /**
- * Determine if a value is a view on an ArrayBuffer
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is a view on an ArrayBuffer, otherwise false
- */
+   * Determine if a value is a view on an ArrayBuffer
+   *
+   * @param {Object} val The value to test
+   * @returns {boolean} True if value is a view on an ArrayBuffer, otherwise false
+   */
 function isArrayBufferView(val) {
   var result;
   if (typeof ArrayBuffer !== 'undefined' && ArrayBuffer.isView) {
@@ -11116,139 +10840,144 @@ function isArrayBufferView(val) {
 }
 
 /**
- * Determine if a value is a String
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is a String, otherwise false
- */
+   * Determine if a value is a String
+   *
+   * @param {Object} val The value to test
+   * @returns {boolean} True if value is a String, otherwise false
+   */
 function isString(val) {
   return typeof val === 'string';
 }
 
 /**
- * Determine if a value is a Number
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is a Number, otherwise false
- */
+   * Determine if a value is a Number
+   *
+   * @param {Object} val The value to test
+   * @returns {boolean} True if value is a Number, otherwise false
+   */
 function isNumber(val) {
   return typeof val === 'number';
 }
 
 /**
- * Determine if a value is an Object
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is an Object, otherwise false
- */
+   * Determine if a value is an Object
+   *
+   * @param {Object} val The value to test
+   * @returns {boolean} True if value is an Object, otherwise false
+   */
 function isObject(val) {
-  return val !== null && _typeof(val) === 'object';
+  return val !== null && typeof val === 'object';
 }
 
 /**
- * Determine if a value is a Date
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is a Date, otherwise false
- */
+   * Determine if a value is a Date
+   *
+   * @param {Object} val The value to test
+   * @returns {boolean} True if value is a Date, otherwise false
+   */
 function isDate(val) {
   return toString.call(val) === '[object Date]';
 }
 
 /**
- * Determine if a value is a File
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is a File, otherwise false
- */
+   * Determine if a value is a File
+   *
+   * @param {Object} val The value to test
+   * @returns {boolean} True if value is a File, otherwise false
+   */
 function isFile(val) {
   return toString.call(val) === '[object File]';
 }
 
 /**
- * Determine if a value is a Blob
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is a Blob, otherwise false
- */
+   * Determine if a value is a Blob
+   *
+   * @param {Object} val The value to test
+   * @returns {boolean} True if value is a Blob, otherwise false
+   */
 function isBlob(val) {
   return toString.call(val) === '[object Blob]';
 }
 
 /**
- * Determine if a value is a Function
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is a Function, otherwise false
- */
+   * Determine if a value is a Function
+   *
+   * @param {Object} val The value to test
+   * @returns {boolean} True if value is a Function, otherwise false
+   */
 function isFunction(val) {
   return toString.call(val) === '[object Function]';
 }
 
 /**
- * Determine if a value is a Stream
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is a Stream, otherwise false
- */
+   * Determine if a value is a Stream
+   *
+   * @param {Object} val The value to test
+   * @returns {boolean} True if value is a Stream, otherwise false
+   */
 function isStream(val) {
   return isObject(val) && isFunction(val.pipe);
 }
 
 /**
- * Determine if a value is a URLSearchParams object
- *
- * @param {Object} val The value to test
- * @returns {boolean} True if value is a URLSearchParams object, otherwise false
- */
+   * Determine if a value is a URLSearchParams object
+   *
+   * @param {Object} val The value to test
+   * @returns {boolean} True if value is a URLSearchParams object, otherwise false
+   */
 function isURLSearchParams(val) {
   return typeof URLSearchParams !== 'undefined' && val instanceof URLSearchParams;
 }
 
 /**
- * Trim excess whitespace off the beginning and end of a string
- *
- * @param {String} str The String to trim
- * @returns {String} The String freed of excess whitespace
- */
+   * Trim excess whitespace off the beginning and end of a string
+   *
+   * @param {String} str The String to trim
+   * @returns {String} The String freed of excess whitespace
+   */
 function trim(str) {
   return str.replace(/^\s*/, '').replace(/\s*$/, '');
 }
 
 /**
- * Determine if we're running in a standard browser environment
- *
- * This allows axios to run in a web worker, and react-native.
- * Both environments support XMLHttpRequest, but not fully standard globals.
- *
- * web workers:
- *  typeof window -> undefined
- *  typeof document -> undefined
- *
- * react-native:
- *  navigator.product -> 'ReactNative'
- * nativescript
- *  navigator.product -> 'NativeScript' or 'NS'
- */
+   * Determine if we're running in a standard browser environment
+   *
+   * This allows axios to run in a web worker, and react-native.
+   * Both environments support XMLHttpRequest, but not fully standard globals.
+   *
+   * web workers:
+   *  typeof window -> undefined
+   *  typeof document -> undefined
+   *
+   * react-native:
+   *  navigator.product -> 'ReactNative'
+   * nativescript
+   *  navigator.product -> 'NativeScript' or 'NS'
+   */
 function isStandardBrowserEnv() {
-  if (typeof navigator !== 'undefined' && (navigator.product === 'ReactNative' || navigator.product === 'NativeScript' || navigator.product === 'NS')) {
+  if (typeof navigator !== 'undefined' && (navigator.product === 'ReactNative' ||
+  navigator.product === 'NativeScript' ||
+  navigator.product === 'NS')) {
     return false;
   }
-  return typeof window !== 'undefined' && typeof document !== 'undefined';
+  return (
+    typeof window !== 'undefined' &&
+    typeof document !== 'undefined');
+
 }
 
 /**
- * Iterate over an Array or an Object invoking a function for each item.
- *
- * If `obj` is an Array callback will be called passing
- * the value, index, and complete array for each item.
- *
- * If 'obj' is an Object callback will be called passing
- * the value, key, and complete object for each property.
- *
- * @param {Object|Array} obj The object to iterate
- * @param {Function} fn The callback to invoke for each item
- */
+   * Iterate over an Array or an Object invoking a function for each item.
+   *
+   * If `obj` is an Array callback will be called passing
+   * the value, index, and complete array for each item.
+   *
+   * If 'obj' is an Object callback will be called passing
+   * the value, key, and complete object for each property.
+   *
+   * @param {Object|Array} obj The object to iterate
+   * @param {Function} fn The callback to invoke for each item
+   */
 function forEach(obj, fn) {
   // Don't bother if no value provided
   if (obj === null || typeof obj === 'undefined') {
@@ -11256,10 +10985,11 @@ function forEach(obj, fn) {
   }
 
   // Force an array if not already something iterable
-  if (_typeof(obj) !== 'object') {
+  if (typeof obj !== 'object') {
     /*eslint no-param-reassign:0*/
     obj = [obj];
   }
+
   if (isArray(obj)) {
     // Iterate over array values
     for (var i = 0, l = obj.length; i < l; i++) {
@@ -11276,32 +11006,32 @@ function forEach(obj, fn) {
 }
 
 /**
- * Accepts varargs expecting each argument to be an object, then
- * immutably merges the properties of each object and returns result.
- *
- * When multiple objects contain the same key the later object in
- * the arguments list will take precedence.
- *
- * Example:
- *
- * ```js
- * var result = merge({foo: 123}, {foo: 456});
- * console.log(result.foo); // outputs 456
- * ```
- *
- * @param {Object} obj1 Object to merge
- * @returns {Object} Result of all merge properties
- */
-function merge( /* obj1, obj2, obj3, ... */
-) {
+   * Accepts varargs expecting each argument to be an object, then
+   * immutably merges the properties of each object and returns result.
+   *
+   * When multiple objects contain the same key the later object in
+   * the arguments list will take precedence.
+   *
+   * Example:
+   *
+   * ```js
+   * var result = merge({foo: 123}, {foo: 456});
+   * console.log(result.foo); // outputs 456
+   * ```
+   *
+   * @param {Object} obj1 Object to merge
+   * @returns {Object} Result of all merge properties
+   */
+function merge() /* obj1, obj2, obj3, ... */{
   var result = {};
   function assignValue(val, key) {
-    if (_typeof(result[key]) === 'object' && _typeof(val) === 'object') {
+    if (typeof result[key] === 'object' && typeof val === 'object') {
       result[key] = merge(result[key], val);
     } else {
       result[key] = val;
     }
   }
+
   for (var i = 0, l = arguments.length; i < l; i++) {
     forEach(arguments[i], assignValue);
   }
@@ -11309,25 +11039,25 @@ function merge( /* obj1, obj2, obj3, ... */
 }
 
 /**
- * Function equal to merge with the difference being that no reference
- * to original objects is kept.
- *
- * @see merge
- * @param {Object} obj1 Object to merge
- * @returns {Object} Result of all merge properties
- */
-function deepMerge( /* obj1, obj2, obj3, ... */
-) {
+   * Function equal to merge with the difference being that no reference
+   * to original objects is kept.
+   *
+   * @see merge
+   * @param {Object} obj1 Object to merge
+   * @returns {Object} Result of all merge properties
+   */
+function deepMerge() /* obj1, obj2, obj3, ... */{
   var result = {};
   function assignValue(val, key) {
-    if (_typeof(result[key]) === 'object' && _typeof(val) === 'object') {
+    if (typeof result[key] === 'object' && typeof val === 'object') {
       result[key] = deepMerge(result[key], val);
-    } else if (_typeof(val) === 'object') {
+    } else if (typeof val === 'object') {
       result[key] = deepMerge({}, val);
     } else {
       result[key] = val;
     }
   }
+
   for (var i = 0, l = arguments.length; i < l; i++) {
     forEach(arguments[i], assignValue);
   }
@@ -11335,13 +11065,13 @@ function deepMerge( /* obj1, obj2, obj3, ... */
 }
 
 /**
- * Extends object a by mutably adding to it the properties of object b.
- *
- * @param {Object} a The object to be extended
- * @param {Object} b The object to copy properties from
- * @param {Object} thisArg The object to bind function to
- * @return {Object} The resulting value of object a
- */
+   * Extends object a by mutably adding to it the properties of object b.
+   *
+   * @param {Object} a The object to be extended
+   * @param {Object} b The object to copy properties from
+   * @param {Object} thisArg The object to bind function to
+   * @return {Object} The resulting value of object a
+   */
 function extend(a, b, thisArg) {
   forEach(b, function assignValue(val, key) {
     if (thisArg && typeof val === 'function') {
@@ -11352,6 +11082,7 @@ function extend(a, b, thisArg) {
   });
   return a;
 }
+
 module.exports = {
   isArray: isArray,
   isArrayBuffer: isArrayBuffer,
@@ -11373,14 +11104,13 @@ module.exports = {
   merge: merge,
   deepMerge: deepMerge,
   extend: extend,
-  trim: trim
-};
+  trim: trim };
 
 /***/ }),
-/* 38 */
-/*!**************************************************************************************************!*\
-  !*** D:/toBeNo1/uniappProject/MultiFunctionalToolsUniapp/node_modules/axios/lib/helpers/bind.js ***!
-  \**************************************************************************************************/
+/* 18 */
+/*!***********************************************************************************************************!*\
+  !*** D:/multi-functional-tools-uni-app/multiFunctionalToolsUniapp/node_modules/axios/lib/helpers/bind.js ***!
+  \***********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11398,40 +11128,40 @@ module.exports = function bind(fn, thisArg) {
 };
 
 /***/ }),
-/* 39 */
-/*!************************************************************************************************!*\
-  !*** D:/toBeNo1/uniappProject/MultiFunctionalToolsUniapp/node_modules/axios/lib/core/Axios.js ***!
-  \************************************************************************************************/
+/* 19 */
+/*!*********************************************************************************************************!*\
+  !*** D:/multi-functional-tools-uni-app/multiFunctionalToolsUniapp/node_modules/axios/lib/core/Axios.js ***!
+  \*********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(/*! ./../utils */ 37);
-var buildURL = __webpack_require__(/*! ../helpers/buildURL */ 40);
-var InterceptorManager = __webpack_require__(/*! ./InterceptorManager */ 41);
-var dispatchRequest = __webpack_require__(/*! ./dispatchRequest */ 42);
-var mergeConfig = __webpack_require__(/*! ./mergeConfig */ 57);
+var utils = __webpack_require__(/*! ./../utils */ 17);
+var buildURL = __webpack_require__(/*! ../helpers/buildURL */ 20);
+var InterceptorManager = __webpack_require__(/*! ./InterceptorManager */ 21);
+var dispatchRequest = __webpack_require__(/*! ./dispatchRequest */ 22);
+var mergeConfig = __webpack_require__(/*! ./mergeConfig */ 37);
 
 /**
- * Create a new instance of Axios
- *
- * @param {Object} instanceConfig The default config for the instance
- */
+                                             * Create a new instance of Axios
+                                             *
+                                             * @param {Object} instanceConfig The default config for the instance
+                                             */
 function Axios(instanceConfig) {
   this.defaults = instanceConfig;
   this.interceptors = {
     request: new InterceptorManager(),
-    response: new InterceptorManager()
-  };
+    response: new InterceptorManager() };
+
 }
 
 /**
- * Dispatch a request
- *
- * @param {Object} config The config specific for this request (merged with this.defaults)
- */
+   * Dispatch a request
+   *
+   * @param {Object} config The config specific for this request (merged with this.defaults)
+   */
 Axios.prototype.request = function request(config) {
   /*eslint no-param-reassign:0*/
   // Allow for axios('example/url'[, config]) a la fetch API
@@ -11441,6 +11171,7 @@ Axios.prototype.request = function request(config) {
   } else {
     config = config || {};
   }
+
   config = mergeConfig(this.defaults, config);
 
   // Set config.method
@@ -11455,17 +11186,22 @@ Axios.prototype.request = function request(config) {
   // Hook up interceptors middleware
   var chain = [dispatchRequest, undefined];
   var promise = Promise.resolve(config);
+
   this.interceptors.request.forEach(function unshiftRequestInterceptors(interceptor) {
     chain.unshift(interceptor.fulfilled, interceptor.rejected);
   });
+
   this.interceptors.response.forEach(function pushResponseInterceptors(interceptor) {
     chain.push(interceptor.fulfilled, interceptor.rejected);
   });
+
   while (chain.length) {
     promise = promise.then(chain.shift(), chain.shift());
   }
+
   return promise;
 };
+
 Axios.prototype.getUri = function getUri(config) {
   config = mergeConfig(this.defaults, config);
   return buildURL(config.url, config.params, config.paramsSerializer).replace(/^\?/, '');
@@ -11477,50 +11213,61 @@ utils.forEach(['delete', 'get', 'head', 'options'], function forEachMethodNoData
   Axios.prototype[method] = function (url, config) {
     return this.request(utils.merge(config || {}, {
       method: method,
-      url: url
-    }));
+      url: url }));
+
   };
 });
+
 utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
   /*eslint func-names:0*/
   Axios.prototype[method] = function (url, data, config) {
     return this.request(utils.merge(config || {}, {
       method: method,
       url: url,
-      data: data
-    }));
+      data: data }));
+
   };
 });
+
 module.exports = Axios;
 
 /***/ }),
-/* 40 */
-/*!******************************************************************************************************!*\
-  !*** D:/toBeNo1/uniappProject/MultiFunctionalToolsUniapp/node_modules/axios/lib/helpers/buildURL.js ***!
-  \******************************************************************************************************/
+/* 20 */
+/*!***************************************************************************************************************!*\
+  !*** D:/multi-functional-tools-uni-app/multiFunctionalToolsUniapp/node_modules/axios/lib/helpers/buildURL.js ***!
+  \***************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(/*! ./../utils */ 37);
+var utils = __webpack_require__(/*! ./../utils */ 17);
+
 function encode(val) {
-  return encodeURIComponent(val).replace(/%40/gi, '@').replace(/%3A/gi, ':').replace(/%24/g, '$').replace(/%2C/gi, ',').replace(/%20/g, '+').replace(/%5B/gi, '[').replace(/%5D/gi, ']');
+  return encodeURIComponent(val).
+  replace(/%40/gi, '@').
+  replace(/%3A/gi, ':').
+  replace(/%24/g, '$').
+  replace(/%2C/gi, ',').
+  replace(/%20/g, '+').
+  replace(/%5B/gi, '[').
+  replace(/%5D/gi, ']');
 }
 
 /**
- * Build a URL by appending params to the end
- *
- * @param {string} url The base of the url (e.g., http://www.google.com)
- * @param {object} [params] The params to be appended
- * @returns {string} The formatted url
- */
+   * Build a URL by appending params to the end
+   *
+   * @param {string} url The base of the url (e.g., http://www.google.com)
+   * @param {object} [params] The params to be appended
+   * @returns {string} The formatted url
+   */
 module.exports = function buildURL(url, params, paramsSerializer) {
   /*eslint no-param-reassign:0*/
   if (!params) {
     return url;
   }
+
   var serializedParams;
   if (paramsSerializer) {
     serializedParams = paramsSerializer(params);
@@ -11528,15 +11275,18 @@ module.exports = function buildURL(url, params, paramsSerializer) {
     serializedParams = params.toString();
   } else {
     var parts = [];
+
     utils.forEach(params, function serialize(val, key) {
       if (val === null || typeof val === 'undefined') {
         return;
       }
+
       if (utils.isArray(val)) {
         key = key + '[]';
       } else {
         val = [val];
       }
+
       utils.forEach(val, function parseValue(v) {
         if (utils.isDate(v)) {
           v = v.toISOString();
@@ -11546,55 +11296,60 @@ module.exports = function buildURL(url, params, paramsSerializer) {
         parts.push(encode(key) + '=' + encode(v));
       });
     });
+
     serializedParams = parts.join('&');
   }
+
   if (serializedParams) {
     var hashmarkIndex = url.indexOf('#');
     if (hashmarkIndex !== -1) {
       url = url.slice(0, hashmarkIndex);
     }
+
     url += (url.indexOf('?') === -1 ? '?' : '&') + serializedParams;
   }
+
   return url;
 };
 
 /***/ }),
-/* 41 */
-/*!*************************************************************************************************************!*\
-  !*** D:/toBeNo1/uniappProject/MultiFunctionalToolsUniapp/node_modules/axios/lib/core/InterceptorManager.js ***!
-  \*************************************************************************************************************/
+/* 21 */
+/*!**********************************************************************************************************************!*\
+  !*** D:/multi-functional-tools-uni-app/multiFunctionalToolsUniapp/node_modules/axios/lib/core/InterceptorManager.js ***!
+  \**********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(/*! ./../utils */ 37);
+var utils = __webpack_require__(/*! ./../utils */ 17);
+
 function InterceptorManager() {
   this.handlers = [];
 }
 
 /**
- * Add a new interceptor to the stack
- *
- * @param {Function} fulfilled The function to handle `then` for a `Promise`
- * @param {Function} rejected The function to handle `reject` for a `Promise`
- *
- * @return {Number} An ID used to remove interceptor later
- */
+   * Add a new interceptor to the stack
+   *
+   * @param {Function} fulfilled The function to handle `then` for a `Promise`
+   * @param {Function} rejected The function to handle `reject` for a `Promise`
+   *
+   * @return {Number} An ID used to remove interceptor later
+   */
 InterceptorManager.prototype.use = function use(fulfilled, rejected) {
   this.handlers.push({
     fulfilled: fulfilled,
-    rejected: rejected
-  });
+    rejected: rejected });
+
   return this.handlers.length - 1;
 };
 
 /**
- * Remove an interceptor from the stack
- *
- * @param {Number} id The ID that was returned by `use`
- */
+    * Remove an interceptor from the stack
+    *
+    * @param {Number} id The ID that was returned by `use`
+    */
 InterceptorManager.prototype.eject = function eject(id) {
   if (this.handlers[id]) {
     this.handlers[id] = null;
@@ -11602,13 +11357,13 @@ InterceptorManager.prototype.eject = function eject(id) {
 };
 
 /**
- * Iterate over all the registered interceptors
- *
- * This method is particularly useful for skipping over any
- * interceptors that may have become `null` calling `eject`.
- *
- * @param {Function} fn The function to call for each interceptor
- */
+    * Iterate over all the registered interceptors
+    *
+    * This method is particularly useful for skipping over any
+    * interceptors that may have become `null` calling `eject`.
+    *
+    * @param {Function} fn The function to call for each interceptor
+    */
 InterceptorManager.prototype.forEach = function forEach(fn) {
   utils.forEach(this.handlers, function forEachHandler(h) {
     if (h !== null) {
@@ -11616,27 +11371,28 @@ InterceptorManager.prototype.forEach = function forEach(fn) {
     }
   });
 };
+
 module.exports = InterceptorManager;
 
 /***/ }),
-/* 42 */
-/*!**********************************************************************************************************!*\
-  !*** D:/toBeNo1/uniappProject/MultiFunctionalToolsUniapp/node_modules/axios/lib/core/dispatchRequest.js ***!
-  \**********************************************************************************************************/
+/* 22 */
+/*!*******************************************************************************************************************!*\
+  !*** D:/multi-functional-tools-uni-app/multiFunctionalToolsUniapp/node_modules/axios/lib/core/dispatchRequest.js ***!
+  \*******************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(/*! ./../utils */ 37);
-var transformData = __webpack_require__(/*! ./transformData */ 43);
-var isCancel = __webpack_require__(/*! ../cancel/isCancel */ 44);
-var defaults = __webpack_require__(/*! ../defaults */ 45);
+var utils = __webpack_require__(/*! ./../utils */ 17);
+var transformData = __webpack_require__(/*! ./transformData */ 23);
+var isCancel = __webpack_require__(/*! ../cancel/isCancel */ 24);
+var defaults = __webpack_require__(/*! ../defaults */ 25);
 
 /**
- * Throws a `Cancel` if cancellation has been requested.
- */
+                                        * Throws a `Cancel` if cancellation has been requested.
+                                        */
 function throwIfCancellationRequested(config) {
   if (config.cancelToken) {
     config.cancelToken.throwIfRequested();
@@ -11644,11 +11400,11 @@ function throwIfCancellationRequested(config) {
 }
 
 /**
- * Dispatch a request to the server using the configured adapter.
- *
- * @param {object} config The config that is to be used for the request
- * @returns {Promise} The Promise to be fulfilled
- */
+   * Dispatch a request to the server using the configured adapter.
+   *
+   * @param {object} config The config that is to be used for the request
+   * @returns {Promise} The Promise to be fulfilled
+   */
 module.exports = function dispatchRequest(config) {
   throwIfCancellationRequested(config);
 
@@ -11656,19 +11412,38 @@ module.exports = function dispatchRequest(config) {
   config.headers = config.headers || {};
 
   // Transform request data
-  config.data = transformData(config.data, config.headers, config.transformRequest);
+  config.data = transformData(
+  config.data,
+  config.headers,
+  config.transformRequest);
+
 
   // Flatten headers
-  config.headers = utils.merge(config.headers.common || {}, config.headers[config.method] || {}, config.headers);
-  utils.forEach(['delete', 'get', 'head', 'post', 'put', 'patch', 'common'], function cleanHeaderConfig(method) {
+  config.headers = utils.merge(
+  config.headers.common || {},
+  config.headers[config.method] || {},
+  config.headers);
+
+
+  utils.forEach(
+  ['delete', 'get', 'head', 'post', 'put', 'patch', 'common'],
+  function cleanHeaderConfig(method) {
     delete config.headers[method];
   });
+
+
   var adapter = config.adapter || defaults.adapter;
+
   return adapter(config).then(function onAdapterResolution(response) {
     throwIfCancellationRequested(config);
 
     // Transform response data
-    response.data = transformData(response.data, response.headers, config.transformResponse);
+    response.data = transformData(
+    response.data,
+    response.headers,
+    config.transformResponse);
+
+
     return response;
   }, function onAdapterRejection(reason) {
     if (!isCancel(reason)) {
@@ -11676,47 +11451,53 @@ module.exports = function dispatchRequest(config) {
 
       // Transform response data
       if (reason && reason.response) {
-        reason.response.data = transformData(reason.response.data, reason.response.headers, config.transformResponse);
+        reason.response.data = transformData(
+        reason.response.data,
+        reason.response.headers,
+        config.transformResponse);
+
       }
     }
+
     return Promise.reject(reason);
   });
 };
 
 /***/ }),
-/* 43 */
-/*!********************************************************************************************************!*\
-  !*** D:/toBeNo1/uniappProject/MultiFunctionalToolsUniapp/node_modules/axios/lib/core/transformData.js ***!
-  \********************************************************************************************************/
+/* 23 */
+/*!*****************************************************************************************************************!*\
+  !*** D:/multi-functional-tools-uni-app/multiFunctionalToolsUniapp/node_modules/axios/lib/core/transformData.js ***!
+  \*****************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(/*! ./../utils */ 37);
+var utils = __webpack_require__(/*! ./../utils */ 17);
 
 /**
- * Transform the data for a request or a response
- *
- * @param {Object|String} data The data to be transformed
- * @param {Array} headers The headers for the request or response
- * @param {Array|Function} fns A single function or Array of functions
- * @returns {*} The resulting transformed data
- */
+                                    * Transform the data for a request or a response
+                                    *
+                                    * @param {Object|String} data The data to be transformed
+                                    * @param {Array} headers The headers for the request or response
+                                    * @param {Array|Function} fns A single function or Array of functions
+                                    * @returns {*} The resulting transformed data
+                                    */
 module.exports = function transformData(data, headers, fns) {
   /*eslint no-param-reassign:0*/
   utils.forEach(fns, function transform(fn) {
     data = fn(data, headers);
   });
+
   return data;
 };
 
 /***/ }),
-/* 44 */
-/*!*****************************************************************************************************!*\
-  !*** D:/toBeNo1/uniappProject/MultiFunctionalToolsUniapp/node_modules/axios/lib/cancel/isCancel.js ***!
-  \*****************************************************************************************************/
+/* 24 */
+/*!**************************************************************************************************************!*\
+  !*** D:/multi-functional-tools-uni-app/multiFunctionalToolsUniapp/node_modules/axios/lib/cancel/isCancel.js ***!
+  \**************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11728,43 +11509,54 @@ module.exports = function isCancel(value) {
 };
 
 /***/ }),
-/* 45 */
-/*!**********************************************************************************************!*\
-  !*** D:/toBeNo1/uniappProject/MultiFunctionalToolsUniapp/node_modules/axios/lib/defaults.js ***!
-  \**********************************************************************************************/
+/* 25 */
+/*!*******************************************************************************************************!*\
+  !*** D:/multi-functional-tools-uni-app/multiFunctionalToolsUniapp/node_modules/axios/lib/defaults.js ***!
+  \*******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
-var utils = __webpack_require__(/*! ./utils */ 37);
-var normalizeHeaderName = __webpack_require__(/*! ./helpers/normalizeHeaderName */ 46);
+var utils = __webpack_require__(/*! ./utils */ 17);
+var normalizeHeaderName = __webpack_require__(/*! ./helpers/normalizeHeaderName */ 26);
+
 var DEFAULT_CONTENT_TYPE = {
-  'Content-Type': 'application/x-www-form-urlencoded'
-};
+  'Content-Type': 'application/x-www-form-urlencoded' };
+
+
 function setContentTypeIfUnset(headers, value) {
   if (!utils.isUndefined(headers) && utils.isUndefined(headers['Content-Type'])) {
     headers['Content-Type'] = value;
   }
 }
+
 function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(/*! ./adapters/xhr */ 47);
+    adapter = __webpack_require__(/*! ./adapters/xhr */ 27);
   } else if (typeof process !== 'undefined' && Object.prototype.toString.call(process) === '[object process]') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(/*! ./adapters/http */ 47);
+    adapter = __webpack_require__(/*! ./adapters/http */ 27);
   }
   return adapter;
 }
+
 var defaults = {
   adapter: getDefaultAdapter(),
+
   transformRequest: [function transformRequest(data, headers) {
     normalizeHeaderName(headers, 'Accept');
     normalizeHeaderName(headers, 'Content-Type');
-    if (utils.isFormData(data) || utils.isArrayBuffer(data) || utils.isBuffer(data) || utils.isStream(data) || utils.isFile(data) || utils.isBlob(data)) {
+    if (utils.isFormData(data) ||
+    utils.isArrayBuffer(data) ||
+    utils.isBuffer(data) ||
+    utils.isStream(data) ||
+    utils.isFile(data) ||
+    utils.isBlob(data))
+    {
       return data;
     }
     if (utils.isArrayBufferView(data)) {
@@ -11780,6 +11572,7 @@ var defaults = {
     }
     return data;
   }],
+
   transformResponse: [function transformResponse(data) {
     /*eslint no-param-reassign:0*/
     if (typeof data === 'string') {
@@ -11789,44 +11582,53 @@ var defaults = {
     }
     return data;
   }],
+
   /**
-   * A timeout in milliseconds to abort a request. If set to 0 (default) a
-   * timeout is not created.
-   */
+       * A timeout in milliseconds to abort a request. If set to 0 (default) a
+       * timeout is not created.
+       */
   timeout: 0,
+
   xsrfCookieName: 'XSRF-TOKEN',
   xsrfHeaderName: 'X-XSRF-TOKEN',
+
   maxContentLength: -1,
+
   validateStatus: function validateStatus(status) {
     return status >= 200 && status < 300;
-  }
-};
+  } };
+
+
 defaults.headers = {
   common: {
-    'Accept': 'application/json, text/plain, */*'
-  }
-};
+    'Accept': 'application/json, text/plain, */*' } };
+
+
+
 utils.forEach(['delete', 'get', 'head'], function forEachMethodNoData(method) {
   defaults.headers[method] = {};
 });
+
 utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
   defaults.headers[method] = utils.merge(DEFAULT_CONTENT_TYPE);
 });
+
 module.exports = defaults;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/node-libs-browser/mock/process.js */ 33)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../HBuilderX/plugins/uniapp-cli/node_modules/node-libs-browser/mock/process.js */ 13)))
 
 /***/ }),
-/* 46 */
-/*!*****************************************************************************************************************!*\
-  !*** D:/toBeNo1/uniappProject/MultiFunctionalToolsUniapp/node_modules/axios/lib/helpers/normalizeHeaderName.js ***!
-  \*****************************************************************************************************************/
+/* 26 */
+/*!**************************************************************************************************************************!*\
+  !*** D:/multi-functional-tools-uni-app/multiFunctionalToolsUniapp/node_modules/axios/lib/helpers/normalizeHeaderName.js ***!
+  \**************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(/*! ../utils */ 37);
+var utils = __webpack_require__(/*! ../utils */ 17);
+
 module.exports = function normalizeHeaderName(headers, normalizedName) {
   utils.forEach(headers, function processHeader(value, name) {
     if (name !== normalizedName && name.toUpperCase() === normalizedName.toUpperCase()) {
@@ -11837,27 +11639,29 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 };
 
 /***/ }),
-/* 47 */
-/*!**************************************************************************************************!*\
-  !*** D:/toBeNo1/uniappProject/MultiFunctionalToolsUniapp/node_modules/axios/lib/adapters/xhr.js ***!
-  \**************************************************************************************************/
+/* 27 */
+/*!***********************************************************************************************************!*\
+  !*** D:/multi-functional-tools-uni-app/multiFunctionalToolsUniapp/node_modules/axios/lib/adapters/xhr.js ***!
+  \***********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(/*! ./../utils */ 37);
-var settle = __webpack_require__(/*! ./../core/settle */ 48);
-var buildURL = __webpack_require__(/*! ./../helpers/buildURL */ 40);
-var buildFullPath = __webpack_require__(/*! ../core/buildFullPath */ 51);
-var parseHeaders = __webpack_require__(/*! ./../helpers/parseHeaders */ 54);
-var isURLSameOrigin = __webpack_require__(/*! ./../helpers/isURLSameOrigin */ 55);
-var createError = __webpack_require__(/*! ../core/createError */ 49);
+var utils = __webpack_require__(/*! ./../utils */ 17);
+var settle = __webpack_require__(/*! ./../core/settle */ 28);
+var buildURL = __webpack_require__(/*! ./../helpers/buildURL */ 20);
+var buildFullPath = __webpack_require__(/*! ../core/buildFullPath */ 31);
+var parseHeaders = __webpack_require__(/*! ./../helpers/parseHeaders */ 34);
+var isURLSameOrigin = __webpack_require__(/*! ./../helpers/isURLSameOrigin */ 35);
+var createError = __webpack_require__(/*! ../core/createError */ 29);
+
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
     var requestData = config.data;
     var requestHeaders = config.headers;
+
     if (utils.isFormData(requestData)) {
       delete requestHeaders['Content-Type']; // Let the browser set it
     }
@@ -11870,6 +11674,7 @@ module.exports = function xhrAdapter(config) {
       var password = config.auth.password || '';
       requestHeaders.Authorization = 'Basic ' + btoa(username + ':' + password);
     }
+
     var fullPath = buildFullPath(config.baseURL, config.url);
     request.open(config.method.toUpperCase(), buildURL(fullPath, config.params, config.paramsSerializer), true);
 
@@ -11899,8 +11704,9 @@ module.exports = function xhrAdapter(config) {
         statusText: request.statusText,
         headers: responseHeaders,
         config: config,
-        request: request
-      };
+        request: request };
+
+
       settle(resolve, reject, response);
 
       // Clean up request
@@ -11912,6 +11718,7 @@ module.exports = function xhrAdapter(config) {
       if (!request) {
         return;
       }
+
       reject(createError('Request aborted', config, 'ECONNABORTED', request));
 
       // Clean up request
@@ -11934,7 +11741,8 @@ module.exports = function xhrAdapter(config) {
       if (config.timeoutErrorMessage) {
         timeoutErrorMessage = config.timeoutErrorMessage;
       }
-      reject(createError(timeoutErrorMessage, config, 'ECONNABORTED', request));
+      reject(createError(timeoutErrorMessage, config, 'ECONNABORTED',
+      request));
 
       // Clean up request
       request = null;
@@ -11944,10 +11752,13 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(/*! ./../helpers/cookies */ 56);
+      var cookies = __webpack_require__(/*! ./../helpers/cookies */ 36);
 
       // Add xsrf header
-      var xsrfValue = (config.withCredentials || isURLSameOrigin(fullPath)) && config.xsrfCookieName ? cookies.read(config.xsrfCookieName) : undefined;
+      var xsrfValue = (config.withCredentials || isURLSameOrigin(fullPath)) && config.xsrfCookieName ?
+      cookies.read(config.xsrfCookieName) :
+      undefined;
+
       if (xsrfValue) {
         requestHeaders[config.xsrfHeaderName] = xsrfValue;
       }
@@ -11993,18 +11804,21 @@ module.exports = function xhrAdapter(config) {
     if (typeof config.onUploadProgress === 'function' && request.upload) {
       request.upload.addEventListener('progress', config.onUploadProgress);
     }
+
     if (config.cancelToken) {
       // Handle cancellation
       config.cancelToken.promise.then(function onCanceled(cancel) {
         if (!request) {
           return;
         }
+
         request.abort();
         reject(cancel);
         // Clean up request
         request = null;
       });
     }
+
     if (requestData === undefined) {
       requestData = null;
     }
@@ -12015,67 +11829,73 @@ module.exports = function xhrAdapter(config) {
 };
 
 /***/ }),
-/* 48 */
-/*!*************************************************************************************************!*\
-  !*** D:/toBeNo1/uniappProject/MultiFunctionalToolsUniapp/node_modules/axios/lib/core/settle.js ***!
-  \*************************************************************************************************/
+/* 28 */
+/*!**********************************************************************************************************!*\
+  !*** D:/multi-functional-tools-uni-app/multiFunctionalToolsUniapp/node_modules/axios/lib/core/settle.js ***!
+  \**********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var createError = __webpack_require__(/*! ./createError */ 49);
+var createError = __webpack_require__(/*! ./createError */ 29);
 
 /**
- * Resolve or reject a Promise based on response status.
- *
- * @param {Function} resolve A function that resolves the promise.
- * @param {Function} reject A function that rejects the promise.
- * @param {object} response The response.
- */
+                                             * Resolve or reject a Promise based on response status.
+                                             *
+                                             * @param {Function} resolve A function that resolves the promise.
+                                             * @param {Function} reject A function that rejects the promise.
+                                             * @param {object} response The response.
+                                             */
 module.exports = function settle(resolve, reject, response) {
   var validateStatus = response.config.validateStatus;
   if (!validateStatus || validateStatus(response.status)) {
     resolve(response);
   } else {
-    reject(createError('Request failed with status code ' + response.status, response.config, null, response.request, response));
+    reject(createError(
+    'Request failed with status code ' + response.status,
+    response.config,
+    null,
+    response.request,
+    response));
+
   }
 };
 
 /***/ }),
-/* 49 */
-/*!******************************************************************************************************!*\
-  !*** D:/toBeNo1/uniappProject/MultiFunctionalToolsUniapp/node_modules/axios/lib/core/createError.js ***!
-  \******************************************************************************************************/
+/* 29 */
+/*!***************************************************************************************************************!*\
+  !*** D:/multi-functional-tools-uni-app/multiFunctionalToolsUniapp/node_modules/axios/lib/core/createError.js ***!
+  \***************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var enhanceError = __webpack_require__(/*! ./enhanceError */ 50);
+var enhanceError = __webpack_require__(/*! ./enhanceError */ 30);
 
 /**
- * Create an Error with the specified message, config, error code, request and response.
- *
- * @param {string} message The error message.
- * @param {Object} config The config.
- * @param {string} [code] The error code (for example, 'ECONNABORTED').
- * @param {Object} [request] The request.
- * @param {Object} [response] The response.
- * @returns {Error} The created error.
- */
+                                               * Create an Error with the specified message, config, error code, request and response.
+                                               *
+                                               * @param {string} message The error message.
+                                               * @param {Object} config The config.
+                                               * @param {string} [code] The error code (for example, 'ECONNABORTED').
+                                               * @param {Object} [request] The request.
+                                               * @param {Object} [response] The response.
+                                               * @returns {Error} The created error.
+                                               */
 module.exports = function createError(message, config, code, request, response) {
   var error = new Error(message);
   return enhanceError(error, config, code, request, response);
 };
 
 /***/ }),
-/* 50 */
-/*!*******************************************************************************************************!*\
-  !*** D:/toBeNo1/uniappProject/MultiFunctionalToolsUniapp/node_modules/axios/lib/core/enhanceError.js ***!
-  \*******************************************************************************************************/
+/* 30 */
+/*!****************************************************************************************************************!*\
+  !*** D:/multi-functional-tools-uni-app/multiFunctionalToolsUniapp/node_modules/axios/lib/core/enhanceError.js ***!
+  \****************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -12083,23 +11903,25 @@ module.exports = function createError(message, config, code, request, response) 
 
 
 /**
- * Update an Error with the specified config, error code, and response.
- *
- * @param {Error} error The error to update.
- * @param {Object} config The config.
- * @param {string} [code] The error code (for example, 'ECONNABORTED').
- * @param {Object} [request] The request.
- * @param {Object} [response] The response.
- * @returns {Error} The error.
- */
+               * Update an Error with the specified config, error code, and response.
+               *
+               * @param {Error} error The error to update.
+               * @param {Object} config The config.
+               * @param {string} [code] The error code (for example, 'ECONNABORTED').
+               * @param {Object} [request] The request.
+               * @param {Object} [response] The response.
+               * @returns {Error} The error.
+               */
 module.exports = function enhanceError(error, config, code, request, response) {
   error.config = config;
   if (code) {
     error.code = code;
   }
+
   error.request = request;
   error.response = response;
   error.isAxiosError = true;
+
   error.toJSON = function () {
     return {
       // Standard
@@ -12115,35 +11937,35 @@ module.exports = function enhanceError(error, config, code, request, response) {
       stack: this.stack,
       // Axios
       config: this.config,
-      code: this.code
-    };
+      code: this.code };
+
   };
   return error;
 };
 
 /***/ }),
-/* 51 */
-/*!********************************************************************************************************!*\
-  !*** D:/toBeNo1/uniappProject/MultiFunctionalToolsUniapp/node_modules/axios/lib/core/buildFullPath.js ***!
-  \********************************************************************************************************/
+/* 31 */
+/*!*****************************************************************************************************************!*\
+  !*** D:/multi-functional-tools-uni-app/multiFunctionalToolsUniapp/node_modules/axios/lib/core/buildFullPath.js ***!
+  \*****************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var isAbsoluteURL = __webpack_require__(/*! ../helpers/isAbsoluteURL */ 52);
-var combineURLs = __webpack_require__(/*! ../helpers/combineURLs */ 53);
+var isAbsoluteURL = __webpack_require__(/*! ../helpers/isAbsoluteURL */ 32);
+var combineURLs = __webpack_require__(/*! ../helpers/combineURLs */ 33);
 
 /**
- * Creates a new URL by combining the baseURL with the requestedURL,
- * only when the requestedURL is not already an absolute URL.
- * If the requestURL is absolute, this function returns the requestedURL untouched.
- *
- * @param {string} baseURL The base URL
- * @param {string} requestedURL Absolute or relative URL to combine
- * @returns {string} The combined full path
- */
+                                                      * Creates a new URL by combining the baseURL with the requestedURL,
+                                                      * only when the requestedURL is not already an absolute URL.
+                                                      * If the requestURL is absolute, this function returns the requestedURL untouched.
+                                                      *
+                                                      * @param {string} baseURL The base URL
+                                                      * @param {string} requestedURL Absolute or relative URL to combine
+                                                      * @returns {string} The combined full path
+                                                      */
 module.exports = function buildFullPath(baseURL, requestedURL) {
   if (baseURL && !isAbsoluteURL(requestedURL)) {
     return combineURLs(baseURL, requestedURL);
@@ -12152,10 +11974,10 @@ module.exports = function buildFullPath(baseURL, requestedURL) {
 };
 
 /***/ }),
-/* 52 */
-/*!***********************************************************************************************************!*\
-  !*** D:/toBeNo1/uniappProject/MultiFunctionalToolsUniapp/node_modules/axios/lib/helpers/isAbsoluteURL.js ***!
-  \***********************************************************************************************************/
+/* 32 */
+/*!********************************************************************************************************************!*\
+  !*** D:/multi-functional-tools-uni-app/multiFunctionalToolsUniapp/node_modules/axios/lib/helpers/isAbsoluteURL.js ***!
+  \********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -12163,11 +11985,11 @@ module.exports = function buildFullPath(baseURL, requestedURL) {
 
 
 /**
- * Determines whether the specified URL is absolute
- *
- * @param {string} url The URL to test
- * @returns {boolean} True if the specified URL is absolute, otherwise false
- */
+               * Determines whether the specified URL is absolute
+               *
+               * @param {string} url The URL to test
+               * @returns {boolean} True if the specified URL is absolute, otherwise false
+               */
 module.exports = function isAbsoluteURL(url) {
   // A URL is considered absolute if it begins with "<scheme>://" or "//" (protocol-relative URL).
   // RFC 3986 defines scheme name as a sequence of characters beginning with a letter and followed
@@ -12176,10 +11998,10 @@ module.exports = function isAbsoluteURL(url) {
 };
 
 /***/ }),
-/* 53 */
-/*!*********************************************************************************************************!*\
-  !*** D:/toBeNo1/uniappProject/MultiFunctionalToolsUniapp/node_modules/axios/lib/helpers/combineURLs.js ***!
-  \*********************************************************************************************************/
+/* 33 */
+/*!******************************************************************************************************************!*\
+  !*** D:/multi-functional-tools-uni-app/multiFunctionalToolsUniapp/node_modules/axios/lib/helpers/combineURLs.js ***!
+  \******************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -12187,58 +12009,66 @@ module.exports = function isAbsoluteURL(url) {
 
 
 /**
- * Creates a new URL by combining the specified URLs
- *
- * @param {string} baseURL The base URL
- * @param {string} relativeURL The relative URL
- * @returns {string} The combined URL
- */
+               * Creates a new URL by combining the specified URLs
+               *
+               * @param {string} baseURL The base URL
+               * @param {string} relativeURL The relative URL
+               * @returns {string} The combined URL
+               */
 module.exports = function combineURLs(baseURL, relativeURL) {
-  return relativeURL ? baseURL.replace(/\/+$/, '') + '/' + relativeURL.replace(/^\/+/, '') : baseURL;
+  return relativeURL ?
+  baseURL.replace(/\/+$/, '') + '/' + relativeURL.replace(/^\/+/, '') :
+  baseURL;
 };
 
 /***/ }),
-/* 54 */
-/*!**********************************************************************************************************!*\
-  !*** D:/toBeNo1/uniappProject/MultiFunctionalToolsUniapp/node_modules/axios/lib/helpers/parseHeaders.js ***!
-  \**********************************************************************************************************/
+/* 34 */
+/*!*******************************************************************************************************************!*\
+  !*** D:/multi-functional-tools-uni-app/multiFunctionalToolsUniapp/node_modules/axios/lib/helpers/parseHeaders.js ***!
+  \*******************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(/*! ./../utils */ 37);
+var utils = __webpack_require__(/*! ./../utils */ 17);
 
 // Headers whose duplicates are ignored by node
 // c.f. https://nodejs.org/api/http.html#http_message_headers
-var ignoreDuplicateOf = ['age', 'authorization', 'content-length', 'content-type', 'etag', 'expires', 'from', 'host', 'if-modified-since', 'if-unmodified-since', 'last-modified', 'location', 'max-forwards', 'proxy-authorization', 'referer', 'retry-after', 'user-agent'];
+var ignoreDuplicateOf = [
+'age', 'authorization', 'content-length', 'content-type', 'etag',
+'expires', 'from', 'host', 'if-modified-since', 'if-unmodified-since',
+'last-modified', 'location', 'max-forwards', 'proxy-authorization',
+'referer', 'retry-after', 'user-agent'];
+
 
 /**
- * Parse headers into an object
- *
- * ```
- * Date: Wed, 27 Aug 2014 08:58:49 GMT
- * Content-Type: application/json
- * Connection: keep-alive
- * Transfer-Encoding: chunked
- * ```
- *
- * @param {String} headers Headers needing to be parsed
- * @returns {Object} Headers parsed into an object
- */
+                                          * Parse headers into an object
+                                          *
+                                          * ```
+                                          * Date: Wed, 27 Aug 2014 08:58:49 GMT
+                                          * Content-Type: application/json
+                                          * Connection: keep-alive
+                                          * Transfer-Encoding: chunked
+                                          * ```
+                                          *
+                                          * @param {String} headers Headers needing to be parsed
+                                          * @returns {Object} Headers parsed into an object
+                                          */
 module.exports = function parseHeaders(headers) {
   var parsed = {};
   var key;
   var val;
   var i;
-  if (!headers) {
-    return parsed;
-  }
+
+  if (!headers) {return parsed;}
+
   utils.forEach(headers.split('\n'), function parser(line) {
     i = line.indexOf(':');
     key = utils.trim(line.substr(0, i)).toLowerCase();
     val = utils.trim(line.substr(i + 1));
+
     if (key) {
       if (parsed[key] && ignoreDuplicateOf.indexOf(key) >= 0) {
         return;
@@ -12250,22 +12080,26 @@ module.exports = function parseHeaders(headers) {
       }
     }
   });
+
   return parsed;
 };
 
 /***/ }),
-/* 55 */
-/*!*************************************************************************************************************!*\
-  !*** D:/toBeNo1/uniappProject/MultiFunctionalToolsUniapp/node_modules/axios/lib/helpers/isURLSameOrigin.js ***!
-  \*************************************************************************************************************/
+/* 35 */
+/*!**********************************************************************************************************************!*\
+  !*** D:/multi-functional-tools-uni-app/multiFunctionalToolsUniapp/node_modules/axios/lib/helpers/isURLSameOrigin.js ***!
+  \**********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(/*! ./../utils */ 37);
-module.exports = utils.isStandardBrowserEnv() ?
+var utils = __webpack_require__(/*! ./../utils */ 17);
+
+module.exports =
+utils.isStandardBrowserEnv() ?
+
 // Standard browser envs have full support of the APIs needed to test
 // whether the request URL is of the same origin as current location.
 function standardBrowserEnv() {
@@ -12274,18 +12108,20 @@ function standardBrowserEnv() {
   var originURL;
 
   /**
-  * Parse a URL to discover it's components
-  *
-  * @param {String} url The URL to be parsed
-  * @returns {Object}
-  */
+                 * Parse a URL to discover it's components
+                 *
+                 * @param {String} url The URL to be parsed
+                 * @returns {Object}
+                 */
   function resolveURL(url) {
     var href = url;
+
     if (msie) {
       // IE needs attribute set twice to normalize properties
       urlParsingNode.setAttribute('href', href);
       href = urlParsingNode.href;
     }
+
     urlParsingNode.setAttribute('href', href);
 
     // urlParsingNode provides the UrlUtils interface - http://url.spec.whatwg.org/#urlutils
@@ -12297,22 +12133,27 @@ function standardBrowserEnv() {
       hash: urlParsingNode.hash ? urlParsingNode.hash.replace(/^#/, '') : '',
       hostname: urlParsingNode.hostname,
       port: urlParsingNode.port,
-      pathname: urlParsingNode.pathname.charAt(0) === '/' ? urlParsingNode.pathname : '/' + urlParsingNode.pathname
-    };
+      pathname: urlParsingNode.pathname.charAt(0) === '/' ?
+      urlParsingNode.pathname :
+      '/' + urlParsingNode.pathname };
+
   }
+
   originURL = resolveURL(window.location.href);
 
   /**
-  * Determine if a URL shares the same origin as the current location
-  *
-  * @param {String} requestURL The URL to test
-  * @returns {boolean} True if URL shares the same origin, otherwise false
-  */
+                                                * Determine if a URL shares the same origin as the current location
+                                                *
+                                                * @param {String} requestURL The URL to test
+                                                * @returns {boolean} True if URL shares the same origin, otherwise false
+                                                */
   return function isURLSameOrigin(requestURL) {
     var parsed = utils.isString(requestURL) ? resolveURL(requestURL) : requestURL;
-    return parsed.protocol === originURL.protocol && parsed.host === originURL.host;
+    return parsed.protocol === originURL.protocol &&
+    parsed.host === originURL.host;
   };
 }() :
+
 // Non standard browser envs (web workers, react-native) lack needed support.
 function nonStandardBrowserEnv() {
   return function isURLSameOrigin() {
@@ -12321,91 +12162,109 @@ function nonStandardBrowserEnv() {
 }();
 
 /***/ }),
-/* 56 */
-/*!*****************************************************************************************************!*\
-  !*** D:/toBeNo1/uniappProject/MultiFunctionalToolsUniapp/node_modules/axios/lib/helpers/cookies.js ***!
-  \*****************************************************************************************************/
+/* 36 */
+/*!**************************************************************************************************************!*\
+  !*** D:/multi-functional-tools-uni-app/multiFunctionalToolsUniapp/node_modules/axios/lib/helpers/cookies.js ***!
+  \**************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(/*! ./../utils */ 37);
-module.exports = utils.isStandardBrowserEnv() ?
+var utils = __webpack_require__(/*! ./../utils */ 17);
+
+module.exports =
+utils.isStandardBrowserEnv() ?
+
 // Standard browser envs support document.cookie
 function standardBrowserEnv() {
   return {
     write: function write(name, value, expires, path, domain, secure) {
       var cookie = [];
       cookie.push(name + '=' + encodeURIComponent(value));
+
       if (utils.isNumber(expires)) {
         cookie.push('expires=' + new Date(expires).toGMTString());
       }
+
       if (utils.isString(path)) {
         cookie.push('path=' + path);
       }
+
       if (utils.isString(domain)) {
         cookie.push('domain=' + domain);
       }
+
       if (secure === true) {
         cookie.push('secure');
       }
+
       document.cookie = cookie.join('; ');
     },
+
     read: function read(name) {
       var match = document.cookie.match(new RegExp('(^|;\\s*)(' + name + ')=([^;]*)'));
       return match ? decodeURIComponent(match[3]) : null;
     },
+
     remove: function remove(name) {
       this.write(name, '', Date.now() - 86400000);
-    }
-  };
+    } };
+
 }() :
+
 // Non standard browser env (web workers, react-native) lack needed support.
 function nonStandardBrowserEnv() {
   return {
     write: function write() {},
-    read: function read() {
-      return null;
-    },
-    remove: function remove() {}
-  };
+    read: function read() {return null;},
+    remove: function remove() {} };
+
 }();
 
 /***/ }),
-/* 57 */
-/*!******************************************************************************************************!*\
-  !*** D:/toBeNo1/uniappProject/MultiFunctionalToolsUniapp/node_modules/axios/lib/core/mergeConfig.js ***!
-  \******************************************************************************************************/
+/* 37 */
+/*!***************************************************************************************************************!*\
+  !*** D:/multi-functional-tools-uni-app/multiFunctionalToolsUniapp/node_modules/axios/lib/core/mergeConfig.js ***!
+  \***************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(/*! ../utils */ 37);
+var utils = __webpack_require__(/*! ../utils */ 17);
 
 /**
- * Config-specific merge-function which creates a new config-object
- * by merging two configuration objects together.
- *
- * @param {Object} config1
- * @param {Object} config2
- * @returns {Object} New object resulting from merging config2 to config1
- */
+                                  * Config-specific merge-function which creates a new config-object
+                                  * by merging two configuration objects together.
+                                  *
+                                  * @param {Object} config1
+                                  * @param {Object} config2
+                                  * @returns {Object} New object resulting from merging config2 to config1
+                                  */
 module.exports = function mergeConfig(config1, config2) {
   // eslint-disable-next-line no-param-reassign
   config2 = config2 || {};
   var config = {};
+
   var valueFromConfig2Keys = ['url', 'method', 'params', 'data'];
   var mergeDeepPropertiesKeys = ['headers', 'auth', 'proxy'];
-  var defaultToConfig2Keys = ['baseURL', 'url', 'transformRequest', 'transformResponse', 'paramsSerializer', 'timeout', 'withCredentials', 'adapter', 'responseType', 'xsrfCookieName', 'xsrfHeaderName', 'onUploadProgress', 'onDownloadProgress', 'maxContentLength', 'validateStatus', 'maxRedirects', 'httpAgent', 'httpsAgent', 'cancelToken', 'socketPath'];
+  var defaultToConfig2Keys = [
+  'baseURL', 'url', 'transformRequest', 'transformResponse', 'paramsSerializer',
+  'timeout', 'withCredentials', 'adapter', 'responseType', 'xsrfCookieName',
+  'xsrfHeaderName', 'onUploadProgress', 'onDownloadProgress',
+  'maxContentLength', 'validateStatus', 'maxRedirects', 'httpAgent',
+  'httpsAgent', 'cancelToken', 'socketPath'];
+
+
   utils.forEach(valueFromConfig2Keys, function valueFromConfig2(prop) {
     if (typeof config2[prop] !== 'undefined') {
       config[prop] = config2[prop];
     }
   });
+
   utils.forEach(mergeDeepPropertiesKeys, function mergeDeepProperties(prop) {
     if (utils.isObject(config2[prop])) {
       config[prop] = utils.deepMerge(config1[prop], config2[prop]);
@@ -12417,6 +12276,7 @@ module.exports = function mergeConfig(config1, config2) {
       config[prop] = config1[prop];
     }
   });
+
   utils.forEach(defaultToConfig2Keys, function defaultToConfig2(prop) {
     if (typeof config2[prop] !== 'undefined') {
       config[prop] = config2[prop];
@@ -12424,10 +12284,17 @@ module.exports = function mergeConfig(config1, config2) {
       config[prop] = config1[prop];
     }
   });
-  var axiosKeys = valueFromConfig2Keys.concat(mergeDeepPropertiesKeys).concat(defaultToConfig2Keys);
-  var otherKeys = Object.keys(config2).filter(function filterAxiosKeys(key) {
+
+  var axiosKeys = valueFromConfig2Keys.
+  concat(mergeDeepPropertiesKeys).
+  concat(defaultToConfig2Keys);
+
+  var otherKeys = Object.
+  keys(config2).
+  filter(function filterAxiosKeys(key) {
     return axiosKeys.indexOf(key) === -1;
   });
+
   utils.forEach(otherKeys, function otherKeysDefaultToConfig2(prop) {
     if (typeof config2[prop] !== 'undefined') {
       config[prop] = config2[prop];
@@ -12435,14 +12302,15 @@ module.exports = function mergeConfig(config1, config2) {
       config[prop] = config1[prop];
     }
   });
+
   return config;
 };
 
 /***/ }),
-/* 58 */
-/*!***************************************************************************************************!*\
-  !*** D:/toBeNo1/uniappProject/MultiFunctionalToolsUniapp/node_modules/axios/lib/cancel/Cancel.js ***!
-  \***************************************************************************************************/
+/* 38 */
+/*!************************************************************************************************************!*\
+  !*** D:/multi-functional-tools-uni-app/multiFunctionalToolsUniapp/node_modules/axios/lib/cancel/Cancel.js ***!
+  \************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -12450,61 +12318,67 @@ module.exports = function mergeConfig(config1, config2) {
 
 
 /**
- * A `Cancel` is an object that is thrown when an operation is canceled.
- *
- * @class
- * @param {string=} message The message.
- */
+               * A `Cancel` is an object that is thrown when an operation is canceled.
+               *
+               * @class
+               * @param {string=} message The message.
+               */
 function Cancel(message) {
   this.message = message;
 }
+
 Cancel.prototype.toString = function toString() {
   return 'Cancel' + (this.message ? ': ' + this.message : '');
 };
+
 Cancel.prototype.__CANCEL__ = true;
+
 module.exports = Cancel;
 
 /***/ }),
-/* 59 */
-/*!********************************************************************************************************!*\
-  !*** D:/toBeNo1/uniappProject/MultiFunctionalToolsUniapp/node_modules/axios/lib/cancel/CancelToken.js ***!
-  \********************************************************************************************************/
+/* 39 */
+/*!*****************************************************************************************************************!*\
+  !*** D:/multi-functional-tools-uni-app/multiFunctionalToolsUniapp/node_modules/axios/lib/cancel/CancelToken.js ***!
+  \*****************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var Cancel = __webpack_require__(/*! ./Cancel */ 58);
+var Cancel = __webpack_require__(/*! ./Cancel */ 38);
 
 /**
- * A `CancelToken` is an object that can be used to request cancellation of an operation.
- *
- * @class
- * @param {Function} executor The executor function.
- */
+                                   * A `CancelToken` is an object that can be used to request cancellation of an operation.
+                                   *
+                                   * @class
+                                   * @param {Function} executor The executor function.
+                                   */
 function CancelToken(executor) {
   if (typeof executor !== 'function') {
     throw new TypeError('executor must be a function.');
   }
+
   var resolvePromise;
   this.promise = new Promise(function promiseExecutor(resolve) {
     resolvePromise = resolve;
   });
+
   var token = this;
   executor(function cancel(message) {
     if (token.reason) {
       // Cancellation has already been requested
       return;
     }
+
     token.reason = new Cancel(message);
     resolvePromise(token.reason);
   });
 }
 
 /**
- * Throws a `Cancel` if cancellation has been requested.
- */
+   * Throws a `Cancel` if cancellation has been requested.
+   */
 CancelToken.prototype.throwIfRequested = function throwIfRequested() {
   if (this.reason) {
     throw this.reason;
@@ -12512,9 +12386,9 @@ CancelToken.prototype.throwIfRequested = function throwIfRequested() {
 };
 
 /**
- * Returns an object that contains a new `CancelToken` and a function that, when called,
- * cancels the `CancelToken`.
- */
+    * Returns an object that contains a new `CancelToken` and a function that, when called,
+    * cancels the `CancelToken`.
+    */
 CancelToken.source = function source() {
   var cancel;
   var token = new CancelToken(function executor(c) {
@@ -12522,16 +12396,17 @@ CancelToken.source = function source() {
   });
   return {
     token: token,
-    cancel: cancel
-  };
+    cancel: cancel };
+
 };
+
 module.exports = CancelToken;
 
 /***/ }),
-/* 60 */
-/*!****************************************************************************************************!*\
-  !*** D:/toBeNo1/uniappProject/MultiFunctionalToolsUniapp/node_modules/axios/lib/helpers/spread.js ***!
-  \****************************************************************************************************/
+/* 40 */
+/*!*************************************************************************************************************!*\
+  !*** D:/multi-functional-tools-uni-app/multiFunctionalToolsUniapp/node_modules/axios/lib/helpers/spread.js ***!
+  \*************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -12539,25 +12414,25 @@ module.exports = CancelToken;
 
 
 /**
- * Syntactic sugar for invoking a function and expanding an array for arguments.
- *
- * Common use case would be to use `Function.prototype.apply`.
- *
- *  ```js
- *  function f(x, y, z) {}
- *  var args = [1, 2, 3];
- *  f.apply(null, args);
- *  ```
- *
- * With `spread` this example can be re-written.
- *
- *  ```js
- *  spread(function(x, y, z) {})([1, 2, 3]);
- *  ```
- *
- * @param {Function} callback
- * @returns {Function}
- */
+               * Syntactic sugar for invoking a function and expanding an array for arguments.
+               *
+               * Common use case would be to use `Function.prototype.apply`.
+               *
+               *  ```js
+               *  function f(x, y, z) {}
+               *  var args = [1, 2, 3];
+               *  f.apply(null, args);
+               *  ```
+               *
+               * With `spread` this example can be re-written.
+               *
+               *  ```js
+               *  spread(function(x, y, z) {})([1, 2, 3]);
+               *  ```
+               *
+               * @param {Function} callback
+               * @returns {Function}
+               */
 module.exports = function spread(callback) {
   return function wrap(arr) {
     return callback.apply(null, arr);

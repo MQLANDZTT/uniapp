@@ -2,7 +2,7 @@ import App from './App.vue'
 import promise from 'es6-promise' 
 import axios from 'axios'
 // 引入路由
-import VueRouter from "vue-router";
+// import VueRouter from "vue-router";
 
 
 
@@ -16,7 +16,7 @@ import Vue from 'vue'
 Vue.config.productionTip = false
 Vue.prototype.$host = host;
 Vue.prototype.axios = axios
-Vue.use(VueRouter)
+// Vue.use(VueRouter)
 App.mpType = 'app'
 const app = new Vue({
   ...App

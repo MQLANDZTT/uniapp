@@ -2,7 +2,10 @@
   "pages": [{
       "path": "pages/login/login",
       "style": {}
-    }
+    },
+	{
+		"path": "pages/news/index"
+	}
     // {
     //   "path": "pages/news/detail",
     //   "style": {
